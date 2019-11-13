@@ -15,7 +15,7 @@ El desarrollo de toda Aplicación Web requiere seguir un [proceso estructurado](
 # Título del Proyecto
 
 #### Curso Escolar 20XX-20XX
-#### Autor: [Nombre del alumno autor](Enlace a su cuenta de gitHub)
+#### Autor: Javier Márquez Sánchez (Enlace a su cuenta de gitHub)
 #### Tutor: [Nombre del profesor tutor](Enlace a su cuenta de gitHub)
 #### Fecha de Inicio: DD-MM-YYYY
 #### Fecha de Finalización: DD-MM-YYYY
