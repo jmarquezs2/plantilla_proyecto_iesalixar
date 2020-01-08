@@ -15,5 +15,5 @@
  - Permitirá enviar apuntes a otros usuarios para poder guardarlos.
  
   - Permite borrar registros de tu perfil, no borrara el apunte de alguien que lo haya guardado pero le saldra un mensaje informando de esto.
+  -  Permitira tener guardados enlaces a webs o videos. Este enlace tendra un nombre que decida el usuario para facilitar saber de que iba y asignarlo a una o más asignaturas.
  
- -Permitira tener guardados enlaces a webs o videos. Este enlace tendra un nombre que decida el usuario para facilitar saber de que iba y asignarlo a una o más asignaturas.
