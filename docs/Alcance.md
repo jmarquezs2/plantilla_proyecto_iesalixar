@@ -18,7 +18,7 @@
   -  Permitira tener guardados enlaces a webs o videos. Este enlace tendra un nombre que decida el usuario para facilitar saber de que iba y asignarlo a una o más asignaturas.
   - Si un video enlazado es de youtube se podra visualizar en la app como un iframe.
   
-  -Al guardar un apunte(registro) se podrá seleccionar si es privado (Solo lo ve el usuario que lo ha creado) o público ( Los demas usuarios lo podran ver y guardarlos).
+   - Al guardar un apunte(registro) se podrá seleccionar si es privado (Solo lo ve el usuario que lo ha creado) o público ( Los demas usuarios lo podran ver y guardarlos).
   
-  -Al guardar un registro como público se le guardará al usuario que lo ha creado pero no lo veran los demas hasta que un administrados lo apruebe.
+   - Al guardar un registro como público se le guardará al usuario que lo ha creado pero no lo veran los demas hasta que un administrados lo apruebe.
  
