@@ -15,8 +15,8 @@ El desarrollo de toda Aplicación Web requiere seguir un [proceso estructurado](
 # Math Notes
 
 #### Curso Escolar 2019-2020
-#### Autor: Javier Márquez Sánchez (Enlace a su cuenta de gitHub)
-#### Tutor: Manolo Conde (https://github.com/mcondet/)
+#### Autor: [Javier Márquez Sánchez] (https://github.com/jmarquezs2)
+#### Tutor: [Manolo Conde] (https://github.com/mcondet/)
 #### Fecha de Inicio: 20-12-2019
 #### Fecha de Finalización: DD-MM-YYYY
 
@@ -43,7 +43,7 @@ En este apartado el alumno insertará la documentación del prototipo del proyec
 
 ## Estructura del Proyecto
 
-En este apartado el alumno explicará el contenido del repositorio y de todas las carpetas relevantes del mismo.
+-[Captura de requisitos](https://github.com/jmarquezs2/proyecto_JMS/blob/master/docs/Alcance.md/ "Alcance")
 
 ## Demostración del proyecto
 
