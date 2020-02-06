@@ -12,22 +12,21 @@ El desarrollo de toda Aplicación Web requiere seguir un [proceso estructurado](
 
 ---
 
-# Título del Proyecto
+# Math Notes
 
-#### Curso Escolar 20XX-20XX
+#### Curso Escolar 2019-2020
 #### Autor: Javier Márquez Sánchez (Enlace a su cuenta de gitHub)
-#### Tutor: [Nombre del profesor tutor](Enlace a su cuenta de gitHub)
-#### Fecha de Inicio: DD-MM-YYYY
+#### Tutor: Manolo Conde (https://github.com/mcondet/)
+#### Fecha de Inicio: 20-12-2019
 #### Fecha de Finalización: DD-MM-YYYY
 
 ## Breve descripción del proyecto
 
-Si ya tienes una idea para tu aplicación, explícala brevemente. Si no es así, lo que realmente necesitas es **buscar un problema o necesidad a la que darle solución**, y estos **están por todas partes**. Así que trata de buscar problemas o necesidades en tu vida diaria y realiza una lista. Una vez que tengas una lista exhaustiva, ya puedes empezar a pensar en **cómo puedes resolverlos**.
-
-En este apartado el alumno debe hacer una breve descripción del proyecto que vaya a realizar. Esta descripción no será ua descripción detallada, será una presentación general con no más de 10 líneas.
+La aplicación será una web donde estudiantes guardaran sus apuntes de Matemáticas y Física entre otras materias de manera que siempre podra tener las formulas o ecuaciones a mano para estudiar o resolver problemas. Los  usuarios podran támbien compartir sus apuntes para que otros usuarios puedan guardarlos.
 
 ## Definir el objetivo de la aplicación
-**Tener una gran idea** o encontrar un punto del mercado al que no se esté dando un producto o servicio es el punto de partida en cada nuevo proyecto. Antes de comenzar debes **definir claramente el propósito y la misión de la aplicación web**:
+La aplicación registrará apuntes de estudiantes de materias relacionadas con matématicas como formulas, ecuaciones, propiedades...
+Los usuarios podrán acceder a la web desde sus dispositivos moviles mientras estudian y tienen sus apuntes a mano.
 
 - **¿Qué va a hacer la aplicación?**
 - **¿Cuál es su atractivo principal?** 
