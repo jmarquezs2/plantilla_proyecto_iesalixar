@@ -16,7 +16,7 @@ El desarrollo de toda Aplicación Web requiere seguir un [proceso estructurado](
 
 #### Curso Escolar 2019-2020
 #### Autor: [Javier Márquez Sánchez](https://github.com/jmarquezs2)
-#### Tutor: [Manolo Conde](https://github.com/mcondet/)
+#### Tutor: [Pedro Barco](https://github.com/pbarcob)
 #### Fecha de Inicio: 20-12-2019
 #### Fecha de Finalización: DD-MM-YYYY
 
@@ -28,10 +28,7 @@ La aplicación será una web donde estudiantes guardaran sus apuntes de Matemát
 La aplicación registrará apuntes de estudiantes de materias relacionadas con matématicas como formulas, ecuaciones, propiedades...
 Los usuarios podrán acceder a la web desde sus dispositivos moviles mientras estudian y tienen sus apuntes a mano.
 
-- **¿Qué va a hacer la aplicación?**
-- **¿Cuál es su atractivo principal?** 
-- **¿Qué problema concreto va a resolver?** 
-- **¿Qué necesidad va a cubrir?**
+
 
 ## Prototipo de la Interfaz del proyecto
 
