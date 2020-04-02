@@ -41,7 +41,8 @@ En este apartado el alumno insertará la documentación del prototipo del proyec
 ## Estructura del Proyecto
 
 -[Captura de requisitos](https://github.com/jmarquezs2/proyecto_JMS/blob/master/docs/Alcance.md/ "Alcance")
--[Mapa de la aplicació] (https://github.com/jmarquezs2/proyecto_JMS/tree/master/Arquitectura_del_Proyecto)
+-[Mapa de la aplicación](https://github.com/jmarquezs2/proyecto_JMS/tree/master/Arquitectura_del_Proyecto)
+
 
 ## Demostración del proyecto
 
