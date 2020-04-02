@@ -6,7 +6,7 @@ Empezaria en **index.jsp** (Página principal). Esta tendrá algo de informació
 
 Una vez logueados llegariamos a **notes.jsp** donde se visualizarán todos los apuntes del usuario así como botones que redirijan a otras páginas.
 
-El primero será ** createNote.jsp** donde el usuario tendra un formulario para crear un nuevo apunte.
+El primero será **createNote.jsp** donde el usuario tendra un formulario para crear un nuevo apunte.
 
 Luego vendrá **note.jsp**, esta web visualizará un apunte seleccionado y mostrará los datos correspondientes. Dentro de esta habrá un enlace para modificar o borrar dicho apunte (**edit.jsp**).
 
