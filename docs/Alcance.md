@@ -4,7 +4,7 @@
  
  - Permitirá registrar usuarios e iniciar sesión para ver lo que tienes almacenado.
  
- - Los usuarios podrán publicar ciertos apuntes que los usuarios, incluido los no registrados podrán  ver (Esto último aun por confirmar).
+ - Los usuarios podrán publicar ciertos apuntes que los usuarios, los no registrados no lo podrán  ver (Esto último aun por confirmar).
  
  - El usuario registrara un apunte con un título, un contenido, un texto explicativo e imágenes, no es obligatorio tener todos los campos. Por ejemplo, el usuario podrá registrar una formula matemática, escribiendo una formula y un texto explicando para que se usa , de donde viene, como sacar dicha formula o publicar solo una foto de una tabla periódica para tenerla guardada.
  
