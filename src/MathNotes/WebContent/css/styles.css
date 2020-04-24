@@ -1,0 +1,101 @@
+header{
+
+background-image: url(http://localhost:9090/Mat_Notes/img/fondo.jpg) ;
+background-repeat: unset;
+border-bottom: solid #0429EA 2px;
+align-content: center;
+
+}
+h1{
+    font-family: 'Bradley Hand ITC';
+    font-size: 48px;
+    color: #071C8A;
+    margin-left: 15px;
+    margin-top: 10px;
+    background-color: white;
+    background-repeat: unset;
+    
+    
+    font-weight: bold;
+}
+button{
+font-family: 'Verdana';
+    color: #0429EA;
+    
+    font-weight: bold;
+    border-radius: 44cm;
+    
+    border: solid #797979 1px;
+  
+}
+#profesor{
+
+    border-right: solid #BFB9B9 1px;
+}
+
+#h3index1{
+    font-family: 'Verdana';
+    font-weight: bold;
+    font-size: 28px;
+    
+}
+
+#parrafoIndex{
+    font-family: 'Verdana';
+    font-size: 20px;
+}
+
+
+#imagenLG{
+    width: 456px;
+    height: 496px;
+    margin-left: 20%;
+}
+#imagenMD{
+    width: 406px;
+    height: 446px;
+    margin-left: 10%;
+ 
+}
+#h3index2{
+    font-family: 'Bradley Hand ITC';
+    font-weight: bold;
+    font-size: 48px;
+    color: #0429EA;
+    text-decoration: underline;
+    text-align: center;
+}
+
+input{
+    font-family: 'Verdana' ;
+    font-size: 20px;
+    font-weight: bold !important;
+    border-radius: 45cm !important;
+    height: 60px !important;
+    width: 310px !important;
+    margin-left: 20%;
+    
+}
+#botonUp{
+    height: 48px;
+    font-size: 18px;
+}
+#botonDown{
+    height: 63px;
+    font-size: 20px;
+    margin-left: 20%;
+}
+
+button:hover{
+    background-color: #DBD0D0 !important;
+}
+#movilFondo{
+    background-image: url(http://localhost:9090/Mat_Notes/img/fondoClaro.jpg);
+    background-repeat: unset;
+}
+#movilFondo input{
+    margin-left: 0%;
+}
+#movilFondo button{
+    margin-left: 0%;
+}
