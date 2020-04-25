@@ -29,7 +29,7 @@ public class Login extends HttpServlet{
 
 			System.out.println(UsuarioDAOimpl.readRol(email));
 
-			response.sendRedirect("admin/index.jsp");
+			response.sendRedirect("jsp/notes.jsp");
 			// RequestDispatcher rd=request.getRequestDispatcher("templates/start.jsp");
 			// rd.forward(request,response);
 		} else {

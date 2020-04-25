@@ -58,4 +58,52 @@ public class UsuarioDAOimpl implements UsuarioDAO {
 		return rol;
 	}
 	
+	public static void register(String email, String password, String name) {
+		
+		Session session = null;
+		Transaction transaction = null;
+		try {
+			session = HibernateUtil.getSessionFactory().openSession();
+			transaction = session.beginTransaction();
+			// Create
+			User us = new User(name, email, password, "user");
+			session.save(us);
+			transaction.commit();
+
+		} catch (ConstraintViolationException e) {
+			if (transaction != null) {
+				transaction.rollback();
+			}
+			e.printStackTrace();
+		} finally {
+			if (session != null) {
+				session.close();
+			}
+		}
+	}
+	
+public static boolean readUserIfExist(String email) {
+		
+		User found = null;
+		Session session = null;
+		Transaction transaction = null;
+		try {
+			session = HibernateUtil.getSessionFactory().openSession();
+			transaction = session.beginTransaction();
+			found = (User) session
+					.createQuery("From User u where u.email =:email")
+					.setParameter("email", email).uniqueResult();
+
+		} catch (ConstraintViolationException e) {
+			if (transaction != null) {
+				transaction.rollback();
+			}
+			e.printStackTrace();
+		} finally {
+			if (session != null) {
+				session.close();
+			}
+		}
+		return (found == null) ? false : true;
+	}
 }

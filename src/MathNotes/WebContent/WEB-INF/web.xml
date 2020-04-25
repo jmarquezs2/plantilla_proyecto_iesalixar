@@ -16,4 +16,32 @@
     <servlet-name>Login</servlet-name>
     <url-pattern>/Login</url-pattern>
   </servlet-mapping>
+   <servlet>
+    <description></description>
+    <display-name>Register</display-name>
+    <servlet-name>Register</servlet-name>
+    <servlet-class>controllers.Register</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Register</servlet-name>
+    <url-pattern>/Register</url-pattern>
+  </servlet-mapping>
+   <servlet>
+    <description></description>
+    <display-name>Notes</display-name>
+    <servlet-name>Notes</servlet-name>
+    <servlet-class>controllers.Notes</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Notes</servlet-name>
+    <url-pattern>/Notes</url-pattern>
+  </servlet-mapping>
+  <filter>
+    <filter-name>AuthenticationFilter</filter-name>
+    <filter-class>org.jmarquezs.filters.AuthenticationFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>AuthenticationFilter</filter-name>
+    <url-pattern>/admin/*</url-pattern>
+  </filter-mapping>
 </web-app>

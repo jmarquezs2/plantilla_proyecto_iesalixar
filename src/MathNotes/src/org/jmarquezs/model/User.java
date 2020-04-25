@@ -1,11 +1,33 @@
 package org.jmarquezs.model;
 
-public class User {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+import java.io.Serializable;
+
+@Entity
+@Table(name = "User")
+public class User implements Serializable{
+
+	@Id
+	@GeneratedValue (strategy = GenerationType.IDENTITY)
+	@Column(name = "Id")
+	private int id;
 	
+	@Column(name = "name")
 	private String name;
+	
+	@Column(name = "email")
 	private String email;
+	
+	@Column(name = "password")
 	private String password;
+	
+	@Column(name = "rol")
 	private String rol;
 	
 	
@@ -20,6 +42,14 @@ public class User {
 		this.email = email;
 		this.password = password;
 		this.rol = rol;
+	}
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getName() {

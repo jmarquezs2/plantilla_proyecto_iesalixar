@@ -22,7 +22,7 @@
 			<div class="row">
 				<h1 class="col-md-3 col-sm-7  col-6">Math Notes</h1>
 				<button id="botonUp"
-					class="col-md-2 offset-md-6 col-sm-4 col-4  bg-white  my-auto">Registrarse</button>
+					class="col-md-2 offset-md-6 col-sm-4 col-4  bg-white  my-auto" onclick="location='Register'">Registrarse</button>
 			</div>
 
 		</header>
