@@ -29,12 +29,12 @@ public class Login extends HttpServlet{
 
 			System.out.println(UsuarioDAOimpl.readRol(email));
 
-			response.sendRedirect("jsp/notes.jsp");
+			response.sendRedirect("jsp/registrados/notes.jsp");
 			// RequestDispatcher rd=request.getRequestDispatcher("templates/start.jsp");
 			// rd.forward(request,response);
 		} else {
 
-			RequestDispatcher rd = request.getRequestDispatcher("jsp/login.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("jsp/index.jsp");
 			rd.include(request, response);
 		}
 		

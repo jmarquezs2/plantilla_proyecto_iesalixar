@@ -9,15 +9,14 @@ import org.hibernate.exception.ConstraintViolationException;
 public class UsuarioDAOimpl implements UsuarioDAO {
 
 	public static boolean readUser(String email, String password) {
-		
+
 		User found = null;
 		Session session = null;
 		Transaction transaction = null;
 		try {
 			session = HibernateUtil.getSessionFactory().openSession();
 			transaction = session.beginTransaction();
-			found = (User) session
-					.createQuery("From Usuer u where u.email =:email and u.password =:password")
+			found = (User) session.createQuery("From User u where u.email =:email and u.password =:password")
 					.setParameter("email", email).setParameter("password", password).uniqueResult();
 
 		} catch (ConstraintViolationException e) {
@@ -32,7 +31,7 @@ public class UsuarioDAOimpl implements UsuarioDAO {
 		}
 		return (found == null) ? false : true;
 	}
-	
+
 	public static String readRol(String email) {
 		System.out.println(email);
 		String rol = "";
@@ -42,8 +41,8 @@ public class UsuarioDAOimpl implements UsuarioDAO {
 		try {
 			session = HibernateUtil.getSessionFactory().openSession();
 			transaction = session.beginTransaction();
-			rol = ((User) session.createQuery("From User u where u.email =: email")
-					.setParameter("email", email).uniqueResult()).getRol();
+			rol = ((User) session.createQuery("From User u where u.email =: email").setParameter("email", email)
+					.uniqueResult()).getRol();
 
 		} catch (ConstraintViolationException e) {
 			if (transaction != null) {
@@ -57,9 +56,9 @@ public class UsuarioDAOimpl implements UsuarioDAO {
 		}
 		return rol;
 	}
-	
+
 	public static void register(String email, String password, String name) {
-		
+
 		Session session = null;
 		Transaction transaction = null;
 		try {
@@ -81,18 +80,17 @@ public class UsuarioDAOimpl implements UsuarioDAO {
 			}
 		}
 	}
-	
-public static boolean readUserIfExist(String email) {
-		
+
+	public static boolean readUserIfExist(String email) {
+
 		User found = null;
 		Session session = null;
 		Transaction transaction = null;
 		try {
 			session = HibernateUtil.getSessionFactory().openSession();
 			transaction = session.beginTransaction();
-			found = (User) session
-					.createQuery("From User u where u.email =:email")
-					.setParameter("email", email).uniqueResult();
+			found = (User) session.createQuery("From User u where u.email =:email").setParameter("email", email)
+					.uniqueResult();
 
 		} catch (ConstraintViolationException e) {
 			if (transaction != null) {
@@ -105,5 +103,43 @@ public static boolean readUserIfExist(String email) {
 			}
 		}
 		return (found == null) ? false : true;
+	}
+
+	public static boolean changePassword(String email,String newPassword,String newPassword2) {
+		
+		boolean done=false;
+		
+			if(newPassword.equals(newPassword2)) {
+				User found = null;
+				Session session = null;
+				Transaction transaction = null;
+				try {
+					session = HibernateUtil.getSessionFactory().openSession();
+					transaction = session.beginTransaction();
+					found = (User) session.createQuery("From User u where u.email =:email").setParameter("email", email)
+							.uniqueResult();
+					System.out.println(found.getPassword());
+					found.setPassword(newPassword);
+					session.saveOrUpdate(found);
+					transaction.commit();
+					System.out.println(found.getPassword());
+					done= true;
+				} catch (ConstraintViolationException e) {
+					if (transaction != null) {
+						transaction.rollback();
+					}
+					e.printStackTrace();
+				} finally {
+					if (session != null) {
+						session.close();
+					}
+				}
+				
+			}
+			
+		
+		
+		return done;
+		
 	}
 }

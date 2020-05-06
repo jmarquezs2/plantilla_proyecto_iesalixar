@@ -29,17 +29,19 @@ public class AuthenticationFilter implements Filter {
 		HttpServletResponse res = (HttpServletResponse) response;
 
 		HttpSession session = req.getSession(false);
-
+		System.out.println("He entrado en el filtro");
 		if (session == null || session.getAttribute("Rol") == null) { // checking whether the session exists
 			this.context.log("Unauthorized access request");
-			res.sendRedirect(req.getContextPath() + "/jsp/login.jsp");
+			res.sendRedirect(req.getContextPath() + "/jsp/index.jsp");
+			System.out.println("He entrado en el filtro 2");
 		} else {
 			// pass the request along the filter chain
-			if (session.getAttribute("Rol").equals("admin")) {
+			if (session.getAttribute("Rol").equals("user")) {
 				chain.doFilter(request, response);
-				
+				System.out.println("He entrado en el filtro 3");
 			} else {
-				res.sendRedirect(req.getContextPath() + "/jsp/notes.jsp");
+				res.sendRedirect("/Mat_Notes/Moderacion");
+				System.out.println("He entrado en el filtro 4");
 			}
 
 		}

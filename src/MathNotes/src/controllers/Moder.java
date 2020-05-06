@@ -8,12 +8,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class Notes extends HttpServlet{
-
-	
+public class Moder extends HttpServlet{
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		RequestDispatcher rd = request.getRequestDispatcher("jsp/registrados/notes.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("jsp/registrados/moderacion.jsp");
 		rd.forward(request, response);
 
 	}

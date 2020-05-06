@@ -32,6 +32,7 @@ public class User implements Serializable{
 	
 	
 	
+	
 	public User() {
 		// TODO Auto-generated constructor stub
 	}
@@ -84,5 +85,9 @@ public class User implements Serializable{
 		this.rol = rol;
 	}
 	
+	
+	/*
+	 * En construcción 
+	 */
 	
 }

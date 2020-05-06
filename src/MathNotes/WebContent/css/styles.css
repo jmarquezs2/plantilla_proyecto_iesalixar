@@ -1,6 +1,6 @@
 header{
 
-background-image: url(http://localhost:9090/Mat_Notes/img/fondo.jpg) ;
+background-image: url(/Mat_Notes/img/fondo.jpg) ;
 background-repeat: unset;
 border-bottom: solid #0429EA 2px;
 align-content: center;
@@ -90,7 +90,7 @@ button:hover{
     background-color: #DBD0D0 !important;
 }
 #movilFondo{
-    background-image: url(http://localhost:9090/Mat_Notes/img/fondoClaro.jpg);
+    background-image: url(/Mat_Notes/img/fondoClaro.jpg);
     background-repeat: unset;
 }
 #movilFondo input{
@@ -98,4 +98,159 @@ button:hover{
 }
 #movilFondo button{
     margin-left: 0%;
+}
+
+
+#fondoNotes{
+
+    background-image: url(/Mat_Notes/img/fondoClaro.jpg);
+    background-repeat: unset;
+}
+
+#pageNotes{
+
+    background-color: white;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 5%;
+    border: 1px solid #DBD0D0;
+    font-family: 'Verdana' ;
+    font-size: 20px;
+}
+
+#h3notes{
+    font-family: 'Bradley Hand ITC';
+    font-weight: bold;
+    font-size: 48px;
+    color: #03008C;
+    border-left: 3px solid #03008C;
+    border-bottom: 3px solid #03008C;
+    border-bottom-left-radius: 15px;
+    padding-left: 10px;
+    /*margin-bottom: 30px !important*/
+    margin-top: 30px !important;
+}
+nav{
+    border-right: 2px solid #03008C;
+    border-top: 2px solid #03008C;
+    border-top-right-radius: 15px;
+    padding-top: 10px;
+    margin-left: 15px;
+}
+
+#icon{
+    width: 58px;
+    height: 55px;
+}
+
+#botonNav:hover{
+
+background-color: #E6E6E6;
+}
+
+#textSearch{
+    font-size: 18px;
+    padding-right: 0px;
+}
+#textSearch img{
+   
+    height: 34px !important;
+    background-color: #03008C;
+    border-radius: 20px;
+    padding: 4px;
+}
+#textSearch input{
+    font-family: 'Arial';
+    font-size: 13px;
+    margin-left: 0px;
+    height: 37px !important;
+    width: 331px !important;
+}
+#textSearch form{
+    font-size: 15px;
+    margin-left: 70px;
+    height: 37px !important;
+    width: 331px !important;
+}
+#asignatura{
+    font-family: 'Verdana' ;
+    font-weight: bold;
+    
+    background-color: #03008C;
+    color: white;
+    border-radius: 25px;
+    height: 49px;
+}
+#asignatura p{
+padding-top: 7px;
+padding-left: 20px;
+}
+#note{
+background-color: #ACABD2;
+font-family: 'Verdana' ;
+    font-weight: bold;
+    color: white;
+    height: 133px;
+    border: 1px solid #797979;
+    border-bottom-right-radius: 20px;
+    padding: 0px;
+}
+#note div{
+    background-color: #03008C;
+    border: 1px solid #797979;
+    text-align: center;
+    width: 100% !important;
+    height: 46px;
+    padding-top: 5px;
+}
+#note img{
+    width: 32px;
+    height: 32px;
+    margin-left: 70%;
+    margin-top: 30%;
+}
+#menuimg{
+    width: 32px;
+    height: 32px;
+}
+.card{
+    background-image: url(/Mat_Notes/img/fondoClaro.jpg);
+}
+.card button{
+    font-family: 'Verdana' ;
+    font-weight: bold;
+    background-color: white;
+    color:  #03008C;
+    font-size: 15px;
+}
+
+#formMovil input{
+    margin-left: 30px !important;
+    height: 40px !important;
+    font-weight: normal !important;
+
+}
+
+#formMovil  img{
+   
+    height: 34px !important;
+    background-color: #03008C;
+    border-radius: 20px;
+    padding: 4px;
+}
+
+#asignaturaMovil{
+    
+    
+    font-family: 'Verdana' ;
+font-weight: bold;
+font-size: 20px;
+background-color: #03008C;
+color: white;
+border-radius: 25px;
+height: 49px;
+}
+#asignaturaMovil p{
+padding-top: 7px;
+padding-left: 20px;
 }

@@ -15,7 +15,7 @@
         <header class="col-12">
             <div class="row">
                 <h1 class="col-md-3 col-sm-7  col-6">Math Notes</h1>
-                <button id="botonUp" class="col-md-2 offset-md-6 col-sm-4 col-4  bg-white  my-auto" onclick="location='/Mat_Notes/Login'">Iniciar Sesión</button>
+                <button id="botonUp" class="col-md-2 offset-md-6 col-sm-4 col-4  bg-white  my-auto" onclick="location='/Mat_Notes/Notes'">Volver</button>
             </div>
 
         </header>
@@ -24,11 +24,12 @@
                 <section class="col-7 pr-5 " id="profesor">
                     <div class="row">
                     <h3 class="col-12 mx-5 mt-5" id="h3index1">
-                        Bienvenido a Math Notes
+                        Procura escribir una buena esta vez
                     </h3>
                     <p class="col-12 mx-5 my-3" id="parrafoIndex">
 
-                        Comienza a guardas tus apuntes creando una cuenta de manera rápida.
+                        
+                        Nosotros guardamos tus formulas, tú limítate a usarlas.
                     </p>
                     <img id="imagenLG" src="img/pngocean.com.png"  class="d-none d-lg-block" alt="profesor">
                     <img id="imagenMD" src="img/pngocean.com.png"  class="d-none d-md-block d-lg-none" alt="profesor" >
@@ -37,15 +38,15 @@
 
                 <section class="col-5 mt-5">
                     <div class="row"></div>
-                    <h3 class="col-12 mt-5 ml-md-5 ml-lg-0" id="h3index2">Empieza por aqui!</h3>
-                    <form action="http://localhost:9090/Mat_Notes/Register" method="post"  class="col-12">
+                    <h3 class="col-12 mt-5 ml-md-5 ml-lg-0" id="h3index2">Cambio de contraseña</h3>
+                    <form action="http://localhost:9090/Mat_Notes/NewPassword" method="post" class="col-12">
                       
-                            <input type="email" name="email" class="form-control my-5 " id="email" placeholder="Email">
-                            <input type="text" name="name"  class="form-control my-5 " id="username" placeholder="Nombre">
-                            <input type="password" name="password"  class="form-control my-5 " id="password" placeholder="Contraseña">
+                            <input  type="email" name="email" class="form-control my-5 " id="email" placeholder="Email">
+                            <input type="password" name="newPassword"  class="form-control my-5 " id="newPassword" placeholder="Nueva Contraseña">
+                            <input type="password" name="newPassword2" class="form-control my-5 " id="newPassword2" placeholder="Confirmar Contraseña">
                         
                         
-                            <button  type="submit" id="botonDown" class="col-6 bg-white  my-auto">Registrarse</button>
+                            <button type="submit" id="botonDown" class="col-6 bg-white  my-auto">Cambiar contraseña</button>
 
 
                     </form>
@@ -59,21 +60,21 @@
        <section id="movilFondo" class="col-12 d-md-none d-block">
            <div class="row">
         <h3 class="col-12 my-5" id="h3index1">
-            Bienvenido a Math Notes
+            Procura escribir una buena esta vez
         </h3>
         <p class="col-12 " id="parrafoIndex">
 
-            Comienza a guardas tus apuntes creando una cuenta de manera rápida.
+            Nosotros guardamos tus formulas, tú limítate a usarlas.
         </p>
         <h3 class="col-12 mt-5" id="h3index2">Empieza por aqui!</h3>
-                    <form action="http://localhost:9090/Mat_Notes/Register" method="post"class="col-12">
+                    <form action="http://localhost:9090/Mat_Notes/NewPassword" method="post" class="col-12">
                       <div class="row">
-                            <input type="email" class="form-control my-3 col-12 " id="email" placeholder="Email">
-                            <input type="text" class="form-control my-3 " id="username" placeholder="Nombre">
-                            <input type="password" class="form-control my-3 col-12" id="password" placeholder="Contraseña">
+                            <input type="email" name="email" class="form-control my-3 col-12 " id="email" placeholder="Email">
+                            <input type="password" name="newPassword" class="form-control my-3 " id="newPassword" placeholder="Nueva Contraseña">
+                            <input type="password" name="newPassword2" class="form-control my-3 col-12" id="newPassword2" placeholder="Confirmar Contraseña">
                         
                         
-                            <button type="submit" id="botonDown" class="col-12 bg-white  my-auto">Registrarse</button>
+                            <button type="submit" id="botonDown" class="col-12 bg-white  my-auto">Cambiar contraseña</button>
                         </div>
 
                     </form>

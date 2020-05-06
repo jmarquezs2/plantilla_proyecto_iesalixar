@@ -36,12 +36,42 @@
     <servlet-name>Notes</servlet-name>
     <url-pattern>/Notes</url-pattern>
   </servlet-mapping>
+   <servlet>
+    <description></description>
+    <display-name>Cambio</display-name>
+    <servlet-name>Cambio</servlet-name>
+    <servlet-class>controllers.Cambio</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Cambio</servlet-name>
+    <url-pattern>/NewPassword</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Logout</display-name>
+    <servlet-name>Logout</servlet-name>
+    <servlet-class>controllers.Logout</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Logout</servlet-name>
+    <url-pattern>/Logout</url-pattern>
+  </servlet-mapping>
+   <servlet>
+    <description></description>
+    <display-name>Moder</display-name>
+    <servlet-name>Moder</servlet-name>
+    <servlet-class>controllers.Moder</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Moder</servlet-name>
+    <url-pattern>/Moderacion</url-pattern>
+  </servlet-mapping>
   <filter>
     <filter-name>AuthenticationFilter</filter-name>
     <filter-class>org.jmarquezs.filters.AuthenticationFilter</filter-class>
   </filter>
   <filter-mapping>
     <filter-name>AuthenticationFilter</filter-name>
-    <url-pattern>/admin/*</url-pattern>
+    <url-pattern>/jsp/registrados/*</url-pattern>
   </filter-mapping>
 </web-app>
