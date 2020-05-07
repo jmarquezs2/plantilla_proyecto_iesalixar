@@ -50,10 +50,10 @@
 						class="col-12">
 
 						<input type="email" class="form-control my-5 " name="email"
-							id="email" placeholder="Email">
+							id="email" placeholder="Email" value="pepito@gmail.com">
 							 <input type="password"
 							class="form-control my-5 " id="password" name="password"
-							placeholder="Contraseña">
+							placeholder="Contraseña" value="pepito">
 
 
 						<button type="submit" id="botonDown"
