@@ -46,7 +46,7 @@
 					<div class="row"></div>
 					<h3 class="col-12 mt-5 ml-md-5 ml-lg-0" id="h3index2">Entra
 						ahora!</h3>
-					<form action="http://localhost:9090/Mat_Notes/Login" method="post"
+					<form action="/Mat_Notes/Login" method="post"
 						class="col-12">
 
 						<input type="email" class="form-control my-5 " name="email"
@@ -76,7 +76,7 @@
 				<p class="col-12 " id="parrafoIndex">Nosotros guardamos tus
 					formulas, tú limítate a usarlas.</p>
 				<h3 class="col-12 mt-5" id="h3index2">Entra ahora!</h3>
-				<form action="http://localhost:9090/Mat_Notes/Login" method="post"
+				<form action="/Mat_Notes/Login" method="post"
 					class="col-12">
 					<div class="row">
 						<input type="email" name="email" class="form-control my-4 col-12 " id="email"

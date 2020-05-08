@@ -254,3 +254,63 @@ height: 49px;
 padding-top: 7px;
 padding-left: 20px;
 }
+
+#formCreate{
+    margin-top: 50px;
+    font-family: 'Verdana' ;
+font-weight: bold;
+font-size: 20px;
+
+}
+#formCreate #groupPublic input{
+    height: auto !important;
+    width: auto !important ;
+        margin-left: 10px;
+   
+}
+#info{
+    font-weight: normal;
+font-size: 12px;
+
+}
+
+#inputWrite{
+    font-size: 15px;
+    height: 40px !important;
+    padding-left: 20px;
+    width: 400px !important; 
+    margin-left: 0px !important;
+}
+
+textarea{
+    font-size: 15px;
+    border-radius: 15px !important;
+    font-family: 'Verdana' ;
+   
+}
+
+#fileInput{
+    font-size: 15px !important;
+    margin-left: 0px !important;
+}
+
+#submitCreate{
+    background-color: blue;
+   border-radius:0;
+    font-family: 'Verdana' ;
+    color: white;
+    font-weight: bold;
+font-size: 20px;
+width: 150px !important;
+margin-left: 70%;
+}
+
+#submitCreate:hover{
+   
+   border-radius:0;
+    font-family: 'Verdana' ;
+    color: black;
+    font-weight: bold;
+font-size: 20px;
+width: 150px !important;
+}

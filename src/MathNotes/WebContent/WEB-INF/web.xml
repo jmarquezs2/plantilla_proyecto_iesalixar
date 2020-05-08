@@ -46,6 +46,16 @@
     <servlet-name>Cambio</servlet-name>
     <url-pattern>/NewPassword</url-pattern>
   </servlet-mapping>
+   <servlet>
+    <description></description>
+    <display-name>Create</display-name>
+    <servlet-name>Create</servlet-name>
+    <servlet-class>controllers.Create</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Create</servlet-name>
+    <url-pattern>/Create</url-pattern>
+  </servlet-mapping>
   <servlet>
     <description></description>
     <display-name>Logout</display-name>

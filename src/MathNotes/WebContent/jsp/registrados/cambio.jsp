@@ -39,7 +39,7 @@
                 <section class="col-5 mt-5">
                     <div class="row"></div>
                     <h3 class="col-12 mt-5 ml-md-5 ml-lg-0" id="h3index2">Cambio de contraseña</h3>
-                    <form action="http://localhost:9090/Mat_Notes/NewPassword" method="post" class="col-12">
+                    <form action="/Mat_Notes/NewPassword" method="post" class="col-12">
                       
                             <input  type="email" name="email" class="form-control my-5 " id="email" placeholder="Email">
                             <input type="password" name="newPassword"  class="form-control my-5 " id="newPassword" placeholder="Nueva Contraseña">
@@ -67,7 +67,7 @@
             Nosotros guardamos tus formulas, tú limítate a usarlas.
         </p>
         <h3 class="col-12 mt-5" id="h3index2">Empieza por aqui!</h3>
-                    <form action="http://localhost:9090/Mat_Notes/NewPassword" method="post" class="col-12">
+                    <form action="/Mat_Notes/NewPassword" method="post" class="col-12">
                       <div class="row">
                             <input type="email" name="email" class="form-control my-3 col-12 " id="email" placeholder="Email">
                             <input type="password" name="newPassword" class="form-control my-3 " id="newPassword" placeholder="Nueva Contraseña">

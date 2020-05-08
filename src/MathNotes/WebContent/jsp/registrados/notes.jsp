@@ -37,7 +37,7 @@
                         <div class="ml-4 mt-2"><b>Apuntes Públicos</b></div>
                     </div>
                     <hr>
-                    <div class="row py-4" onclick="location=''" id="botonNav">
+                    <div class="row py-4" onclick="location='/Mat_Notes/Create'" id="botonNav">
                         <img  id="icon" src="/Mat_Notes/img/icon/crear.png" class="ml-4"></img>
                         <div class="ml-4 mt-2"><b>Nuevo Apunte</b></div>
                     </div>
@@ -120,10 +120,10 @@
                     <div class="collapse multi-collapse" id="multiCollapseExample1">
                       <div class="card card-body">
                        <div class="row">
-                        <button  type="button" onclick="location='/Mat_Notes/'"   class="col-5 btn btn-outline-dark ml-4  mb-3 mr-2" >Apuntes Guardados</button>
+                        <button  type="button" onclick="location='/Mat_Notes/Notes'"   class="col-5 btn btn-outline-dark ml-4  mb-3 mr-2" >Apuntes Guardados</button>
                         <button  type="button" onclick="location=''" class="col-5 btn btn-outline-dark ml-2 mb-3 " >Apuntes Públicos</button>
-                        <button  type="button" onclick="location=''" class="col-5 btn btn-outline-dark ml-4 mr-2" >Nuevo Apunte</button>
-                        <button  type="button" onclick="location='/Mat_Notes/'" class="col-5 btn btn-outline-dark ml-2" >Cambiar Contraseña</button>
+                        <button  type="button" onclick="location='/Mat_Notes/Create''" class="col-5 btn btn-outline-dark ml-4 mr-2" >Nuevo Apunte</button>
+                        <button  type="button" onclick="location='/Mat_Notes/NewPassword'" class="col-5 btn btn-outline-dark ml-2" >Cambiar Contraseña</button>
           
                        </div>
                       </div>
