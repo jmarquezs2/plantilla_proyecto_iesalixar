@@ -24,21 +24,22 @@ public class Content implements Serializable{
 	@Column(name = "essence")
 	private String essence;
 	
-	@Column(name = "image")
-	private int image;
+	@Column(name = "type")
+	private String type;
 	
 	
-	@ManyToOne
-    @JoinColumn(name="note_id", nullable=false)
-    private Note note;
+	 @ManyToOne
+		@JoinColumn(name = "Note_ID")
+		private User Note;
 
 
-	public Content(int id, String essence, int image, Note note) {
+
+	public Content( String essence, String type) {
 		super();
-		this.id = id;
+		
 		this.essence = essence;
-		this.image = image;
-		this.note = note;
+		this.type = type;
+		
 	}
 	
 	public Content() {
@@ -61,21 +62,14 @@ public class Content implements Serializable{
 		this.essence = essence;
 	}
 
-	public int getImage() {
-		return image;
+	public String getType() {
+		return type;
 	}
 
-	public void setImage(int image) {
-		this.image = image;
+	public void setImage(String type) {
+		this.type = type;
 	}
 
-	public Note getNote() {
-		return note;
-	}
-
-	public void setNote(Note note) {
-		this.note = note;
-	}
 	
 	
 	/*

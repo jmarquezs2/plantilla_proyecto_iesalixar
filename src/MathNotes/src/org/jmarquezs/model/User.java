@@ -1,10 +1,15 @@
 package org.jmarquezs.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -32,9 +37,10 @@ public class User implements Serializable{
 	@Column(name = "rol")
 	private String rol;
 	
-	/* @OneToMany(mappedBy="user")
-	    private Set<Note> Note;
-	*/
+	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+	@JoinColumn(name = "User_ID")
+	private List<Note> Notes;
+
 	
 	public User() {
 		// TODO Auto-generated constructor stub
@@ -86,6 +92,14 @@ public class User implements Serializable{
 
 	public void setRol(String rol) {
 		this.rol = rol;
+	}
+
+	public List<Note> getNotes() {
+		return Notes;
+	}
+
+	public void setNotes(List<Note> notes) {
+		Notes = notes;
 	}
 	
 	

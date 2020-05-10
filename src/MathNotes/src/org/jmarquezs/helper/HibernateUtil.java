@@ -4,6 +4,8 @@ import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
+import org.jmarquezs.model.Content;
+import org.jmarquezs.model.Note;
 import org.jmarquezs.model.User;
 
 
@@ -16,6 +18,8 @@ public class HibernateUtil {
 			Configuration configuration = new Configuration();
 			configuration.configure("hibernate.cfg.xml");
 			configuration.addAnnotatedClass(User.class);
+			configuration.addAnnotatedClass(Note.class);
+			configuration.addAnnotatedClass(Content.class);
 			System.out.println("Hibernate Configuration loaded");
 
 			ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()

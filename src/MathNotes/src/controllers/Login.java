@@ -26,7 +26,7 @@ public class Login extends HttpServlet{
 			response.addCookie(loginCookie);
 
 			session.setAttribute("Rol", UsuarioDAOimpl.readRol(email));
-
+			session.setAttribute("Email", email);
 			System.out.println(UsuarioDAOimpl.readRol(email));
 
 			response.sendRedirect("jsp/registrados/notes.jsp");

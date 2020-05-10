@@ -51,15 +51,16 @@
 
                 </nav>
                 <section class="col-7" >
-                   <form action="" id="formCreate" method="post" enctype="multipart/form-data">
+                   <form action="/Mat_Notes/Create" id="formCreate" method="post" enctype="multipart/form-data">
                        
 <div id="groupPublic">
                        
                     <label class="mr-5">¿Hacer público?</label>
                     <input type="radio" id="yes" name="visibility" value="y">
                     <label for="">Si</label>
-                    <input type="radio" id="no" name="visibility" value="n">
+                    <input type="radio" id="no" name="visibility2" value="n">
                     <label for="">No</label>
+                   
                     <label id="info">Con esto los demas podran ver y guardar tu apunte.</label>
                 </div>
                 
@@ -96,7 +97,7 @@
 
                         
                        <label class="col-5" for="description">Descripción</label>
-                       <textarea class="col-7" name="textarea" rows="5"" cols="50"></textarea>
+                       <textarea class="col-7" name="description" rows="5"" cols="50"></textarea>
                        </div>
                     </div>
 
@@ -123,7 +124,7 @@
 
                         
                        <label class="col-12" for="description">Sube una imagen:</label>
-                       <input id="fileInput" type="file" class="col-12" accept="image/png, .jpeg, .jpg, image/gif" name="archivossubidos[]" multiple>
+                       <input id="fileInput" type="file" class="col-12" accept="image/png, .jpeg, .jpg, image/gif" name="archivossubidos" multiple>
                        </div>
                     </div>
 
@@ -261,6 +262,21 @@
         
         </section>
     </div>
+    <script >
+    function getRadioButtonSelectedValue(ctrl)
+    {
+        for(i=0;i<ctrl.length;i++){
+        	if(ctrl[i].checked){
+        		return ctrl[i].value;
+        		console.log(ctrl[i].value);
+        		}
+        	}
+        }
+            
+       
+   
+    
+    </script>
 
 
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>

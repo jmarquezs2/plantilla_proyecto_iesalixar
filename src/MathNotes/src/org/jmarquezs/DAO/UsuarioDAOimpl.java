@@ -142,4 +142,27 @@ public class UsuarioDAOimpl implements UsuarioDAO {
 		return done;
 		
 	}
+	
+	public static User bringBackUser(String email) {
+		User found = null;
+		Session session = null;
+		Transaction transaction = null;
+		try {
+			session = HibernateUtil.getSessionFactory().openSession();
+			transaction = session.beginTransaction();
+			found = (User) session.createQuery("From User u where u.email =:email").setParameter("email", email)
+					.uniqueResult();
+
+		} catch (ConstraintViolationException e) {
+			if (transaction != null) {
+				transaction.rollback();
+			}
+			e.printStackTrace();
+		} finally {
+			if (session != null) {
+				session.close();
+			}
+		}
+		return found;
+	}
 }

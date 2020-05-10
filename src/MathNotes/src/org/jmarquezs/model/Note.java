@@ -1,10 +1,13 @@
 package org.jmarquezs.model;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -45,29 +48,30 @@ public class Note implements Serializable{
 	private String temary;
 	
 	
-	 @OneToMany(mappedBy="note")
-	    private Set<Content> Contents;
+	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+	@JoinColumn(name = "Note_ID")
+	private List<Content> Contents;
 	 
-		@ManyToOne
-	    @JoinColumn(name="user_id", nullable=false)
-	    private User user;
+	 @ManyToOne
+		@JoinColumn(name = "User_ID")
+		private User User;
 
 
 	
 	 
 	 
-	 public Note(int id, String title, int visibility, int validate, String description, String subject,
-				String temary, Set<Content> contents, User user) {
+	 public Note(String title, int visibility, int validate, String description, String subject,
+				String temary) {
 			super();
-			this.id = id;
+			
 			this.title = title;
 			this.visibility = visibility;
 			this.validate = validate;
 			this.description = description;
 			this.subject = subject;
 			this.temary = temary;
-			Contents = contents;
-			this.user = user;
+			
+			
 		}
 
 
@@ -96,14 +100,6 @@ public class Note implements Serializable{
 	}
 
 
-	public User getUser() {
-		return user;
-	}
-
-
-	public void setUser(User user) {
-		this.user = user;
-	}
 
 
 	public String getTitle() {
@@ -156,14 +152,17 @@ public class Note implements Serializable{
 	}
 
 
-	public Set<Content> getContents() {
+	public List<Content> getContents() {
 		return Contents;
 	}
 
 
-	public void setContents(Set<Content> contents) {
+	public void setContents(List<Content> contents) {
 		Contents = contents;
 	}
+
+
+
 	 
 	 
 	/*
