@@ -1,5 +1,6 @@
 package org.jmarquezs.DAO;
 
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,7 +47,8 @@ public class NoteDAOimpl implements NoteDAO {
 		Transaction transaction = null;
 		Note note = null;
 		User user = null;
-		List<Content> contents= new ArrayList();
+		List<Content> contents= new ArrayList<Content>();
+		List<Note> notes= new ArrayList<Note>();
 		try {
 			session = HibernateUtil.getSessionFactory().openSession();
 			transaction = session.beginTransaction();
@@ -59,12 +61,11 @@ public class NoteDAOimpl implements NoteDAO {
 				contents.add(link);
 			}
 			note.setContents(contents);
-			
-			user = UsuarioDAOimpl.bringBackUser(email);
-			user.getNotes().add(note);
-			session.save(cont);
-			session.update(user);
-			
+			user=UsuarioDAOimpl.bringBackUser(email);
+			notes=user.getNotes();
+			notes.add(note);
+			user.setNotes(notes);
+			session.saveOrUpdate(user);
 			transaction.commit();
 			
 		} catch (ConstraintViolationException e) {
@@ -80,5 +81,33 @@ public class NoteDAOimpl implements NoteDAO {
 		
 		
 	}
+	
+	//Metodo aun por acabar
+	/*public static List<Note> notesOfUser(String email) {
+		
+		int id = UsuarioDAOimpl.bringBackUser(email).getId();
+		List<Note> list = new ArrayList<Note>();
+
+		Session session = null;
+		Transaction transaction = null;
+		try {
+			session = HibernateUtil.getSessionFactory().openSession();
+			transaction = session.beginTransaction();
+			list.addAll( session.createQuery("From Note u where u.User_id=:User_id").setParameter("User_id", id).list());
+						 				
+					
+		} catch (ConstraintViolationException e) {
+			if (transaction != null) {
+				transaction.rollback();
+			}
+			e.printStackTrace();
+		} finally {
+			if (session != null) {
+				session.close();
+			}
+		}
+		
+		return list;
+	}*/
 	
 }

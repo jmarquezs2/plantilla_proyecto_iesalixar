@@ -4,6 +4,8 @@ import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -14,6 +16,8 @@ import org.jmarquezs.DAO.NoteDAOimpl;
 import org.jmarquezs.DAO.UsuarioDAOimpl;
 import org.jmarquezs.model.Content;
 
+@WebServlet("/Mat_Notes/Create")
+@MultipartConfig
 public class Create extends HttpServlet{
 
 	
@@ -41,7 +45,7 @@ public class Create extends HttpServlet{
 		}
 		
 		String link = request.getParameter("link");
-		if(content!=null) {
+		if(link!=null && !(link.equals(""))) {
 			contentLink=NoteDAOimpl.createContent(link, "link");
 		}
 		String archivossubidos = request.getParameter("archivossubidos");
@@ -49,9 +53,7 @@ public class Create extends HttpServlet{
 		NoteDAOimpl.createNote(visibility, title, subject, temary, description, cont, contentLink, owner);
 		
 			response.sendRedirect("jsp/registrados/notes.jsp");
-			// RequestDispatcher rd=request.getRequestDispatcher("templates/start.jsp");
-			// rd.forward(request,response);
-	
+			
 		
 	}
 	
