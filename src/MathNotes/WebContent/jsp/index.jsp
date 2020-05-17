@@ -13,7 +13,7 @@
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
 	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
 	crossorigin="anonymous" />
-<link rel="stylesheet" type="text/css" href="/Mat_Notes/css/styles.css">
+<link rel="stylesheet" type="text/css" href="/MathNotes/css/styles.css">
 
 </head>
 <body class="container-fluid">
@@ -46,7 +46,7 @@
 					<div class="row"></div>
 					<h3 class="col-12 mt-5 ml-md-5 ml-lg-0" id="h3index2">Entra
 						ahora!</h3>
-					<form action="/Mat_Notes/Login" method="post"
+					<form action="/MathNotes/Login" method="post"
 						class="col-12">
 
 						<input type="email" class="form-control my-5 " name="email"
@@ -76,7 +76,7 @@
 				<p class="col-12 " id="parrafoIndex">Nosotros guardamos tus
 					formulas, tú limítate a usarlas.</p>
 				<h3 class="col-12 mt-5" id="h3index2">Entra ahora!</h3>
-				<form action="/Mat_Notes/Login" method="post"
+				<form action="/MathNotes/Login" method="post"
 					class="col-12">
 					<div class="row">
 						<input type="email" name="email" class="form-control my-4 col-12 " id="email"

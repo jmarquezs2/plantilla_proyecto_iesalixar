@@ -7,7 +7,7 @@
 	  <meta charset="utf-8">
     <title>Math Notes</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"/>
-    <link rel="stylesheet" type="text/css" href="/Mat_Notes/css/styles.css">
+    <link rel="stylesheet" type="text/css" href="/MathNotes/css/styles.css">
 
 </head>
 <body class="container-fluid">
@@ -15,7 +15,7 @@
         <header class="col-12">
             <div class="row">
                 <h1 class="col-md-3 col-sm-7  col-6">Math Notes</h1>
-                <button id="botonUp" onclick="location='/Mat_Notes/Login'" class="col-md-2 offset-md-6 col-sm-4 col-4  bg-white  my-auto">Salir</button>
+                <button id="botonUp" onclick="location='/MathNotes/Login'" class="col-md-2 offset-md-6 col-sm-4 col-4  bg-white  my-auto">Salir</button>
             </div>
 
         </header>
@@ -27,23 +27,23 @@
             <div class="row mt-5">
 
                 <nav class="col-4">
-                    <div class="row py-4" onclick="location='/Mat_Notes/Notes'" id="botonNav">
-                        <img  id="icon" src="/Mat_Notes/img/icon/misApuntesIcon.png" class="ml-4"></img>
+                    <div class="row py-4" onclick="location='/MathNotes/Notes'" id="botonNav">
+                        <img  id="icon" src="/MathNotes/img/icon/misApuntesIcon.png" class="ml-4"></img>
                         <div class="ml-4 mt-2"><b>Apuntes Guardados</b></div>
                     </div>
                     <hr>
                     <div class="row py-4" onclick="location=''" id="botonNav">
-                        <img  id="icon" src="/Mat_Notes/img/icon/todos.png" class="ml-4"></img>
+                        <img  id="icon" src="/MathNotes/img/icon/todos.png" class="ml-4"></img>
                         <div class="ml-4 mt-2"><b>Apuntes Públicos</b></div>
                     </div>
                     <hr>
-                    <div class="row py-4" onclick="location='/Mat_Notes/Create'" id="botonNav">
-                        <img  id="icon" src="/Mat_Notes/img/icon/crear.png" class="ml-4"></img>
+                    <div class="row py-4" onclick="location='/MathNotes/Create'" id="botonNav">
+                        <img  id="icon" src="/MathNotes/img/icon/crear.png" class="ml-4"></img>
                         <div class="ml-4 mt-2"><b>Nuevo Apunte</b></div>
                     </div>
                     <hr>
-                    <div class="row py-4" onclick="location='/Mat_Notes/NewPassword'" id="botonNav">
-                        <img  id="icon" src="/Mat_Notes/img/icon/contraseña.png" class="ml-4"></img>
+                    <div class="row py-4" onclick="location='/MathNotes/NewPassword'" id="botonNav">
+                        <img  id="icon" src="/MathNotes/img/icon/contraseña.png" class="ml-4"></img>
                         <div class="ml-4 mt-2"><b>Cambiar Contraseña</b></div>
                     </div>
                     <hr>
@@ -58,7 +58,7 @@
                         <form action="" class="col-6 mt-2">
                             <div class="row">
                             <input class=" col-10 form-control" type="text" placeholder="    Título, Tema, Asigntura..." aria-label="Search">    
-                            <img class="ml-1" src="/Mat_Notes/img/icon/u64.svg" alt=""> 
+                            <img class="ml-1" src="/MathNotes/img/icon/u64.svg" alt=""> 
                         </div>
                         </form>
                         
@@ -77,25 +77,25 @@
                         <div id="tituloNote">
                             Título
                         </div>
-                            <img src="/Mat_Notes/img/icon/engranaje.png" alt="">
+                            <img src="/MathNotes/img/icon/engranaje.png" alt="">
                     </div>
                     <div class="col-md-5 col-lg-3  col-sm-10 col-12 mx-md-3 mt-5 mr-5 mr-sm-0 mx-0" id="note">
                         <div id="tituloNote">
                             Título
                         </div>
-                            <img src="/Mat_Notes/img/icon/engranaje.png" alt="">
+                            <img src="/MathNotes/img/icon/engranaje.png" alt="">
                     </div>
                     <div class="col-md-5 col-lg-3  col-sm-10 col-12 mx-md-3 mt-5 mr-5 mr-sm-0 mx-0" id="note">
                         <div id="tituloNote">
                             Título
                         </div>
-                            <img src="/Mat_Notes/img/icon/engranaje.png" alt="">
+                            <img src="/MathNotes/img/icon/engranaje.png" alt="">
                     </div>
                     <div class="col-md-5 col-lg-3  col-sm-10 col-12 mx-md-3 mt-5 mr-5 mr-sm-0 mx-0" id="note">
                         <div id="tituloNote">
                             Título
                         </div>
-                            <img src="/Mat_Notes/img/icon/engranaje.png" alt="">
+                            <img src="/MathNotes/img/icon/engranaje.png" alt="">
                     </div>
                   
                     
@@ -120,10 +120,10 @@
                     <div class="collapse multi-collapse" id="multiCollapseExample1">
                       <div class="card card-body">
                        <div class="row">
-                        <button  type="button" onclick="location='/Mat_Notes/Notes'"   class="col-5 btn btn-outline-dark ml-4  mb-3 mr-2" >Apuntes Guardados</button>
+                        <button  type="button" onclick="location='/MathNotes/Notes'"   class="col-5 btn btn-outline-dark ml-4  mb-3 mr-2" >Apuntes Guardados</button>
                         <button  type="button" onclick="location=''" class="col-5 btn btn-outline-dark ml-2 mb-3 " >Apuntes Públicos</button>
-                        <button  type="button" onclick="location='/Mat_Notes/Create''" class="col-5 btn btn-outline-dark ml-4 mr-2" >Nuevo Apunte</button>
-                        <button  type="button" onclick="location='/Mat_Notes/NewPassword'" class="col-5 btn btn-outline-dark ml-2" >Cambiar Contraseña</button>
+                        <button  type="button" onclick="location='/MathNotes/Create''" class="col-5 btn btn-outline-dark ml-4 mr-2" >Nuevo Apunte</button>
+                        <button  type="button" onclick="location='/MathNotes/NewPassword'" class="col-5 btn btn-outline-dark ml-2" >Cambiar Contraseña</button>
           
                        </div>
                       </div>
@@ -132,7 +132,7 @@
                     <form id="formMovil" action="" class="col-12 mt-4 ml-0">
                         <div class="row">
                         <input class=" col-10 form-control" type="text" placeholder="    Título, Tema, Asigntura..." aria-label="Search">    
-                        <img class="ml-1" src="/Mat_Notes/img/icon/u64.svg" alt=""> 
+                        <img class="ml-1" src="/MathNotes/img/icon/u64.svg" alt=""> 
                     </div>
                     </form>
                   </div>
@@ -147,19 +147,19 @@
                     <div id="tituloNote">
                         Título
                     </div>
-                        <img src="/Mat_Notes/img/icon/engranaje.png" alt="">
+                        <img src="/MathNotes/img/icon/engranaje.png" alt="">
                 </div>
                 <div class="col-4 mx-md-3 mt-5 mr-5 " id="note">
                     <div id="tituloNote">
                         Título
                     </div>
-                        <img src="/Mat_Notes/img/icon/engranaje.png" alt="">
+                        <img src="/MathNotes//img/icon/engranaje.png" alt="">
                 </div>
                 <div class="col-4 mx-md-3 mt-5 mr-5 " id="note">
                     <div id="tituloNote">
                         Título
                     </div>
-                        <img src="/Mat_Notes/img/icon/engranaje.png" alt="">
+                        <img src="/MathNotes/img/icon/engranaje.png" alt="">
                 </div>
                 
                 

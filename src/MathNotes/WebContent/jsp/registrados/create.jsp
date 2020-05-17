@@ -7,7 +7,7 @@
 	  <meta charset="utf-8">
     <title>Math Notes</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"/>
-    <link rel="stylesheet" type="text/css" href="/Mat_Notes/css/styles.css">
+    <link rel="stylesheet" type="text/css" href="/MathNotes/css/styles.css">
 
 </head>
 <body class="container-fluid">
@@ -27,7 +27,7 @@
             <div class="row mt-5">
 
                 <nav class="col-4">
-                    <div class="row py-4" onclick="location='/Mat_Notes/Notes'" id="botonNav">
+                    <div class="row py-4" onclick="location='/MathNotes/Notes'" id="botonNav">
                         <img  id="icon" src="/Mat_Notes/img/icon/misApuntesIcon.png" class="ml-4"></img>
                         <div class="ml-4 mt-2"><b>Apuntes Guardados</b></div>
                     </div>
@@ -37,12 +37,12 @@
                         <div class="ml-4 mt-2"><b>Apuntes Públicos</b></div>
                     </div>
                     <hr>
-                    <div class="row py-4" onclick="location='/Mat_Notes/Create'" id="botonNav">
+                    <div class="row py-4" onclick="location='/MathNotes/Create'" id="botonNav">
                         <img  id="icon" src="/Mat_Notes/img/icon/crear.png" class="ml-4"></img>
                         <div class="ml-4 mt-2"><b>Nuevo Apunte</b></div>
                     </div>
                     <hr>
-                    <div class="row py-4" onclick="location='/Mat_Notes/NewPassword'" id="botonNav">
+                    <div class="row py-4" onclick="location='/MathNotes/NewPassword'" id="botonNav">
                         <img  id="icon" src="/Mat_Notes/img/icon/contraseña.png" class="ml-4"></img>
                         <div class="ml-4 mt-2"><b>Cambiar Contraseña</b></div>
                     </div>
@@ -51,7 +51,7 @@
 
                 </nav>
                 <section class="col-7" >
-                   <form action="/Mat_Notes/Create" id="formCreate" method="post" enctype="multipart/form-data">
+                   <form action="/MathNotes/Create" id="formCreate" method="post" enctype="multipart/form-data">
                        
 <div id="groupPublic">
                        
@@ -164,7 +164,7 @@
                   
                   </div>
                   <hr>
-                  <form action="" id="formCreate" method="post" enctype="multipart/form-data">
+                  <form action="/MathNotes/Create" id="formCreate" method="post" enctype="multipart/form-data">
                        
                     <div id="groupPublic">
                                            
@@ -262,21 +262,7 @@
         
         </section>
     </div>
-    <script >
-    function getRadioButtonSelectedValue(ctrl)
-    {
-        for(i=0;i<ctrl.length;i++){
-        	if(ctrl[i].checked){
-        		return ctrl[i].value;
-        		console.log(ctrl[i].value);
-        		}
-        	}
-        }
-            
-       
    
-    
-    </script>
 
 
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>

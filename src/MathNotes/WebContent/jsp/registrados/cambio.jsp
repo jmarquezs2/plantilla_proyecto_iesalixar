@@ -7,7 +7,7 @@
 	  <meta charset="utf-8">
     <title>Math Notes</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"/>
-    <link rel="stylesheet" type="text/css" href="/Mat_Notes/css/styles.css">
+    <link rel="stylesheet" type="text/css" href="/MathNotes/css/styles.css">
 
 </head>
 <body class="container-fluid">
@@ -15,7 +15,7 @@
         <header class="col-12">
             <div class="row">
                 <h1 class="col-md-3 col-sm-7  col-6">Math Notes</h1>
-                <button id="botonUp" class="col-md-2 offset-md-6 col-sm-4 col-4  bg-white  my-auto" onclick="location='/Mat_Notes/Notes'">Volver</button>
+                <button id="botonUp" class="col-md-2 offset-md-6 col-sm-4 col-4  bg-white  my-auto" onclick="location='/MathNotes/Notes'">Volver</button>
             </div>
 
         </header>
@@ -39,7 +39,7 @@
                 <section class="col-5 mt-5">
                     <div class="row"></div>
                     <h3 class="col-12 mt-5 ml-md-5 ml-lg-0" id="h3index2">Cambio de contraseña</h3>
-                    <form action="/Mat_Notes/NewPassword" method="post" class="col-12">
+                    <form action="/MathNotes/NewPassword" method="post" class="col-12">
                       
                             <input  type="email" name="email" class="form-control my-5 " id="email" placeholder="Email">
                             <input type="password" name="newPassword"  class="form-control my-5 " id="newPassword" placeholder="Nueva Contraseña">
@@ -67,7 +67,7 @@
             Nosotros guardamos tus formulas, tú limítate a usarlas.
         </p>
         <h3 class="col-12 mt-5" id="h3index2">Empieza por aqui!</h3>
-                    <form action="/Mat_Notes/NewPassword" method="post" class="col-12">
+                    <form action="/MathNotes/NewPassword" method="post" class="col-12">
                       <div class="row">
                             <input type="email" name="email" class="form-control my-3 col-12 " id="email" placeholder="Email">
                             <input type="password" name="newPassword" class="form-control my-3 " id="newPassword" placeholder="Nueva Contraseña">

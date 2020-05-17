@@ -9,6 +9,6 @@
 <body>
 <h1>Moderacion</h1>
 
-<button onclick="location='http://localhost:9090/Mat_Notes/Logout'">Cerrar sesion</button>
+<button onclick="location='http://localhost:9090/MathNotes/Logout'">Cerrar sesion</button>
 </body>
 </html>

@@ -1,6 +1,6 @@
 header{
 
-background-image: url(/Mat_Notes/img/fondo.jpg) ;
+background-image: url(/MathNotes/img/fondo.jpg) ;
 background-repeat: unset;
 border-bottom: solid #0429EA 2px;
 align-content: center;
@@ -90,7 +90,7 @@ button:hover{
     background-color: #DBD0D0 !important;
 }
 #movilFondo{
-    background-image: url(/Mat_Notes/img/fondoClaro.jpg);
+    background-image: url(/MathNotes/img/fondoClaro.jpg);
     background-repeat: unset;
 }
 #movilFondo input{
@@ -103,7 +103,7 @@ button:hover{
 
 #fondoNotes{
 
-    background-image: url(/Mat_Notes/img/fondoClaro.jpg);
+    background-image: url(/MathNotes/img/fondoClaro.jpg);
     background-repeat: unset;
 }
 
@@ -214,7 +214,7 @@ font-family: 'Verdana' ;
     height: 32px;
 }
 .card{
-    background-image: url(/Mat_Notes/img/fondoClaro.jpg);
+    background-image: url(/MathNotes/img/fondoClaro.jpg);
 }
 .card button{
     font-family: 'Verdana' ;
