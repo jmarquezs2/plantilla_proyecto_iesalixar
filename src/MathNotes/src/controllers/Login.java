@@ -29,7 +29,7 @@ public class Login extends HttpServlet{
 			session.setAttribute("Email", email);
 			System.out.println(UsuarioDAOimpl.readRol(email));
 
-			response.sendRedirect("jsp/registrados/notes.jsp");
+			response.sendRedirect("/MathNotes/Notes");
 			// RequestDispatcher rd=request.getRequestDispatcher("templates/start.jsp");
 			// rd.forward(request,response);
 		} else {

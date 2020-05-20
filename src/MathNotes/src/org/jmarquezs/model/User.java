@@ -39,7 +39,7 @@ public class User implements Serializable{
 	
 	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
 	@JoinColumn(name = "User_ID")
-	private List<Note> Notes;
+	private List<Note> notes;
 
 	
 	public User() {
@@ -95,11 +95,11 @@ public class User implements Serializable{
 	}
 
 	public List<Note> getNotes() {
-		return Notes;
+		return notes;
 	}
 
 	public void setNotes(List<Note> notes) {
-		Notes = notes;
+		this.notes = notes;
 	}
 	
 	

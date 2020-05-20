@@ -50,11 +50,11 @@ public class Note implements Serializable{
 	
 	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
 	@JoinColumn(name = "Note_ID")
-	private List<Content> Contents;
+	private List<Content> contents;
 	 
 	 @ManyToOne
 		@JoinColumn(name = "User_ID")
-		private User User;
+		private User user;
 
 
 	
@@ -153,12 +153,20 @@ public class Note implements Serializable{
 
 
 	public List<Content> getContents() {
-		return Contents;
+		return contents;
 	}
 
 
 	public void setContents(List<Content> contents) {
-		Contents = contents;
+		this.contents = contents;
+	}
+
+
+	@Override
+	public String toString() {
+		return "Note [id=" + id + ", title=" + title + ", visibility=" + visibility + ", validate=" + validate
+				+ ", description=" + description + ", subject=" + subject + ", temary=" + temary + ", Contents="
+				+ contents + ", User=" + user + "]";
 	}
 
 

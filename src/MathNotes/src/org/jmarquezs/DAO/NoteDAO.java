@@ -1,6 +1,7 @@
 package org.jmarquezs.DAO;
 
 import java.util.List;
+import java.util.Set;
 
 import org.jmarquezs.model.Content;
 import org.jmarquezs.model.Note;
@@ -17,6 +18,10 @@ public interface NoteDAO {
 			Content cont, Content link, Content images[], String email) {
 	}
 	public static List<Note> notesOfUser(String email) {
+		return null;
+	}
+	
+	public static Set<String> subjectOfUser(String email) {
 		return null;
 	}
 }

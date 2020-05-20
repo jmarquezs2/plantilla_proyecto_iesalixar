@@ -1,12 +1,17 @@
 package org.jmarquezs.DAO;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.exception.ConstraintViolationException;
+import org.hibernate.query.Query;
 import org.jmarquezs.helper.HibernateUtil;
 import org.jmarquezs.model.Content;
 import org.jmarquezs.model.Note;
@@ -82,8 +87,8 @@ public class NoteDAOimpl implements NoteDAO {
 		
 	}
 	
-	//Metodo aun por acabar
-	/*public static List<Note> notesOfUser(String email) {
+
+	public static List<Note> notesOfUser(String email) {
 		
 		int id = UsuarioDAOimpl.bringBackUser(email).getId();
 		List<Note> list = new ArrayList<Note>();
@@ -93,8 +98,11 @@ public class NoteDAOimpl implements NoteDAO {
 		try {
 			session = HibernateUtil.getSessionFactory().openSession();
 			transaction = session.beginTransaction();
-			list.addAll( session.createQuery("From Note u where u.User_id=:User_id").setParameter("User_id", id).list());
-						 				
+			//"SELECT p FROM Note p where User_ID="+id+""
+	
+			list.addAll( session
+					.createQuery("SELECT p FROM Note p where User_ID="+id+"",Note.class).list());
+			
 					
 		} catch (ConstraintViolationException e) {
 			if (transaction != null) {
@@ -106,8 +114,40 @@ public class NoteDAOimpl implements NoteDAO {
 				session.close();
 			}
 		}
+		System.out.println(list.toString());
 		
 		return list;
-	}*/
+	}
+	
+public static Set<String> subjectOfUser(String email) {
+		
+	int id = UsuarioDAOimpl.bringBackUser(email).getId();
+
+	 Set<String> list= new TreeSet<String>();
+		Session session = null;
+		Transaction transaction = null;
+		try {
+			session = HibernateUtil.getSessionFactory().openSession();
+			transaction = session.beginTransaction();
+			//"SELECT p FROM Note p where User_ID="+id+""
+	
+			list.addAll( session
+					.createQuery("SELECT p.subject FROM Note p where User_ID="+id+"").list());
+			
+					
+		} catch (ConstraintViolationException e) {
+			if (transaction != null) {
+				transaction.rollback();
+			}
+			e.printStackTrace();
+		} finally {
+			if (session != null) {
+				session.close();
+			}
+		}
+		System.out.println(list.toString());
+		
+		return list;
+	}
 	
 }

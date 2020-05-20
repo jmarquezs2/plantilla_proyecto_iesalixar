@@ -30,7 +30,7 @@ public class Content implements Serializable{
 	
 	 @ManyToOne
 		@JoinColumn(name = "Note_ID")
-		private User Note;
+		private User note;
 
 
 
