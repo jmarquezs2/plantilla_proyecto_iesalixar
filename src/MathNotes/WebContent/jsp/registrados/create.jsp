@@ -19,7 +19,7 @@
 		<header class="col-12">
 			<div class="row">
 				<h1 class="col-md-3 col-sm-7  col-6">Math Notes</h1>
-				<button id="botonUp"
+				<button id="botonUp" onclick="location='/MathNotes/Logout'"
 					class="col-md-2 offset-md-6 col-sm-4 col-4  bg-white  my-auto">Salir</button>
 			</div>
 
@@ -152,7 +152,8 @@
 
 
 									<label class="col-12" for="description">Sube una
-										imagen:</label> <input id="fileInput" type="file" class="col-12"
+										imagen:</label> 
+									<input id="fileInput" type="file" class="col-12"
 										accept="image/png, .jpeg, .jpg, image/gif"
 										name="archivossubidos" multiple>
 								</div>

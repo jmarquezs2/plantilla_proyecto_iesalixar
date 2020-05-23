@@ -20,34 +20,10 @@ import org.jmarquezs.model.User;
 public class NoteDAOimpl implements NoteDAO {
 
 	
-	public static Content createContent(String essence,String type){
-		Session session = null;
-		Transaction transaction = null;
-		Content cont = null;
-		try {
-			session = HibernateUtil.getSessionFactory().openSession();
-			transaction = session.beginTransaction();
-			// Create
-			cont = new Content(essence,type);
-			session.save(cont);
-			transaction.commit();
-			
-		} catch (ConstraintViolationException e) {
-			if (transaction != null) {
-				transaction.rollback();
-			}
-			e.printStackTrace();
-		} finally {
-			if (session != null) {
-				session.close();
-			}
-		}
-		return cont;
-		
-	}
+	
 	
 	public static void createNote(int visibility, String title, String subject, String temary, String description,
-			Content cont, Content link, String email) {
+			Content cont, Content link,Content img, String email) {
 		Session session = null;
 		Transaction transaction = null;
 		Note note = null;
@@ -64,6 +40,9 @@ public class NoteDAOimpl implements NoteDAO {
 			}
 			if(link!=null) {
 				contents.add(link);
+			}
+			if(img!=null) {
+				contents.add(img);
 			}
 			note.setContents(contents);
 			user=UsuarioDAOimpl.bringBackUser(email);

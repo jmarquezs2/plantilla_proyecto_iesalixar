@@ -1,7 +1,11 @@
 package controllers;
 
+import java.awt.image.BufferedImage;
+import java.awt.image.RenderedImage;
+import java.io.File;
 import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -11,12 +15,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
 
+import org.jmarquezs.DAO.ContentDAOimpl;
 import org.jmarquezs.DAO.NoteDAOimpl;
 import org.jmarquezs.DAO.UsuarioDAOimpl;
 import org.jmarquezs.model.Content;
 
-@WebServlet("/Mat_Notes/Create")
+@WebServlet("/MathNotes/Create")
 @MultipartConfig
 public class Create extends HttpServlet{
 
@@ -29,6 +35,7 @@ public class Create extends HttpServlet{
 		int visibility=1;
 		Content cont=null;
 		Content contentLink=null;
+		Content contentImage=null;
 		String vis =request.getParameter("visibility");
 		String vis2 =request.getParameter("visibility2");
 		if(vis2==null) {
@@ -41,18 +48,22 @@ public class Create extends HttpServlet{
 		String description = request.getParameter("description");
 		String content = request.getParameter("content");
 		if(content!=null) {
-			cont=  NoteDAOimpl.createContent(content, "formula");
+			cont=  ContentDAOimpl.createContent(content, "formula");
 		}
 		
 		String link = request.getParameter("link");
 		if(link!=null && !(link.equals(""))) {
-			contentLink=NoteDAOimpl.createContent(link, "link");
+			contentLink=ContentDAOimpl.createContent(link, "link");
 		}
-		String archivossubidos = request.getParameter("archivossubidos");
-		System.out.println(archivossubidos);
-		NoteDAOimpl.createNote(visibility, title, subject, temary, description, cont, contentLink, owner);
+		//String archivossubidos = request.getParameter("archivossubidos");
+		//System.out.println(archivossubidos);
 		
-			response.sendRedirect("jsp/registrados/notes.jsp");
+		contentImage= ContentDAOimpl.writeImage(request.getPart("archivossubidos"),response);
+		
+		
+		NoteDAOimpl.createNote(visibility, title, subject, temary, description, cont, contentLink,contentImage, owner);
+		
+			response.sendRedirect("/MathNotes/Notes");
 			
 		
 	}

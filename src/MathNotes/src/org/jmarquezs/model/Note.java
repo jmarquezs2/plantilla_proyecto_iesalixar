@@ -162,6 +162,16 @@ public class Note implements Serializable{
 	}
 
 
+	public User getUser() {
+		return user;
+	}
+
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+
 	@Override
 	public String toString() {
 		return "Note [id=" + id + ", title=" + title + ", visibility=" + visibility + ", validate=" + validate

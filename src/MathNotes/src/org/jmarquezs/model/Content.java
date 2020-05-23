@@ -70,6 +70,18 @@ public class Content implements Serializable{
 		this.type = type;
 	}
 
+	public User getNote() {
+		return note;
+	}
+
+	public void setNote(User note) {
+		this.note = note;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
 	
 	
 	/*

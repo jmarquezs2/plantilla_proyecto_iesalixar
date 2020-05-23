@@ -30,7 +30,7 @@ page import="org.jmarquezs.DAO.*"%>
 		<header class="col-12">
 			<div class="row">
 				<h1 class="col-md-3 col-sm-7  col-6">Math Notes</h1>
-				<button id="botonUp" onclick="location='/MathNotes/Login'"
+				<button id="botonUp" onclick="location='/MathNotes/Logout'"
 					class="col-md-2 offset-md-6 col-sm-4 col-4  bg-white  my-auto">Salir</button>
 			</div>
 
