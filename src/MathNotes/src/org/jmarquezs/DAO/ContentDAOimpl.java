@@ -61,7 +61,7 @@ public class ContentDAOimpl implements ContentDAO {
 	}
 	
 	
-	public static Content writeImage(Part file, HttpServletResponse response) throws IOException {
+	public static Content writeImage(Part file, PrintWriter wr) throws IOException {
 		Content img = null;
 		if (file.getSize() > 0) {
 			
@@ -70,13 +70,13 @@ public class ContentDAOimpl implements ContentDAO {
                 // TIPO DE ARCHIVO NO VALIDO
               img = null;
             }else {
-            	final String path= "C:\\Users\\Usuario\\ProyectoEclipse2\\MathNotes\\WebContent\\img\\notesImage";
+            	final String path="C:\\Users\\Usuario\\ProyectoEclipse2\\MathNotes\\WebContent\\img\\notesImage";
         		final Part filePart  = file;
         		final String fileName = ContentDAOimpl.getFileName(filePart);
         		
         		OutputStream out = null;
         	    InputStream filecontent = null;
-        	    final PrintWriter writer = response.getWriter();
+        	    final PrintWriter writer = wr;
         	    
         	    try {
         	        out = new FileOutputStream(new File(path + File.separator + fileName));

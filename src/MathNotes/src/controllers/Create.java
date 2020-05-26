@@ -4,6 +4,7 @@ import java.awt.image.BufferedImage;
 import java.awt.image.RenderedImage;
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.imageio.ImageIO;
 import javax.servlet.RequestDispatcher;
@@ -55,10 +56,9 @@ public class Create extends HttpServlet{
 		if(link!=null && !(link.equals(""))) {
 			contentLink=ContentDAOimpl.createContent(link, "link");
 		}
-		//String archivossubidos = request.getParameter("archivossubidos");
-		//System.out.println(archivossubidos);
 		
-		contentImage= ContentDAOimpl.writeImage(request.getPart("archivossubidos"),response);
+		 final PrintWriter writer = response.getWriter();
+		contentImage= ContentDAOimpl.writeImage(request.getPart("archivossubidos"),writer);
 		
 		
 		NoteDAOimpl.createNote(visibility, title, subject, temary, description, cont, contentLink,contentImage, owner);

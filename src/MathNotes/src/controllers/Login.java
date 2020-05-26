@@ -34,7 +34,7 @@ public class Login extends HttpServlet{
 			// rd.forward(request,response);
 		} else {
 
-			RequestDispatcher rd = request.getRequestDispatcher("jsp/index.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/MathNotes/Login");
 			rd.include(request, response);
 		}
 		
