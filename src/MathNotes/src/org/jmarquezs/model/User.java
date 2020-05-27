@@ -17,31 +17,30 @@ import java.io.Serializable;
 import java.util.Set;
 
 @Entity
-@Table(name = "User")
-public class User implements Serializable{
+@Table(name = "user")
+public class User implements Serializable {
 
 	@Id
-	@GeneratedValue (strategy = GenerationType.IDENTITY)
-	@Column(name = "Id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
 	private int id;
-	
+
 	@Column(name = "name")
 	private String name;
-	
+
 	@Column(name = "email")
 	private String email;
-	
+
 	@Column(name = "password")
 	private String password;
-	
+
 	@Column(name = "rol")
 	private String rol;
-	
-	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-	@JoinColumn(name = "User_ID")
-	private List<Note> notes;
 
-	
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "user_id")
+	private Set<Note> notes;
+
 	public User() {
 		// TODO Auto-generated constructor stub
 	}
@@ -53,7 +52,7 @@ public class User implements Serializable{
 		this.password = password;
 		this.rol = rol;
 	}
-	
+
 	public int getId() {
 		return id;
 	}
@@ -94,17 +93,16 @@ public class User implements Serializable{
 		this.rol = rol;
 	}
 
-	public List<Note> getNotes() {
+	public Set<Note> getNotes() {
 		return notes;
 	}
 
-	public void setNotes(List<Note> notes) {
+	public void setNotes(Set<Note> notes) {
 		this.notes = notes;
 	}
-	
-	
+
 	/*
-	 * En construcción 
+	 * En construcción
 	 */
-	
+
 }

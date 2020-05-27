@@ -24,12 +24,14 @@ public class Main {
 		Content cont3 = ContentDAOimpl.createContent("V=ab*h", "formula");
 		NoteDAOimpl.createNote(1, "Volumen", "Matemáticas", "Volumenes", "hola hola", cont3, null,null, "pepito@gmail.com");
 		
-		//Content cont4 = ContentDAOimpl.createContent("g=9,8", "formula");
-		//NoteDAOimpl.createNote(1, "Gravedad", "Física", "Fuerzas", "hola hola", cont4, null, "pepito@gmail.com");
+		Content cont4 = ContentDAOimpl.createContent("g=9,8", "formula");
+		NoteDAOimpl.createNote(1, "Gravedad", "Física", "Fuerzas", "hola hola", cont4, null, null, "pepito@gmail.com");
 		
-		//Content cont5 = ContentDAOimpl.createContent("v=e/t", "formula");
-		//NoteDAOimpl.createNote(1, "Velocidad", "Física", "Movimiento", "La velocidad", cont5, null, "pepito@gmail.com");
+		Content cont5 = ContentDAOimpl.createContent("v=e/t", "formula");
+		NoteDAOimpl.createNote(1, "Velocidad", "Física", "Movimiento", "La velocidad", cont5, null,null, "pepito@gmail.com");
 		
+		Content cont6 = ContentDAOimpl.createContent("v=e/t", "formula");
+		NoteDAOimpl.createNote(1, "prueba2", "Física", "hola", "La velocidad 3", cont6, null,null, "pepito@gmail.com");
 		//System.out.println(NoteDAOimpl.subjectOfUser("pepito@gmail.com").toString());
 		
 	}

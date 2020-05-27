@@ -1,9 +1,9 @@
 package org.jmarquezs.DAO;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
+
 import java.util.ArrayList;
-import java.util.HashMap;
+
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
@@ -11,7 +11,7 @@ import java.util.TreeSet;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.exception.ConstraintViolationException;
-import org.hibernate.query.Query;
+
 import org.jmarquezs.helper.HibernateUtil;
 import org.jmarquezs.model.Content;
 import org.jmarquezs.model.Note;
@@ -28,8 +28,8 @@ public class NoteDAOimpl implements NoteDAO {
 		Transaction transaction = null;
 		Note note = null;
 		User user = null;
-		List<Content> contents= new ArrayList<Content>();
-		List<Note> notes= new ArrayList<Note>();
+		Set<Content> contents=  new HashSet<Content>();
+		Set<Note> notes=  new HashSet<Note>();
 		try {
 			session = HibernateUtil.getSessionFactory().openSession();
 			transaction = session.beginTransaction();

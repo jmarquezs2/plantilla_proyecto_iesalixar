@@ -11,37 +11,33 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-
 @Entity
-@Table(name = "Content")
-public class Content implements Serializable{
-	
+@Table(name = "content")
+public class Content implements Serializable {
+
 	@Id
-	@GeneratedValue (strategy = GenerationType.IDENTITY)
-	@Column(name = "Id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
 	private int id;
-	
+
 	@Column(name = "essence")
 	private String essence;
-	
+
 	@Column(name = "type")
 	private String type;
-	
-	
-	 @ManyToOne
-		@JoinColumn(name = "Note_ID")
-		private User note;
 
+	@ManyToOne
+	@JoinColumn(name = "note_id")
+	private Note note;
 
-
-	public Content( String essence, String type) {
+	public Content(String essence, String type) {
 		super();
-		
+
 		this.essence = essence;
 		this.type = type;
-		
+
 	}
-	
+
 	public Content() {
 		// TODO Auto-generated constructor stub
 	}
@@ -70,11 +66,11 @@ public class Content implements Serializable{
 		this.type = type;
 	}
 
-	public User getNote() {
+	public Note getNote() {
 		return note;
 	}
 
-	public void setNote(User note) {
+	public void setNote(Note note) {
 		this.note = note;
 	}
 
@@ -82,10 +78,8 @@ public class Content implements Serializable{
 		this.type = type;
 	}
 
-	
-	
 	/*
-	 * En construcción 
+	 * En construcción
 	 */
 
 }
