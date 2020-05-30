@@ -36,6 +36,16 @@
     <servlet-name>Notes</servlet-name>
     <url-pattern>/Notes</url-pattern>
   </servlet-mapping>
+    <servlet>
+    <description></description>
+    <display-name>View</display-name>
+    <servlet-name>View</servlet-name>
+    <servlet-class>controllers.View</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>View</servlet-name>
+    <url-pattern>/View</url-pattern>
+  </servlet-mapping>
    <servlet>
     <description></description>
     <display-name>Cambio</display-name>

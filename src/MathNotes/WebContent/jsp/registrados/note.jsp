@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-<%@ 
+    pageEncoding="ISO-8859-1"%>
+<%@
 page import="java.util.Iterator"%>
 <%@
 page import="org.jmarquezs.model.*"%>
@@ -26,7 +26,7 @@ page import="org.jmarquezs.DAO.*"%>
 
 </head>
 <body class="container-fluid">
-	<div class="row">
+	<div class="row ">
 		<header class="col-12">
 			<div class="row">
 				<h1 class="col-md-3 col-sm-7  col-6">Math Notes</h1>
@@ -35,11 +35,11 @@ page import="org.jmarquezs.DAO.*"%>
 			</div>
 
 		</header>
-		<section class="col-12" id="fondoNotes">
+		<section class="col-12 " id="fondoNotes">
 
-			<section id="pageNotes" class=" d-none d-md-block">
+			<section id="pageNotes" class="mb-5 d-none d-md-block">
 
-				<h3 id="h3notes" class="mx-5 mb-5">Apuntes Guardados</h3>
+				<h3 id="h3notes" class="mx-5 mb-5"><c:out value="${note.getTitle()}"/></h3>
 				<div class="row mt-5">
 
 					<nav class="col-4">
@@ -80,62 +80,65 @@ page import="org.jmarquezs.DAO.*"%>
 
 					</nav>
 					<section class="col-7">
-						<div class="row mt-5" id="textSearch">
-							<p class="col-4">¿Demasiados Apuntes? Buscalos</p>
+						
 
-							<!-- Search form -->
-							<form action="" class="col-6 mt-2">
-								<div class="row">
-									<input class=" col-10 form-control" type="text"
-										placeholder="    Título, Tema, Asigntura..."
-										aria-label="Search"> <img class="ml-1"
-										src="/MathNotes/img/icon/u64.svg" alt="">
+							
+
+								<label class="mr-5">S/n</label> 
+								<label >Este apunte ha sido guardado por X usuarios.</label> 
+							
+
+							<hr class="mb-5">
+
+							<!--<div class="form-group">
+   
+                     </div>-->
+							
+							
+								<div class="row  mb-5">
+									<label class=" col-5" ><u>Asignatura</u></label> 
+									<label class="col-7" id="textNote"  ><c:out value="${note.getSubject()}"/></label>
 								</div>
-							</form>
+							
+								<div class="row  mb-5">
+									<label class=" col-5" ><u>Tema</u></label> 
+									<label class="col-7" id="textNote"  ><c:out value="${note.getTemary()}"/></label>
+								</div>
+
+								<div class="row  mb-5">
+									<label class=" col-5" ><u>Descripción</u></label> 
+									<label class="col-7" id="textNote"  ><c:out value="${note.getDescription()}"/></label>
+								</div>
+								<hr class="mb-5">
+								<div class="row  mb-5">
+									<label class=" col-5" ><u>Contenido</u></label> 
+									<label class="col-7" id="textNote"  >Contenido</label>
+								</div>
+								<hr class="mb-5">
+								<div class="row  mb-5">
+									<label class=" col-5" ><u>Enlace de interes</u></label> 
+									<label class="col-7" id="textNote"  ><a href="">Enlace</a></label>
+								</div>
+							<hr>
+
+						
+							<div class="form-group  mt-3 mb-5">
+								<div class="row">
 
 
-						</div>
-						<hr class="mb-3">
-
-						<c:forEach var="subject" items="${subjects}">
-							<div id="asignatura" class="mt-5">
-								<p class="my-auto">
-									<c:out value="${subject}" />
-								</p>
-
-
-							</div>
-
-							<div class="row ml-5">
-
-								<c:forEach var="note" items="${list}">
-
-									<c:set var="note" value="${note}" />
-									<c:set var="subject" value="${subject}" />
-
-									<c:if test="${note.getSubject() eq subject}">
-
-										<div
-											class="col-md-5 col-lg-3  col-sm-10 col-12 mx-md-3 mt-5 mr-5 mr-sm-0 mx-0"
-											id="note"
-											onclick="location='/MathNotes/View?id=<c:out value="${note.getId()}" />'">
-											
-											<div id="tituloNote">
-												<label><c:out value="${note.getTitle()}" /></label>
-
-											</div>
-											<img src="/MathNotes/img/icon/engranaje.png" alt="">
-
-										</div>
-
-									</c:if>
-								</c:forEach>
+									<label class="col-12" for="description">Imagenes:</label> 
+									<img src="" alt="">
+								</div>
 							</div>
 
 
-						</c:forEach>
 
 
+							<br> <br>
+
+							<button id="submitCreate" onclick="location" class="btn mb-4" type="button">Editar</button>
+
+						
 					</section>
 
 				</div>
@@ -148,79 +151,90 @@ page import="org.jmarquezs.DAO.*"%>
 
 				<div class="row">
 					<h3 id="h3notes" class="mx-5 mb-0">
-						Apuntes Guardados
+						Titulo
 						<button type="button" class="  btn btn-outline-dark   "
 							data-toggle="collapse" href="#multiCollapseExample1"
 							role="button" aria-expanded="false"
 							aria-controls="multiCollapseExample1">
-							<img src="/MathNotes/img/icon/menu.png" id="menuimg" alt="">
+							<img src="img/icon/menu.png" id="menuimg" alt="">
 						</button>
 					</h3>
 
-					<div class="collapse multi-collapse" id="multiCollapseExample1">
+					<div class="collapse multi-collapse ml-5" id="multiCollapseExample1">
 						<div class="card card-body">
 							<div class="row">
-								<button type="button" onclick="location='/MathNotes/Notes'"
+								<button type="button"
 									class="col-5 btn btn-outline-dark ml-4  mb-3 mr-2">Apuntes
 									Guardados</button>
-								<button type="button" onclick="location=''"
+								<button type="button"
 									class="col-5 btn btn-outline-dark ml-2 mb-3 ">Apuntes
 									Públicos</button>
-								<button type="button" onclick="location='/MathNotes/Create''"
+								<button type="button"
 									class="col-5 btn btn-outline-dark ml-4 mr-2">Nuevo
 									Apunte</button>
-								<button type="button"
-									onclick="location='/MathNotes/NewPassword'"
-									class="col-5 btn btn-outline-dark ml-2">Cambiar
+								<button type="button" class="col-5 btn btn-outline-dark ml-2">Cambiar
 									Contraseña</button>
 
 							</div>
 						</div>
 					</div>
 
-					<form id="formMovil" action="" class="col-12 mt-4 ml-0">
-						<div class="row">
-							<input class=" col-10 form-control" type="text"
-								placeholder="    Título, Tema, Asigntura..." aria-label="Search">
-							<img class="ml-1" src="/MathNotes/img/icon/u64.svg" alt="">
-						</div>
-					</form>
+
 				</div>
 				<hr>
+				
 
-				<c:forEach var="subject" items="${subjects}">
-					<div id="asignaturaMovil" class="mt-5">
-						<p class="my-auto">
-							<c:out value="${subject}" />
-						</p>
+					<div id="groupPublic">
 
-
+						<label id="" class="mx-5"><b>S/N</b></label> 
 					</div>
 
-					<div class="row ml-5">
+					<hr class="mb-5">
 
-						<c:forEach var="note" items="${list}">
+					<!--<div class="form-group">
+                       
+                                         </div>-->
+					
+					
+					
+						<div class="row mb-5">
+							<label class=" col-5" for="subject"><b><u>Asignatura</u></b></label> 
+							<label type="text" class="col-7" id="inputWrite" >Asignatura</label>
+						</div>
+					
+						<div class="row mb-5">
+							<label class=" col-5" for="subject"><b><u>Tema</u></b></label> 
+							<label type="text" class="col-7" id="inputWrite" >Tema</label>
+						</div>
 
-							<c:set var="note" value="${note}" />
-							<c:set var="subject" value="${subject}" />
-
-							<c:if test="${note.getSubject() eq subject}">
-								<div class="col-4 mx-md-3 mt-5 mr-5 " id="note"
-									onclick="saveId(${note.getId()}); location='/MathNotes/View'">
-									<div id="tituloNote">
-										<label><c:out value="${note.getTitle()}" /></label>
-
-									</div>
-									<img src="/MathNotes/img/icon/engranaje.png" alt="">
-								</div>
-							</c:if>
-						</c:forEach>
+						<div class="row mb-5">
+							<label class=" col-5" for="subject"><b><u>Descripción</u></b></label> 
+							<label type="text" class="col-7" id="inputWrite" >Descripción</label>
+						</div>
+						<hr class="mb-5">
+						<div class="row mb-5">
+							<label class=" col-5" for="subject"><b><u>Contenido</u></b></label> 
+							<label type="text" class="col-7" id="inputWrite" >Conenido</label>
+						</div>
+						<hr class="mb-5">
+						<div class="row mb-5">
+							<label class=" col-5" for="subject"><b><u>Enlace de interes</u></b></label> 
+							<label type="text" class="col-7" id="inputWrite" ><a href="">enlace</a></label>
+						</div>
+					<hr>
+					<div class="row mb-5">
+						<label class=" col-5" for="subject"><b><u>Imagenes:</u></b></label> 
+						<img src="" alt="">
 					</div>
 
 
-				</c:forEach>
 
 
+					<br> <br>
+
+					<button id="submitCreate" class="btn mb-4" type="button">Editar</button>
+
+				
 			</section>
 	</div>
 
@@ -233,13 +247,8 @@ page import="org.jmarquezs.DAO.*"%>
 	</section>
 	</div>
 
-	<script type="text/javascript">
-function saveId(id) {
-	var noteId;
-	sessionStorage.setItem(noteId,id);
-	console.log(sessionStorage.getItem(noteId))
-	}
-</script>
+
+
 	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
 		integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
 		crossorigin="anonymous"></script>

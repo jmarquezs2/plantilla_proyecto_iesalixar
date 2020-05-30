@@ -24,4 +24,8 @@ public interface NoteDAO {
 	public static Set<String> subjectOfUser(String email) {
 		return null;
 	}
+	
+	public static Note bringBackNote(int id) {
+		return null;
+	}
 }

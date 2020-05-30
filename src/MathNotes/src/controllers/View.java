@@ -1,8 +1,6 @@
 package controllers;
 
 import java.io.IOException;
-import java.util.List;
-import java.util.Set;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,25 +9,22 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.jmarquezs.DAO.ContentDAOimpl;
 import org.jmarquezs.DAO.NoteDAOimpl;
-import org.jmarquezs.model.Note;
 
-public class Notes extends HttpServlet {
+public class View extends HttpServlet {
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpSession session = req.getSession(false);
+
+		int id = Integer.parseInt(request.getParameter("id"));
 		
-	String owner = (String) session.getAttribute("Email");
-	
-		List<Note> list = NoteDAOimpl.notesOfUser(owner);
-		Set<String> subjects = NoteDAOimpl.subjectOfUser(owner);
 		
-		 session.setAttribute("list", list);
-		 session.setAttribute("subjects", subjects);
-		 
-		RequestDispatcher rd = request.getRequestDispatcher("jsp/registrados/notes.jsp");
+		session.setAttribute("note", NoteDAOimpl.bringBackNote(id));
+		session.setAttribute("listContent", ContentDAOimpl.contentsToId(id));
+		
+		RequestDispatcher rd = request.getRequestDispatcher("jsp/registrados/note.jsp");
 		rd.forward(request, response);
 
 	}
