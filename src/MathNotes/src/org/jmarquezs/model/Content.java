@@ -62,7 +62,7 @@ public class Content implements Serializable {
 		return type;
 	}
 
-	public void setImage(String type) {
+	public void setType(String type) {
 		this.type = type;
 	}
 
@@ -74,9 +74,7 @@ public class Content implements Serializable {
 		this.note = note;
 	}
 
-	public void setType(String type) {
-		this.type = type;
-	}
+	
 
 	/*
 	 * En construcción

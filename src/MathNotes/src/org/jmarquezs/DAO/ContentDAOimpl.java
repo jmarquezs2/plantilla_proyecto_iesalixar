@@ -74,7 +74,7 @@ public class ContentDAOimpl implements ContentDAO {
 			} else {
 				// C:\\Users\\Usuario\\ProyectoEclipse2\\MathNotes\\WebContent\\img\\notesImage
 				ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
-				String path = "\\img\\notesImage";
+				String path = "/MathNotes/img/notesImage/";
 				// final String path="\\MathNotes\\WebContent\\img\\notesImage";
 				final Part filePart = file;
 				final String fileName = ContentDAOimpl.getFileName(filePart);
@@ -84,7 +84,7 @@ public class ContentDAOimpl implements ContentDAO {
 				final PrintWriter writer = wr;
 
 				try {
-					out = new FileOutputStream(new File(path + File.separator + fileName));
+					out = new FileOutputStream(new File(path + "/" + fileName));
 					filecontent = filePart.getInputStream();
 
 					int read = 0;
@@ -94,7 +94,7 @@ public class ContentDAOimpl implements ContentDAO {
 						out.write(bytes, 0, read);
 					}
 					System.out.println("New file " + fileName + " created at " + path);
-					img = new Content(path + fileName, "img");
+					img = createContent(path + File.separator + fileName, "img");
 				} catch (FileNotFoundException fne) {
 					System.out.println("You either did not specify a file to upload or are "
 							+ "trying to upload a file to a protected or nonexistent " + "location.");

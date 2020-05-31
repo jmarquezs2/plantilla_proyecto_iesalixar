@@ -1,5 +1,7 @@
 package org.jmarquezs.main;
 
+import java.io.File;
+
 import org.jmarquezs.DAO.ContentDAOimpl;
 import org.jmarquezs.DAO.NoteDAOimpl;
 import org.jmarquezs.DAO.UsuarioDAOimpl;
@@ -32,6 +34,10 @@ public class Main {
 		
 		Content cont6 = ContentDAOimpl.createContent("v=e/t", "formula");
 		NoteDAOimpl.createNote(1, "prueba2", "Física", "hola", "La velocidad 3", cont6, null,null, "pepito@gmail.com");
+		
+		Content cont7 = ContentDAOimpl.createContent("v=e/t", "formula");
+		Content cont8 = ContentDAOimpl.createContent("/MathNotes/img/notesImage/" +"madera.jpg", "img");
+		NoteDAOimpl.createNote(2, "Imagen", "Química", "hola", "La velocidad 3", cont7, null,cont8, "pepito@gmail.com");
 		//System.out.println(NoteDAOimpl.subjectOfUser("pepito@gmail.com").toString());
 		
 	}

@@ -9,7 +9,7 @@ align-content: center;
 h1{
     font-family: 'Bradley Hand ITC';
     font-size: 48px;
-    color: #071C8A;
+    color: #0429EA;
     margin-left: 15px;
     margin-top: 10px;
     background-color: white;
@@ -122,17 +122,17 @@ button:hover{
     font-family: 'Bradley Hand ITC';
     font-weight: bold;
     font-size: 48px;
-    color: #03008C;
-    border-left: 3px solid #03008C;
-    border-bottom: 3px solid #03008C;
+    color: #0429EA;
+    border-left: 3px solid #0429EA;
+    border-bottom: 3px solid #0429EA;
     border-bottom-left-radius: 15px;
     padding-left: 10px;
     /*margin-bottom: 30px !important*/
     margin-top: 30px !important;
 }
 nav{
-    border-right: 2px solid #03008C;
-    border-top: 2px solid #03008C;
+    border-right: 2px solid #0429EA;
+    border-top: 2px solid #0429EA;
     border-top-right-radius: 15px;
     padding-top: 10px;
     margin-left: 15px;
@@ -155,7 +155,7 @@ background-color: #E6E6E6;
 #textSearch img{
    
     height: 34px !important;
-    background-color: #03008C;
+    background-color: #0429EA;
     border-radius: 20px;
     padding: 4px;
 }
@@ -176,7 +176,7 @@ background-color: #E6E6E6;
     font-family: 'Verdana' ;
     font-weight: bold;
     
-    background-color: #03008C;
+    background-color: #0429EA;
     color: white;
     border-radius: 25px;
     height: 49px;
@@ -196,7 +196,7 @@ font-family: 'Verdana' ;
     padding: 0px;
 }
 #note div{
-    background-color: #03008C;
+    background-color: #0429EA;
     border: 1px solid #797979;
     text-align: center;
     width: 100% !important;
@@ -220,7 +220,7 @@ font-family: 'Verdana' ;
     font-family: 'Verdana' ;
     font-weight: bold;
     background-color: white;
-    color:  #03008C;
+    color:  #0429EA;
     font-size: 15px;
 }
 
@@ -234,7 +234,7 @@ font-family: 'Verdana' ;
 #formMovil  img{
    
     height: 34px !important;
-    background-color: #03008C;
+    background-color: #0429EA;
     border-radius: 20px;
     padding: 4px;
 }
@@ -295,7 +295,7 @@ textarea{
 }
 
 #submitCreate{
-    background-color: blue;
+    background-color: #0429EA;
    border-radius:0;
     font-family: 'Verdana' ;
     color: white;

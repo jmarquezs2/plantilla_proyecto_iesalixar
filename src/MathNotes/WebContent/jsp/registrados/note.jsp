@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
 <%@
 page import="java.util.Iterator"%>
 <%@
@@ -39,7 +39,9 @@ page import="org.jmarquezs.DAO.*"%>
 
 			<section id="pageNotes" class="mb-5 d-none d-md-block">
 
-				<h3 id="h3notes" class="mx-5 mb-5"><c:out value="${note.getTitle()}"/></h3>
+				<h3 id="h3notes" class="mx-5 mb-5">
+					<c:out value="${note.getTitle()}" />
+				</h3>
 				<div class="row mt-5">
 
 					<nav class="col-4">
@@ -80,65 +82,87 @@ page import="org.jmarquezs.DAO.*"%>
 
 					</nav>
 					<section class="col-7">
+
+
+
+
+						<label class="mr-5">
+							<c:choose>
+								<c:when test="${note.getVisibility() eq 2}">
+									Esta fórmula es pública.
+								</c:when>
+								<c:otherwise>
+								Esta fórmula es privada.
+								
+								
+								</c:otherwise>
+							
+							</c:choose>
 						
+						
+						</label> <label>Este apunte ha sido
+							guardado por X usuarios.</label>
 
-							
 
-								<label class="mr-5">S/n</label> 
-								<label >Este apunte ha sido guardado por X usuarios.</label> 
-							
+						<hr class="mb-5">
 
-							<hr class="mb-5">
-
-							<!--<div class="form-group">
+						<!--<div class="form-group">
    
                      </div>-->
-							
-							
-								<div class="row  mb-5">
-									<label class=" col-5" ><u>Asignatura</u></label> 
-									<label class="col-7" id="textNote"  ><c:out value="${note.getSubject()}"/></label>
-								</div>
-							
-								<div class="row  mb-5">
-									<label class=" col-5" ><u>Tema</u></label> 
-									<label class="col-7" id="textNote"  ><c:out value="${note.getTemary()}"/></label>
-								</div>
 
-								<div class="row  mb-5">
-									<label class=" col-5" ><u>Descripción</u></label> 
-									<label class="col-7" id="textNote"  ><c:out value="${note.getDescription()}"/></label>
-								</div>
+
+						<div class="row  mb-5">
+							<label class=" col-5"><u>Asignatura</u></label> <label
+								class="col-7" id="textNote"><c:out
+									value="${note.getSubject()}" /></label>
+						</div>
+
+						<div class="row  mb-5">
+							<label class=" col-5"><u>Tema</u></label> <label class="col-7"
+								id="textNote"><c:out value="${note.getTemary()}" /></label>
+						</div>
+
+						<div class="row  mb-5">
+							<label class=" col-5"><u>Descripción</u></label> <label
+								class="col-7" id="textNote"><c:out
+									value="${note.getDescription()}" /></label>
+						</div>
+						<c:forEach var="content" items="${listContent}">
+							<c:choose>
+								<c:when test="${content.getType() eq 'formula'}">
+
+									<hr class="mb-5">
+									<div class="row  mb-5">
+										<label class=" col-5"><u>Contenido</u></label> <label
+											class="col-7" id="textNote">${content.getEssence()}</label>
+									</div>
+									
+
+								</c:when>
+								<c:when test="${content.getType() eq 'link'}">
 								<hr class="mb-5">
-								<div class="row  mb-5">
-									<label class=" col-5" ><u>Contenido</u></label> 
-									<label class="col-7" id="textNote"  >Contenido</label>
-								</div>
-								<hr class="mb-5">
-								<div class="row  mb-5">
-									<label class=" col-5" ><u>Enlace de interes</u></label> 
-									<label class="col-7" id="textNote"  ><a href="">Enlace</a></label>
-								</div>
-							<hr>
+									<div class="row  mb-5">
+										<label class=" col-4"><u>Enlace de interes</u></label> <label
+											class="col-5" id="textNote"><a href="">${content.getEssence()}</a></label>
+									</div>
+								</c:when>
+								<c:when test="${content.getType() eq 'img'}">
+									<hr>
+									<div class="form-group  mt-3 mb-5">
+										<div class="row">
+											<label class="col-12" for="description">Imagenes:</label> 
+											<img width="400px" height="240px" class="ml-5 mt-3" src=${content.getEssence()} alt="">
+										</div>
+									</div>
+								</c:when>
+							</c:choose>
+						</c:forEach>
+						<br> <br>
 
-						
-							<div class="form-group  mt-3 mb-5">
-								<div class="row">
-
-
-									<label class="col-12" for="description">Imagenes:</label> 
-									<img src="" alt="">
-								</div>
-							</div>
-
-
+						<button id="submitCreate" onclick="location" class="btn mb-4"
+							type="button">Editar</button>
 
 
-							<br> <br>
-
-							<button id="submitCreate" onclick="location" class="btn mb-4" type="button">Editar</button>
-
-						
 					</section>
 
 				</div>
@@ -160,7 +184,8 @@ page import="org.jmarquezs.DAO.*"%>
 						</button>
 					</h3>
 
-					<div class="collapse multi-collapse ml-5" id="multiCollapseExample1">
+					<div class="collapse multi-collapse ml-5"
+						id="multiCollapseExample1">
 						<div class="card card-body">
 							<div class="row">
 								<button type="button"
@@ -182,59 +207,60 @@ page import="org.jmarquezs.DAO.*"%>
 
 				</div>
 				<hr>
-				
 
-					<div id="groupPublic">
 
-						<label id="" class="mx-5"><b>S/N</b></label> 
-					</div>
+				<div id="groupPublic">
 
-					<hr class="mb-5">
+					<label id="" class="mx-5"><b>S/N</b></label>
+				</div>
 
-					<!--<div class="form-group">
+				<hr class="mb-5">
+
+				<!--<div class="form-group">
                        
                                          </div>-->
-					
-					
-					
-						<div class="row mb-5">
-							<label class=" col-5" for="subject"><b><u>Asignatura</u></b></label> 
-							<label type="text" class="col-7" id="inputWrite" >Asignatura</label>
-						</div>
-					
-						<div class="row mb-5">
-							<label class=" col-5" for="subject"><b><u>Tema</u></b></label> 
-							<label type="text" class="col-7" id="inputWrite" >Tema</label>
-						</div>
-
-						<div class="row mb-5">
-							<label class=" col-5" for="subject"><b><u>Descripción</u></b></label> 
-							<label type="text" class="col-7" id="inputWrite" >Descripción</label>
-						</div>
-						<hr class="mb-5">
-						<div class="row mb-5">
-							<label class=" col-5" for="subject"><b><u>Contenido</u></b></label> 
-							<label type="text" class="col-7" id="inputWrite" >Conenido</label>
-						</div>
-						<hr class="mb-5">
-						<div class="row mb-5">
-							<label class=" col-5" for="subject"><b><u>Enlace de interes</u></b></label> 
-							<label type="text" class="col-7" id="inputWrite" ><a href="">enlace</a></label>
-						</div>
-					<hr>
-					<div class="row mb-5">
-						<label class=" col-5" for="subject"><b><u>Imagenes:</u></b></label> 
-						<img src="" alt="">
-					</div>
 
 
 
+				<div class="row mb-5">
+					<label class=" col-5" for="subject"><b><u>Asignatura</u></b></label>
+					<label type="text" class="col-7" id="inputWrite">Asignatura</label>
+				</div>
 
-					<br> <br>
+				<div class="row mb-5">
+					<label class=" col-5" for="subject"><b><u>Tema</u></b></label> <label
+						type="text" class="col-7" id="inputWrite">Tema</label>
+				</div>
 
-					<button id="submitCreate" class="btn mb-4" type="button">Editar</button>
+				<div class="row mb-5">
+					<label class=" col-5" for="subject"><b><u>Descripción</u></b></label>
+					<label type="text" class="col-7" id="inputWrite">Descripción</label>
+				</div>
+				<hr class="mb-5">
+				<div class="row mb-5">
+					<label class=" col-5" for="subject"><b><u>Contenido</u></b></label>
+					<label type="text" class="col-7" id="inputWrite">Conenido</label>
+				</div>
+				<hr class="mb-5">
+				<div class="row mb-5">
+					<label class=" col-5" for="subject"><b><u>Enlace de
+								interes</u></b></label> <label type="text" class="col-7" id="inputWrite"><a
+						href="">enlace</a></label>
+				</div>
+				<hr>
+				<div class="row mb-5">
+					<label class=" col-5" for="subject"><b><u>Imagenes:</u></b></label>
+					<img src="" alt="">
+				</div>
 
-				
+
+
+
+				<br> <br>
+
+				<button id="submitCreate" class="btn mb-4" type="button">Editar</button>
+
+
 			</section>
 	</div>
 
