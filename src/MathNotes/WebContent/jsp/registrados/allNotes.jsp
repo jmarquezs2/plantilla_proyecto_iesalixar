@@ -39,7 +39,7 @@ page import="org.jmarquezs.DAO.*"%>
 
 			<section id="pageNotes" class=" d-none d-md-block">
 
-				<h3 id="h3notes" class="mx-5 mb-5">Apuntes Guardados</h3>
+				<h3 id="h3notes" class="mx-5 mb-5">Apuntes Públicos</h3>
 				<div class="row mt-5">
 
 					<nav class="col-4">
@@ -52,7 +52,8 @@ page import="org.jmarquezs.DAO.*"%>
 							</div>
 						</div>
 						<hr>
-						<div class="row py-4" onclick="location='/MathNotes/AllNotes'" id="botonNav">
+						<div class="row py-4" onclick="location='/MathNotes/AllNotes'"
+							id="botonNav">
 							<img id="icon" src="/MathNotes/img/icon/todos.png" class="ml-4"></img>
 							<div class="ml-4 mt-2">
 								<b>Apuntes Públicos</b>
@@ -97,35 +98,41 @@ page import="org.jmarquezs.DAO.*"%>
 						</div>
 						<hr class="mb-3">
 
-						<c:forEach var="subject" items="${subjects}">
-							<div id="asignatura" class="mt-5">
-								<p class="my-auto">
-									<c:out value="${subject}" />
-								</p>
+						<c:forEach var="subject" items="${allSubjects}">
 
-
-							</div>
 
 							<div class="row ml-5">
 
-								<c:forEach var="note" items="${list}">
+								<c:forEach var="note" items="${allNotes}">
 
 									<c:set var="note" value="${note}" />
 									<c:set var="subject" value="${subject}" />
 
 									<c:if test="${note.getSubject() eq subject}">
+										<c:if test="${note.getVisibility() eq 2}">
+											<div id="asignatura" class="mt-5 col-12">
+												<p class="my-auto">
+													<c:out value="${subject}" />
+												</p>
 
-										<div
-											class="col-md-5 col-lg-3  col-sm-10 col-12 mx-md-3 mt-5 mr-5 mr-sm-0 mx-0"
-											id="note" onclick="location='/MathNotes/View?id=<c:out value="${note.getId()}" />'">
-											
-											<div id="tituloNote">
-												<label><c:out value="${note.getTitle()}" /></label>
 
 											</div>
-											<img src="/MathNotes/img/icon/lapiz.png" onclick="location='/MathNotes/Edit?id=<c:out value="${note.getId()}" />'"  title="Editar" alt="Editar">
+											<div
+												class="col-md-5 col-lg-3  col-sm-10 col-12 mx-md-3 mt-5 mr-5 mr-sm-0 mx-0"
+												id="note"
+												onclick="location='/MathNotes/View?id=<c:out value="${note.getId()}" />'">
 
-										</div>
+												<div id="tituloNote">
+													<label><c:out value="${note.getTitle()}" /></label>
+
+												</div>
+												<img src="/MathNotes/img/icon/lapiz.png"
+													onclick="location='/MathNotes/Edit?id=<c:out value="${note.getId()}" />'"
+													title="Editar" alt="Editar">
+
+											</div>
+										</c:if>
+
 
 									</c:if>
 								</c:forEach>
@@ -187,7 +194,7 @@ page import="org.jmarquezs.DAO.*"%>
 				</div>
 				<hr>
 
-				<c:forEach var="subject" items="${subjects}">
+				<c:forEach var="subject" items="${allSubjects}">
 					<div id="asignaturaMovil" class="mt-5">
 						<p class="my-auto">
 							<c:out value="${subject}" />
@@ -198,7 +205,7 @@ page import="org.jmarquezs.DAO.*"%>
 
 					<div class="row ml-5">
 
-						<c:forEach var="note" items="${list}">
+						<c:forEach var="note" items="${allNotes}">
 
 							<c:set var="note" value="${note}" />
 							<c:set var="subject" value="${subject}" />

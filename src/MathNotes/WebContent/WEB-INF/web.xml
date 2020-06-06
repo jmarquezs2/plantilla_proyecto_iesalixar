@@ -36,6 +36,16 @@
     <servlet-name>Notes</servlet-name>
     <url-pattern>/Notes</url-pattern>
   </servlet-mapping>
+   <servlet>
+    <description></description>
+    <display-name>AllNotes</display-name>
+    <servlet-name>AllNotes</servlet-name>
+    <servlet-class>controllers.AllNotes</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AllNotes</servlet-name>
+    <url-pattern>/AllNotes</url-pattern>
+  </servlet-mapping>
     <servlet>
     <description></description>
     <display-name>View</display-name>
@@ -65,6 +75,16 @@
   <servlet-mapping>
     <servlet-name>Create</servlet-name>
     <url-pattern>/Create</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Edit</display-name>
+    <servlet-name>Edit</servlet-name>
+    <servlet-class>controllers.Edit</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Edit</servlet-name>
+    <url-pattern>/Edit</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>

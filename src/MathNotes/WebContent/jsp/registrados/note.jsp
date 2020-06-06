@@ -86,22 +86,18 @@ page import="org.jmarquezs.DAO.*"%>
 
 
 
-						<label class="mr-5">
-							<c:choose>
+						<label class="mr-5"> <c:choose>
 								<c:when test="${note.getVisibility() eq 2}">
 									Esta fórmula es pública.
 								</c:when>
 								<c:otherwise>
 								Esta fórmula es privada.
-								
-								
 								</c:otherwise>
-							
-							</c:choose>
-						
-						
-						</label> <label>Este apunte ha sido
-							guardado por X usuarios.</label>
+
+						</c:choose>
+
+
+						</label> <label>Este apunte ha sido guardado por X usuarios.</label>
 
 
 						<hr class="mb-5">
@@ -136,11 +132,11 @@ page import="org.jmarquezs.DAO.*"%>
 										<label class=" col-5"><u>Contenido</u></label> <label
 											class="col-7" id="textNote">${content.getEssence()}</label>
 									</div>
-									
+
 
 								</c:when>
 								<c:when test="${content.getType() eq 'link'}">
-								<hr class="mb-5">
+									<hr class="mb-5">
 									<div class="row  mb-5">
 										<label class=" col-4"><u>Enlace de interes</u></label> <label
 											class="col-5" id="textNote"><a href="">${content.getEssence()}</a></label>
@@ -150,8 +146,9 @@ page import="org.jmarquezs.DAO.*"%>
 									<hr>
 									<div class="form-group  mt-3 mb-5">
 										<div class="row">
-											<label class="col-12" for="description">Imagenes:</label> 
-											<img width="400px" height="240px" class="ml-5 mt-3" src=${content.getEssence()} alt="">
+											<label class="col-12" for="description">Imagenes:</label> <img
+												width="400px" height="240px" class="ml-5 mt-3"
+												src=/MathNotes/img/notesImage/${content.getEssence()} alt="">
 										</div>
 									</div>
 								</c:when>
@@ -159,8 +156,8 @@ page import="org.jmarquezs.DAO.*"%>
 						</c:forEach>
 						<br> <br>
 
-						<button id="submitCreate" onclick="location" class="btn mb-4"
-							type="button">Editar</button>
+						<button id="submitCreate" onclick="location='/MathNotes/Edit?id=<c:out value="${note.getId()}" />'"
+							class="btn mb-4" type="button">Editar</button>
 
 
 					</section>

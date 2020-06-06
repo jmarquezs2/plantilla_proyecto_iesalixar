@@ -3,6 +3,8 @@ package org.jmarquezs.DAO;
 import org.jmarquezs.model.Content;
 import org.jmarquezs.model.Note;
 
+import controllers.Create;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -15,6 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
+import javax.persistence.MapKeyClass;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
@@ -73,9 +76,10 @@ public class ContentDAOimpl implements ContentDAO {
 				img = null;
 			} else {
 				// C:\\Users\\Usuario\\ProyectoEclipse2\\MathNotes\\WebContent\\img\\notesImage
-				ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
-				String path = "/MathNotes/img/notesImage/";
-				// final String path="\\MathNotes\\WebContent\\img\\notesImage";
+
+				//String path = "\\MathNotes\\img\\notesImage\\";
+				String path =".\\..\\..\\..\\..\\..\\WebContent\\img\\notesImage";
+				//  String path="\\MathNotes\\WebContent\\img\\notesImage";
 				final Part filePart = file;
 				final String fileName = ContentDAOimpl.getFileName(filePart);
 
@@ -84,7 +88,7 @@ public class ContentDAOimpl implements ContentDAO {
 				final PrintWriter writer = wr;
 
 				try {
-					out = new FileOutputStream(new File(path + "/" + fileName));
+					out = new FileOutputStream(new File(path + File.separator +fileName));
 					filecontent = filePart.getInputStream();
 
 					int read = 0;
@@ -94,7 +98,7 @@ public class ContentDAOimpl implements ContentDAO {
 						out.write(bytes, 0, read);
 					}
 					System.out.println("New file " + fileName + " created at " + path);
-					img = createContent(path + File.separator + fileName, "img");
+					img = createContent(fileName, "img");
 				} catch (FileNotFoundException fne) {
 					System.out.println("You either did not specify a file to upload or are "
 							+ "trying to upload a file to a protected or nonexistent " + "location.");
@@ -117,16 +121,15 @@ public class ContentDAOimpl implements ContentDAO {
 		}
 		return img;
 	}
-	
-	public static List<Content> contentsToId(int id){
-		
+
+	public static List<Content> contentsToId(int id) {
+
 		List<Content> list = new ArrayList<Content>();
 		Session session = null;
 		Transaction transaction = null;
 		try {
 			session = HibernateUtil.getSessionFactory().openSession();
 			transaction = session.beginTransaction();
-			
 
 			list.addAll(session.createQuery("SELECT p FROM Content p where note_id=" + id + "", Content.class).list());
 

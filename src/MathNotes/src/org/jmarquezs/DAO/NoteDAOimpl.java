@@ -24,13 +24,14 @@ public class NoteDAOimpl implements NoteDAO {
 		Transaction transaction = null;
 		Note note = null;
 		User user = null;
+		user = UsuarioDAOimpl.bringBackUser(email);
 		Set<Content> contents = new HashSet<Content>();
 		Set<Note> notes = new HashSet<Note>();
 		try {
 			session = HibernateUtil.getSessionFactory().openSession();
 			transaction = session.beginTransaction();
 			// Create
-			note = new Note(title, visibility, 1, description, subject, temary);
+			note = new Note(title, visibility, 1, user.getId(), description, subject, temary);
 			if (cont != null) {
 				contents.add(cont);
 			}
@@ -41,7 +42,7 @@ public class NoteDAOimpl implements NoteDAO {
 				contents.add(img);
 			}
 			note.setContents(contents);
-			user = UsuarioDAOimpl.bringBackUser(email);
+			
 			notes = user.getNotes();
 			notes.add(note);
 			user.setNotes(notes);
@@ -89,6 +90,35 @@ public class NoteDAOimpl implements NoteDAO {
 
 		return list;
 	}
+	
+	public static List<Note> notesAll() {
+
+		
+		List<Note> list = new ArrayList<Note>();
+
+		Session session = null;
+		Transaction transaction = null;
+		try {
+			session = HibernateUtil.getSessionFactory().openSession();
+			transaction = session.beginTransaction();
+			// "SELECT p FROM Note p where User_ID="+id+""
+
+			list.addAll(session.createQuery("SELECT p FROM Note p ", Note.class).list());
+
+		} catch (ConstraintViolationException e) {
+			if (transaction != null) {
+				transaction.rollback();
+			}
+			e.printStackTrace();
+		} finally {
+			if (session != null) {
+				session.close();
+			}
+		}
+		System.out.println(list.toString());
+
+		return list;
+	}
 
 	public static Set<String> subjectOfUser(String email) {
 
@@ -103,6 +133,34 @@ public class NoteDAOimpl implements NoteDAO {
 			// "SELECT p FROM Note p where User_ID="+id+""
 
 			list.addAll(session.createQuery("SELECT p.subject FROM Note p where User_ID=" + id + "").list());
+
+		} catch (ConstraintViolationException e) {
+			if (transaction != null) {
+				transaction.rollback();
+			}
+			e.printStackTrace();
+		} finally {
+			if (session != null) {
+				session.close();
+			}
+		}
+		System.out.println(list.toString());
+
+		return list;
+	}
+	public static Set<String> subjectAll() {
+
+		
+
+		Set<String> list = new TreeSet<String>();
+		Session session = null;
+		Transaction transaction = null;
+		try {
+			session = HibernateUtil.getSessionFactory().openSession();
+			transaction = session.beginTransaction();
+			// "SELECT p FROM Note p where User_ID="+id+""
+
+			list.addAll(session.createQuery("SELECT p.subject FROM Note p").list());
 
 		} catch (ConstraintViolationException e) {
 			if (transaction != null) {

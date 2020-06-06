@@ -34,6 +34,9 @@ public class Note implements Serializable {
 	@Column(name = "visibility")
 	private int visibility;
 
+	@Column(name = "owner")
+	private int owner;
+	
 	@Column(name = "validate")
 	private int validate;
 
@@ -54,7 +57,7 @@ public class Note implements Serializable {
 	@JoinColumn(name = "user_id")
 	private User user;
 
-	public Note(String title, int visibility, int validate, String description, String subject, String temary) {
+	public Note(String title, int visibility,int owner, int validate, String description, String subject, String temary) {
 		super();
 
 		this.title = title;
@@ -63,6 +66,7 @@ public class Note implements Serializable {
 		this.description = description;
 		this.subject = subject;
 		this.temary = temary;
+		this.owner=owner;
 
 	}
 
@@ -140,6 +144,15 @@ public class Note implements Serializable {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+	
+
+	public int getOwner() {
+		return owner;
+	}
+
+	public void setOwner(int owner) {
+		this.owner = owner;
 	}
 
 	@Override

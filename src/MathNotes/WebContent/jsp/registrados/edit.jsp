@@ -1,5 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@
+page import="java.util.Iterator"%>
+<%@
+page import="org.jmarquezs.model.*"%>
+
+<%@
+page import="org.jmarquezs.DAO.*"%>
+<%@
+  page import="java.util.List"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,7 +39,10 @@
 
 			<section id="pageNotes" class="mb-5 d-none d-md-block">
 
-				<h3 id="h3notes" class="mx-5 mb-5">Nuevo Apunte</h3>
+				<h3 id="h3notes" class="mx-5 mb-5">
+					Editar:
+					<c:out value="${note.getTitle()}" />
+				</h3>
 				<div class="row mt-5">
 
 					<nav class="col-4">
@@ -73,13 +87,25 @@
 							enctype="multipart/form-data">
 
 							<div id="groupPublic">
+								<c:choose>
+									<c:when test="${note.getVisibility() eq 2}">
+										<label class="mr-5">¿Hacer privada?</label>
+										<input type="radio" id="yes" name="visibility" value="y">
+										<label for="">Si</label>
+										<input type="radio" id="no" name="visibility2" value="n">
+										<br>
+										<label id="info">Actualmente, esta fórmula es pública.</label>
+									</c:when>
+									<c:otherwise>
+										<label class="mr-5">¿Hacer público?</label>
+										<input type="radio" id="yes" name="visibility" value="n">
+										<label for="">Si</label>
+										<br>
+										<label id="info">Actualmente, esta fórmula es privada.</label>
+									</c:otherwise>
 
-								<label class="mr-5">¿Hacer público?</label>
-								<input type="radio" id="yes" name="visibility" value="y">
-								<label for="">Si</label>
-								<input type="radio" id="no" name="visibility" value="n">
-								<label for="">No</label> <label id="info">Con esto los
-									demas podran ver y guardar tu apunte.</label>
+								</c:choose>
+
 							</div>
 
 							<hr class="mb-5">
@@ -93,7 +119,7 @@
 
 									<label class="col-5" for="title">Título</label> <input
 										class="col-7" type="text" id="inputWrite" name="title"
-										placeholder="Velocidad de escape, ley de Newton...">
+										value="<c:out value="${note.getTitle()}" />">
 								</div>
 							</div>
 							<div class="form-group mb-5">
@@ -115,7 +141,7 @@
 
 									<label class="col-5" for="temary">Tema</label> <input
 										class="col-7" type="text" id="inputWrite" name="temary"
-										placeholder="Trigonometría, Fuerzas...">
+										value="<c:out value="${note.getTemary()}" />">
 								</div>
 							</div>
 
@@ -124,30 +150,42 @@
 
 
 									<label class="col-5" for="description">Descripción</label>
-									<textarea class="col-7" name="description" rows="5" " cols="50"></textarea>
+									<textarea class="col-7" name="description" rows="5" " cols="50"><c:out
+											value="${note.getDescription()}" /></textarea>
 								</div>
 							</div>
-
-							<div class="form-group mb-5">
-								<div class="row">
-
-
-									<label class="col-5" for="content">Contenido</label>
-									<textarea class="col-7" name="content" rows="5" " cols="50">Escribe aquí tu formula...</textarea>
-								</div>
-							</div>
-
-							<div class="form-group mb-5">
-								<div class="row">
+							<c:forEach var="content" items="${listContent}">
+								<c:choose>
+									<c:when test="${content.getType() eq 'formula'}">
 
 
-									<label class="col-5" for="temary">Enlace De Interes</label> <input
-										class="col-7" type="url" id="inputWrite" name="link"
-										placeholder="">
-								</div>
-							</div>
-							<hr>
-							<div class="form-group  mt-3 mb-5">
+										<div class="form-group mb-5">
+											<div class="row">
+
+
+												<label class="col-5" for="content">Contenido</label>
+												<textarea class="col-7" name="content" rows="5" " cols="50">${content.getEssence()}</textarea>
+											</div>
+										</div>
+
+									</c:when>
+									<c:when test="${content.getType() eq 'link'}">
+
+										<div class="form-group mb-5">
+											<div class="row">
+
+
+												<label class="col-5" for="temary">Enlace De Interes</label>
+												<input class="col-7" type="url" id="inputWrite" name="link"
+													value=${content.getEssence()}>
+											</div>
+										</div>
+										<hr>
+
+									</c:when>
+									<c:when test="${content.getType() eq 'img'}">
+									
+									<div class="form-group  mt-3 mb-5">
 								<div class="row">
 
 
@@ -157,13 +195,22 @@
 										name="archivossubidos" multiple>
 								</div>
 							</div>
+									</c:when>
+
+
+								</c:choose>
+							</c:forEach>
+
+
+
+							
 
 
 
 
 							<br> <br>
 
-							<button id="submitCreate" class="btn mb-4" type="submit">Crear</button>
+							<button id="submitCreate" class="btn mb-4" type="submit">Guardar</button>
 
 						</form>
 					</section>
