@@ -67,7 +67,7 @@ public class NoteDAOimpl implements NoteDAO {
 
 	public static Set<Note> notesOfUser(String email) {
 
-		int id = UsuarioDAOimpl.bringBackUser(email).getId();
+		
 		Set<Note> list = new HashSet<>();
 		list = UsuarioDAOimpl.bringBackUser(email).getNotes();
 		Session session = null;

@@ -46,7 +46,7 @@ public class User implements Serializable {
 	 * @JoinColumn(name = "user_id") private Set<Note> notes;
 	 */
 
-	@ManyToMany(cascade = { CascadeType.ALL } , fetch = FetchType.EAGER)
+	@ManyToMany(cascade = { CascadeType.ALL }, fetch = FetchType.EAGER)
 	@JoinTable(name = "user_note", joinColumns = { @JoinColumn(name = "user_id") }, inverseJoinColumns = {
 			@JoinColumn(name = "note_id") })
 	private Set<Note> notes = new HashSet<>();

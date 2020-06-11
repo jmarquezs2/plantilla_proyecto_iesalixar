@@ -74,8 +74,6 @@ public class Content implements Serializable {
 		this.note = note;
 	}
 
-	
-
 	/*
 	 * En construcción
 	 */
