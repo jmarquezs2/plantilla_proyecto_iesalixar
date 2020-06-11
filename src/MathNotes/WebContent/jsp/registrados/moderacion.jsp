@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<link rel="icon" type="image/png" href="/MathNotes/img/icon/logonav.png" />
 <title>Insert title here</title>
 </head>
 <body>

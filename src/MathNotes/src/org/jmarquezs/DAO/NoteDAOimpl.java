@@ -27,6 +27,7 @@ public class NoteDAOimpl implements NoteDAO {
 		user = UsuarioDAOimpl.bringBackUser(email);
 		Set<Content> contents = new HashSet<Content>();
 		Set<Note> notes = new HashSet<Note>();
+		Set<User> users = new HashSet<User>();
 		try {
 			session = HibernateUtil.getSessionFactory().openSession();
 			transaction = session.beginTransaction();
@@ -42,7 +43,9 @@ public class NoteDAOimpl implements NoteDAO {
 				contents.add(img);
 			}
 			note.setContents(contents);
-			
+			users = note.getUsers();
+			users.add(user);
+			note.setUsers(users);
 			notes = user.getNotes();
 			notes.add(note);
 			user.setNotes(notes);
@@ -62,19 +65,21 @@ public class NoteDAOimpl implements NoteDAO {
 
 	}
 
-	public static List<Note> notesOfUser(String email) {
+	public static Set<Note> notesOfUser(String email) {
 
 		int id = UsuarioDAOimpl.bringBackUser(email).getId();
-		List<Note> list = new ArrayList<Note>();
-
+		Set<Note> list = new HashSet<>();
+		list = UsuarioDAOimpl.bringBackUser(email).getNotes();
 		Session session = null;
 		Transaction transaction = null;
 		try {
-			session = HibernateUtil.getSessionFactory().openSession();
+			/*session = HibernateUtil.getSessionFactory().openSession();
 			transaction = session.beginTransaction();
 			// "SELECT p FROM Note p where User_ID="+id+""
 
-			list.addAll(session.createQuery("SELECT p FROM Note p where User_ID=" + id + "", Note.class).list());
+			list.addAll(session.createQuery("SELECT p FROM Note p where User_ID=" + id + "", Note.class).list());*/
+			
+			
 
 		} catch (ConstraintViolationException e) {
 			if (transaction != null) {
@@ -122,31 +127,16 @@ public class NoteDAOimpl implements NoteDAO {
 
 	public static Set<String> subjectOfUser(String email) {
 
-		int id = UsuarioDAOimpl.bringBackUser(email).getId();
-
-		Set<String> list = new TreeSet<String>();
-		Session session = null;
-		Transaction transaction = null;
-		try {
-			session = HibernateUtil.getSessionFactory().openSession();
-			transaction = session.beginTransaction();
-			// "SELECT p FROM Note p where User_ID="+id+""
-
-			list.addAll(session.createQuery("SELECT p.subject FROM Note p where User_ID=" + id + "").list());
-
-		} catch (ConstraintViolationException e) {
-			if (transaction != null) {
-				transaction.rollback();
-			}
-			e.printStackTrace();
-		} finally {
-			if (session != null) {
-				session.close();
-			}
-		}
+		Set<Note> list = new HashSet<>();
+		Set<String> subject = new TreeSet<String>();
+		list = UsuarioDAOimpl.bringBackUser(email).getNotes();
+		for (Note note : list) {
+	        subject.add(note.getSubject());
+	     }
+		
 		System.out.println(list.toString());
 
-		return list;
+		return subject;
 	}
 	public static Set<String> subjectAll() {
 

@@ -1,6 +1,7 @@
 package org.jmarquezs.model;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -12,6 +13,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -36,7 +38,7 @@ public class Note implements Serializable {
 
 	@Column(name = "owner")
 	private int owner;
-	
+
 	@Column(name = "validate")
 	private int validate;
 
@@ -53,11 +55,17 @@ public class Note implements Serializable {
 	@JoinColumn(name = "note_id")
 	private Set<Content> contents;
 
-	@ManyToOne
-	@JoinColumn(name = "user_id")
-	private User user;
+	/*
+	 * @ManyToOne
+	 * 
+	 * @JoinColumn(name = "user_id") private User user;
+	 */
 
-	public Note(String title, int visibility,int owner, int validate, String description, String subject, String temary) {
+	@ManyToMany(mappedBy = "notes")
+	private Set<User> users = new HashSet<>();
+
+	public Note(String title, int visibility, int owner, int validate, String description, String subject,
+			String temary) {
 		super();
 
 		this.title = title;
@@ -66,7 +74,7 @@ public class Note implements Serializable {
 		this.description = description;
 		this.subject = subject;
 		this.temary = temary;
-		this.owner=owner;
+		this.owner = owner;
 
 	}
 
@@ -138,14 +146,13 @@ public class Note implements Serializable {
 		this.contents = contents;
 	}
 
-	public User getUser() {
-		return user;
+	public Set<User> getUsers() {
+		return users;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setUsers(Set<User> users) {
+		this.users = users;
 	}
-	
 
 	public int getOwner() {
 		return owner;
@@ -159,7 +166,7 @@ public class Note implements Serializable {
 	public String toString() {
 		return "Note [id=" + id + ", title=" + title + ", visibility=" + visibility + ", validate=" + validate
 				+ ", description=" + description + ", subject=" + subject + ", temary=" + temary + ", Contents="
-				+ contents + ", User=" + user + "]";
+				+ contents + "]";
 	}
 
 	/*

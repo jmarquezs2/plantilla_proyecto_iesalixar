@@ -22,6 +22,7 @@ page import="org.jmarquezs.DAO.*"%>
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
 	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
 	crossorigin="anonymous" />
+	<link rel="icon" type="image/png" href="/MathNotes/img/icon/logonav.png" />
 <link rel="stylesheet" type="text/css" href="/MathNotes/css/styles.css">
 
 </head>
@@ -99,7 +100,13 @@ page import="org.jmarquezs.DAO.*"%>
 						<hr class="mb-3">
 
 						<c:forEach var="subject" items="${allSubjects}">
+							<div id="asignatura" class="mt-5">
+								<p class="my-auto">
+									<c:out value="${subject}" />
+								</p>
 
+
+							</div>
 
 							<div class="row ml-5">
 
@@ -109,30 +116,18 @@ page import="org.jmarquezs.DAO.*"%>
 									<c:set var="subject" value="${subject}" />
 
 									<c:if test="${note.getSubject() eq subject}">
-										<c:if test="${note.getVisibility() eq 2}">
-											<div id="asignatura" class="mt-5 col-12">
-												<p class="my-auto">
-													<c:out value="${subject}" />
-												</p>
 
-
-											</div>
-											<div
-												class="col-md-5 col-lg-3  col-sm-10 col-12 mx-md-3 mt-5 mr-5 mr-sm-0 mx-0"
-												id="note"
-												onclick="location='/MathNotes/View?id=<c:out value="${note.getId()}" />'">
-
-												<div id="tituloNote">
-													<label><c:out value="${note.getTitle()}" /></label>
-
-												</div>
-												<img src="/MathNotes/img/icon/lapiz.png"
-													onclick="location='/MathNotes/Edit?id=<c:out value="${note.getId()}" />'"
-													title="Editar" alt="Editar">
+										<div
+											class="col-md-5 col-lg-3  col-sm-10 col-12 mx-md-3 mt-5 mr-5 mr-sm-0 mx-0"
+											id="note" onclick="location='/MathNotes/View?id=<c:out value="${note.getId()}" />'">
+											
+											<div id="tituloNote">
+												<label><c:out value="${note.getTitle()}" /></label>
 
 											</div>
-										</c:if>
+											<img src="/MathNotes/img/icon/lapiz.png" onclick="location='/MathNotes/Edit?id=<c:out value="${note.getId()}" />'"  title="Editar" alt="Editar">
 
+										</div>
 
 									</c:if>
 								</c:forEach>

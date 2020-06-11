@@ -1,5 +1,6 @@
 package org.jmarquezs.model;
 
+import java.util.HashSet;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -10,6 +11,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -37,9 +40,16 @@ public class User implements Serializable {
 	@Column(name = "rol")
 	private String rol;
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinColumn(name = "user_id")
-	private Set<Note> notes;
+	/*
+	 * @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	 * 
+	 * @JoinColumn(name = "user_id") private Set<Note> notes;
+	 */
+
+	@ManyToMany(cascade = { CascadeType.ALL } , fetch = FetchType.EAGER)
+	@JoinTable(name = "user_note", joinColumns = { @JoinColumn(name = "user_id") }, inverseJoinColumns = {
+			@JoinColumn(name = "note_id") })
+	private Set<Note> notes = new HashSet<>();
 
 	public User() {
 		// TODO Auto-generated constructor stub

@@ -21,22 +21,22 @@ public class Main {
 		
 		Content cont = ContentDAOimpl.createContent("x=2*3", "formula");
 		Content cont2 = ContentDAOimpl.createContent("https://www.filmaffinity.com/es/main.html", "link");
-		NoteDAOimpl.createNote(1, "Prueba", "Física", "Leyes", "hola hola", cont, cont2,null, "pepito@gmail.com");
+		NoteDAOimpl.createNote(2, "Prueba", "Física", "Leyes", "hola hola", cont, cont2,null, "pepito@gmail.com");
 		
 		Content cont3 = ContentDAOimpl.createContent("V=ab*h", "formula");
-		NoteDAOimpl.createNote(1, "Volumen", "Matemáticas", "Volumenes", "hola hola", cont3, null,null, "pepito@gmail.com");
+		NoteDAOimpl.createNote(2, "Volumen", "Matemáticas", "Volumenes", "hola hola", cont3, null,null, "pepito@gmail.com");
 		
 		Content cont4 = ContentDAOimpl.createContent("g=9,8", "formula");
-		NoteDAOimpl.createNote(1, "Gravedad", "Física", "Fuerzas", "hola hola", cont4, null, null, "pepito@gmail.com");
+		NoteDAOimpl.createNote(2, "Gravedad", "Física", "Fuerzas", "hola hola", cont4, null, null, "pepito@gmail.com");
 		
 		Content cont5 = ContentDAOimpl.createContent("v=e/t", "formula");
-		NoteDAOimpl.createNote(1, "Velocidad", "Física", "Movimiento", "La velocidad", cont5, null,null, "pepito@gmail.com");
+		NoteDAOimpl.createNote(2, "Velocidad", "Física", "Movimiento", "La velocidad", cont5, null,null, "pepito@gmail.com");
 		
 		Content cont6 = ContentDAOimpl.createContent("v=e/t", "formula");
-		NoteDAOimpl.createNote(1, "prueba2", "Física", "hola", "La velocidad 3", cont6, null,null, "pepito@gmail.com");
+		NoteDAOimpl.createNote(2, "prueba2", "Física", "hola", "La velocidad 3", cont6, null,null, "pepito@gmail.com");
 		
 		Content cont7 = ContentDAOimpl.createContent("v=e/t", "formula");
-		Content cont8 = ContentDAOimpl.createContent("/MathNotes/img/notesImage/" +"madera.jpg", "img");
+		Content cont8 = ContentDAOimpl.createContent("madera.jpg", "img");
 		NoteDAOimpl.createNote(2, "Imagen", "Química", "hola", "La velocidad 3", cont7, null,cont8, "juan@gmail.com");
 		//System.out.println(NoteDAOimpl.subjectOfUser("pepito@gmail.com").toString());
 		

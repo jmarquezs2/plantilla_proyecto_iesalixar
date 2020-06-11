@@ -23,7 +23,7 @@ public class Notes extends HttpServlet {
 		
 	String owner = (String) session.getAttribute("Email");
 	
-		List<Note> list = NoteDAOimpl.notesOfUser(owner);
+		Set<Note> list = NoteDAOimpl.notesOfUser(owner);
 		Set<String> subjects = NoteDAOimpl.subjectOfUser(owner);
 		
 		 session.setAttribute("list", list);
