@@ -125,7 +125,8 @@ page import="org.jmarquezs.DAO.*"%>
 												<label><c:out value="${note.getTitle()}" /></label>
 
 											</div>
-											<img src="/MathNotes/img/icon/lapiz.png" onclick="location='/MathNotes/Edit?id=<c:out value="${note.getId()}" />'"  title="Editar" alt="Editar">
+											<a href="/MathNotes/Edit?id=<c:out value="${note.getId()}" />">
+											<img src="/MathNotes/img/icon/lapiz.png"  title="Editar" alt="Editar"></a>
 
 										</div>
 

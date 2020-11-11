@@ -1,7 +1,9 @@
 package controllers;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.nio.file.Paths;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,7 +14,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
 
+import org.apache.tomcat.util.http.fileupload.FileItemFactory;
+import org.apache.tomcat.util.http.fileupload.disk.DiskFileItemFactory;
+import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 import org.jmarquezs.DAO.ContentDAOimpl;
 import org.jmarquezs.DAO.NoteDAOimpl;
 
@@ -26,12 +32,17 @@ public class Create extends HttpServlet {
 
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpSession session = req.getSession(false);
+		
+		FileItemFactory factory = new DiskFileItemFactory();
+		ServletFileUpload upload = new ServletFileUpload(factory);
+		
 		String owner = (String) session.getAttribute("Email");
 		int visibility = 1;
 		Content cont = null;
 		Content contentLink = null;
 		Content contentImage = null;
-
+		
+		
 		String vis = request.getParameter("visibility");
 		if (vis == "y") {
 			visibility = 2;
@@ -50,9 +61,14 @@ public class Create extends HttpServlet {
 		if (link != null && !(link.equals(""))) {
 			contentLink = ContentDAOimpl.createContent(link, "link");
 		}
-
-		final PrintWriter writer = response.getWriter();
-		contentImage = ContentDAOimpl.writeImage(request.getPart("archivossubidos"), writer);
+		
+		
+		Part archivo = request.getPart("archivossubidos");
+		String context = request.getServletContext().getRealPath("img/notesImage");
+		
+		contentImage = ContentDAOimpl.writeImage(context,archivo);
+//		final PrintWriter writer = response.getWriter();
+//		contentImage = ContentDAOimpl.writeImage(request.getPart("archivossubidos"), writer);
 
 		NoteDAOimpl.createNote(visibility, title, subject, temary, description, cont, contentLink, contentImage, owner);
 

@@ -84,8 +84,8 @@ page import="org.jmarquezs.DAO.*"%>
 
 					</nav>
 					<section class="col-7">
-						<form action="/MathNotes/Create" id="formCreate" method="post"
-							enctype="multipart/form-data">
+						<form action="/MathNotes/Edit" id="formCreate"  method="post"
+							>
 
 							<div id="groupPublic">
 								<c:choose>
@@ -93,7 +93,7 @@ page import="org.jmarquezs.DAO.*"%>
 										<label class="mr-5">¿Hacer privada?</label>
 										<input type="radio" id="yes" name="visibility" value="y">
 										<label for="">Si</label>
-										<input type="radio" id="no" name="visibility2" value="n">
+										
 										<br>
 										<label id="info">Actualmente, esta fórmula es pública.</label>
 									</c:when>
@@ -121,6 +121,10 @@ page import="org.jmarquezs.DAO.*"%>
 									<label class="col-5" for="title">Título</label> <input
 										class="col-7" type="text" id="inputWrite" name="title"
 										value="<c:out value="${note.getTitle()}" />">
+										<input
+										class="col-7"  type="hidden" id="inputWrite" name="id"
+										value="<c:out value="${note.getId()}" />">
+										
 								</div>
 							</div>
 							<div class="form-group mb-5">
@@ -257,7 +261,7 @@ page import="org.jmarquezs.DAO.*"%>
 
 				</div>
 				<hr>
-				<form action="/MathNotes/Create" id="formCreate" method="post"
+				<form action="/MathNotes/Edit" id="formCreate" method="post"
 					enctype="multipart/form-data">
 
 					<div id="groupPublic">
@@ -281,6 +285,9 @@ page import="org.jmarquezs.DAO.*"%>
 							<label class="col-5" for="title">Título</label> <input
 								class="col-7" type="text" id="inputWrite" name="title"
 								placeholder="Velocidad de escape, ley de Newton...">
+								<input
+										class="col-7"  type="hidden" id="inputWrite" name="id"
+										value="<c:out value="${note.getId()}" />">
 						</div>
 					</div>
 					<div class="form-group mb-5">

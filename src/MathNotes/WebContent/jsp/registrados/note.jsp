@@ -98,7 +98,7 @@ page import="org.jmarquezs.DAO.*"%>
 						</c:choose>
 
 
-						</label> <label>Este apunte ha sido guardado por X usuarios.</label>
+						</label> <label>Este apunte ha sido guardado por <c:out value="${num}" /> usuarios.</label>
 
 
 						<hr class="mb-5">

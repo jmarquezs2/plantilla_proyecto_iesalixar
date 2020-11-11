@@ -22,6 +22,7 @@ public class View extends HttpServlet {
 		
 		
 		session.setAttribute("note", NoteDAOimpl.bringBackNote(id));
+		session.setAttribute("num", NoteDAOimpl.numberUser(id));
 		session.setAttribute("listContent", ContentDAOimpl.contentsToId(id));
 		
 		RequestDispatcher rd = request.getRequestDispatcher("jsp/registrados/note.jsp");

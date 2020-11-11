@@ -64,6 +64,48 @@ public class NoteDAOimpl implements NoteDAO {
 		}
 
 	}
+	public static void updateNote(int visibility, String title, String subject, String temary, String description,
+			Content cont, Content link, Content img, Note noteOld) {
+		Session session = null;
+		Transaction transaction = null;
+		Note note = null;
+		Set<Content> contents = new HashSet<Content>();
+		try {
+			session = HibernateUtil.getSessionFactory().openSession();
+			transaction = session.beginTransaction();
+			// Create
+			note = new Note(title, visibility, 1, 0, description, subject, temary);
+				
+			if (cont != null) {
+				contents.add(cont);
+			}
+			if (link != null) {
+				contents.add(link);
+			}
+			if (img != null) {
+				contents.add(img);
+			}
+			noteOld.setContents(contents);
+			noteOld.setDescription(note.getDescription());
+			noteOld.setTitle(note.getTitle());
+			noteOld.setVisibility(note.getVisibility());
+			noteOld.setSubject(note.getSubject());
+			noteOld.setTemary(note.getTemary());
+			session.saveOrUpdate(noteOld);
+			transaction.commit();
+
+		} catch (ConstraintViolationException e) {
+			if (transaction != null) {
+				transaction.rollback();
+			}
+			e.printStackTrace();
+		} finally {
+			if (session != null) {
+				session.close();
+			}
+		}
+
+	}
 
 	public static Set<Note> notesOfUser(String email) {
 
@@ -189,6 +231,32 @@ public class NoteDAOimpl implements NoteDAO {
 		}
 
 		return note;
+	}
+	
+	public static int numberUser(int id) {
+		int num=0;
+		Note note=null;
+		Session session = null;
+		Transaction transaction = null;
+		try {
+			session = HibernateUtil.getSessionFactory().openSession();
+			transaction = session.beginTransaction();
+			note=(Note) session.createQuery("From Note u where u.id =:id").setParameter("id", id).uniqueResult();
+			num=note.getUsers().size();
+
+		} catch (ConstraintViolationException e) {
+			if (transaction != null) {
+				transaction.rollback();
+			}
+			e.printStackTrace();
+		} finally {
+			if (session != null) {
+				session.close();
+			}
+		}
+		
+		return num;
+		
 	}
 
 }

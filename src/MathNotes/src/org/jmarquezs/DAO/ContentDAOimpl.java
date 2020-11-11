@@ -13,6 +13,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.net.URL;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -56,69 +57,13 @@ public class ContentDAOimpl implements ContentDAO {
 
 	}
 
-	public static String getFileName(final Part part) {
-		final String partHeader = part.getHeader("content-disposition");
+	
 
-		for (String content : part.getHeader("content-disposition").split(";")) {
-			if (content.trim().startsWith("filename")) {
-				return content.substring(content.indexOf('=') + 1).trim().replace("\"", "");
-			}
-		}
-		return null;
-	}
-
-	public static Content writeImage(Part file, PrintWriter wr) throws IOException {
+	public static Content writeImage(String context, Part archivo) throws IOException {
 		Content img = null;
-		if (file.getSize() > 0) {
-
-			if (file.getContentType().contains("image") == false || file.getSize() > 8388608) {
-				// TIPO DE ARCHIVO NO VALIDO
-				img = null;
-			} else {
-				// C:\\Users\\Usuario\\ProyectoEclipse2\\MathNotes\\WebContent\\img\\notesImage
-
-				//String path = "\\MathNotes\\img\\notesImage\\";
-				String path =".\\..\\..\\..\\..\\..\\WebContent\\img\\notesImage";
-				//  String path="\\MathNotes\\WebContent\\img\\notesImage";
-				final Part filePart = file;
-				final String fileName = ContentDAOimpl.getFileName(filePart);
-
-				OutputStream out = null;
-				InputStream filecontent = null;
-				final PrintWriter writer = wr;
-
-				try {
-					out = new FileOutputStream(new File(path + File.separator +fileName));
-					filecontent = filePart.getInputStream();
-
-					int read = 0;
-					final byte[] bytes = new byte[1024];
-
-					while ((read = filecontent.read(bytes)) != -1) {
-						out.write(bytes, 0, read);
-					}
-					System.out.println("New file " + fileName + " created at " + path);
-					img = createContent(fileName, "img");
-				} catch (FileNotFoundException fne) {
-					System.out.println("You either did not specify a file to upload or are "
-							+ "trying to upload a file to a protected or nonexistent " + "location.");
-					System.out.println("<br/> ERROR: " + fne.getMessage());
-
-				} finally {
-					if (out != null) {
-						out.close();
-					}
-					if (filecontent != null) {
-						filecontent.close();
-					}
-					if (writer != null) {
-						writer.close();
-					}
-				}
-
-			}
-
-		}
+		String foto = Paths.get(archivo.getSubmittedFileName()).getFileName().toString(); 
+		archivo.write(context + File.separator + foto);
+		img = createContent(foto, "img");
 		return img;
 	}
 
