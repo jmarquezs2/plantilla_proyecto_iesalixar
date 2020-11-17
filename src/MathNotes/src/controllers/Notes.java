@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.jmarquezs.DAO.NoteDAOimpl;
+import org.jmarquezs.DAO.UsuarioDAOimpl;
 import org.jmarquezs.model.Note;
 
 public class Notes extends HttpServlet {
@@ -25,7 +26,8 @@ public class Notes extends HttpServlet {
 	
 		Set<Note> list = NoteDAOimpl.notesOfUser(owner);
 		Set<String> subjects = NoteDAOimpl.subjectOfUser(owner);
-		
+		int id = UsuarioDAOimpl.bringBackUser(owner).getId();
+		session.setAttribute("owner", id);
 		 session.setAttribute("list", list);
 		 session.setAttribute("subjects", subjects);
 		 

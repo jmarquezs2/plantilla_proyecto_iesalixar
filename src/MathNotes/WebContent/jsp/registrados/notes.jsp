@@ -108,12 +108,12 @@ page import="org.jmarquezs.DAO.*"%>
 							</div>
 
 							<div class="row ml-5">
-
+								<c:set var="owner" value="${owner}" />
 								<c:forEach var="note" items="${list}">
 
 									<c:set var="note" value="${note}" />
 									<c:set var="subject" value="${subject}" />
-
+						
 									<c:if test="${note.getSubject() eq subject}">
 
 										<div
@@ -124,9 +124,12 @@ page import="org.jmarquezs.DAO.*"%>
 												<label><c:out value="${note.getTitle()}" /></label>
 
 											</div>
+											<c:if test="${note.getOwner() eq owner}">
 											<a href="/MathNotes/Edit?id=<c:out value="${note.getId()}" />">
 											<img src="/MathNotes/img/icon/lapiz.png"  title="Editar" alt="Editar"></a>
-
+											
+											</c:if>
+											
 										</div>
 
 									</c:if>
@@ -212,7 +215,12 @@ page import="org.jmarquezs.DAO.*"%>
 										<label><c:out value="${note.getTitle()}" /></label>
 
 									</div>
-									<img src="/MathNotes/img/icon/engranaje.png" alt="">
+									<c:if test="${note.getOwner() eq owner}">
+											<a href="/MathNotes/Edit?id=<c:out value="${note.getId()}" />">
+											<img src="/MathNotes/img/icon/lapiz.png"  title="Editar" alt="Editar"></a>
+											
+											</c:if>
+											
 								</div>
 							</c:if>
 						</c:forEach>

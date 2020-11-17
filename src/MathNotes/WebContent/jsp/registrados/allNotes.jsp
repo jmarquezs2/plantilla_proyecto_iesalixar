@@ -22,9 +22,9 @@ page import="org.jmarquezs.DAO.*"%>
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
 	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
 	crossorigin="anonymous" />
-	<link rel="icon" type="image/png" href="/MathNotes/img/icon/logonav.png" />
+<link rel="icon" type="image/png" href="/MathNotes/img/icon/logonav.png" />
 <link rel="stylesheet" type="text/css" href="/MathNotes/css/styles.css">
-
+<script type="text/javascript" src="/MathNotes/js/script.js"></script>
 </head>
 <body class="container-fluid">
 	<div class="row">
@@ -109,9 +109,9 @@ page import="org.jmarquezs.DAO.*"%>
 							</div>
 
 							<div class="row ml-5">
-
+								<c:set var="userList" value="${userList}" />
 								<c:forEach var="note" items="${allNotes}">
-
+									
 									<c:set var="note" value="${note}" />
 									<c:set var="subject" value="${subject}" />
 
@@ -119,15 +119,33 @@ page import="org.jmarquezs.DAO.*"%>
 
 										<div
 											class="col-md-5 col-lg-3  col-sm-10 col-12 mx-md-3 mt-5 mr-5 mr-sm-0 mx-0"
-											id="note" onclick="location='/MathNotes/View?id=<c:out value="${note.getId()}" />'">
-											
+											id="note"
+											onclick="location='/MathNotes/View?id=<c:out value="${note.getId()}" />'">
+
 											<div id="tituloNote">
 												<label><c:out value="${note.getTitle()}" /></label>
 
 											</div>
-											<a href="/MathNotes/Edit?id=<c:out value="${note.getId()}" />">
-											<img src="/MathNotes/img/icon/lapiz.png"  title="Editar" alt="Editar"></a>
+											
 
+											<c:choose>
+												<c:when test="${userList.contains(note)}">
+													<a
+														href="/MathNotes/AllNotes?id=<c:out value="${note.getId()}" />">
+														<img src="/MathNotes/img/icon/guardar.png" onmouseover="change(this)" onmouseout="change2(this)" title="Guardar"
+														alt="Guardar">
+													</a>
+												</c:when>
+												
+												<c:otherwise>
+												
+													<a
+														href="/MathNotes/AllNotes?id=<c:out value="${note.getId()}" />">
+														<img src="/MathNotes/img/icon/guardar2.png"  onmouseover="change2(this)" onmouseout="change(this)" title="Guardar"
+														alt="Guardar">
+													</a>
+												</c:otherwise>
+											</c:choose>
 										</div>
 
 									</c:if>

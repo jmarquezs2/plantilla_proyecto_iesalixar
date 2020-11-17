@@ -37,10 +37,10 @@ public class AuthenticationFilter implements Filter {
 		} else {
 			// pass the request along the filter chain
 			if (session.getAttribute("Rol").equals("user")) {
-				chain.doFilter(request, response);
+				res.sendRedirect("/MathNotes/Notes");
 				System.out.println("He entrado en el filtro 3");
 			} else {
-				res.sendRedirect("/Mat_Notes/Moderacion");
+				res.sendRedirect("/MathNotes/Moderacion");
 				System.out.println("He entrado en el filtro 4");
 			}
 

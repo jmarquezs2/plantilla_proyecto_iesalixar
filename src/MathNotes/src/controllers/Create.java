@@ -64,9 +64,12 @@ public class Create extends HttpServlet {
 		
 		
 		Part archivo = request.getPart("archivossubidos");
-		String context = request.getServletContext().getRealPath("img/notesImage");
-		
-		contentImage = ContentDAOimpl.writeImage(context,archivo);
+		if(archivo != null) {
+			String context = request.getServletContext().getRealPath("img/notesImage");
+			
+			contentImage = ContentDAOimpl.writeImage(context,archivo);
+		}
+	
 //		final PrintWriter writer = response.getWriter();
 //		contentImage = ContentDAOimpl.writeImage(request.getPart("archivossubidos"), writer);
 

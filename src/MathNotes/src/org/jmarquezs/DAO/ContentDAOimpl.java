@@ -61,9 +61,12 @@ public class ContentDAOimpl implements ContentDAO {
 
 	public static Content writeImage(String context, Part archivo) throws IOException {
 		Content img = null;
-		String foto = Paths.get(archivo.getSubmittedFileName()).getFileName().toString(); 
-		archivo.write(context + File.separator + foto);
-		img = createContent(foto, "img");
+		String foto = Paths.get(archivo.getSubmittedFileName()).getFileName().toString();
+		if(!( foto.isEmpty())) {
+			archivo.write(context + File.separator + foto);
+			img = createContent(foto, "img");
+		}
+		
 		return img;
 	}
 

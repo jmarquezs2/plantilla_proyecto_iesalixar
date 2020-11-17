@@ -32,7 +32,7 @@ public class NoteDAOimpl implements NoteDAO {
 			session = HibernateUtil.getSessionFactory().openSession();
 			transaction = session.beginTransaction();
 			// Create
-			note = new Note(title, visibility, 1, user.getId(), description, subject, temary);
+			note = new Note(title, visibility,user.getId() , 2, description, subject, temary);
 			if (cont != null) {
 				contents.add(cont);
 			}
@@ -64,6 +64,35 @@ public class NoteDAOimpl implements NoteDAO {
 		}
 
 	}
+	
+	public static void saveNote(Note note, User user) {
+		Session session = null;
+		Transaction transaction = null;
+		Set<User> users = new HashSet<User>();
+		Set<Note> notes = new HashSet<Note>();
+		try {
+			session = HibernateUtil.getSessionFactory().openSession();
+			transaction = session.beginTransaction();
+			notes = user.getNotes();
+			notes.add(note);
+			user.setNotes(notes);
+			session.saveOrUpdate(user);
+			transaction.commit();
+			System.out.println("Guardado");
+
+		} catch (ConstraintViolationException e) {
+			if (transaction != null) {
+				transaction.rollback();
+			}
+			e.printStackTrace();
+		} finally {
+			if (session != null) {
+				session.close();
+			}
+		}
+		
+	}
+	
 	public static void updateNote(int visibility, String title, String subject, String temary, String description,
 			Content cont, Content link, Content img, Note noteOld) {
 		Session session = null;
@@ -150,7 +179,7 @@ public class NoteDAOimpl implements NoteDAO {
 			transaction = session.beginTransaction();
 			// "SELECT p FROM Note p where User_ID="+id+""
 
-			list.addAll(session.createQuery("SELECT p FROM Note p ", Note.class).list());
+			list.addAll(session.createQuery("SELECT p FROM Note p where p.validate = 1", Note.class).list());
 
 		} catch (ConstraintViolationException e) {
 			if (transaction != null) {
