@@ -53,7 +53,8 @@ page import="org.jmarquezs.DAO.*"%>
 							</div>
 						</div>
 						<hr>
-						<div class="row py-4" onclick="location='/MathNotes/AllNotes'" id="botonNav">
+						<div class="row py-4" onclick="location='/MathNotes/AllNotes'"
+							id="botonNav">
 							<img id="icon" src="/MathNotes/img/icon/todos.png" class="ml-4"></img>
 							<div class="ml-4 mt-2">
 								<b>Apuntes Públicos</b>
@@ -113,23 +114,27 @@ page import="org.jmarquezs.DAO.*"%>
 
 									<c:set var="note" value="${note}" />
 									<c:set var="subject" value="${subject}" />
-						
+
 									<c:if test="${note.getSubject() eq subject}">
 
 										<div
 											class="col-md-5 col-lg-3  col-sm-10 col-12 mx-md-3 mt-5 mr-5 mr-sm-0 mx-0"
-											id="note" onclick="location='/MathNotes/View?id=<c:out value="${note.getId()}" />'">
-											
+											id="note"
+											onclick="location='/MathNotes/View?id=<c:out value="${note.getId()}" />'">
+
 											<div id="tituloNote">
 												<label><c:out value="${note.getTitle()}" /></label>
 
 											</div>
 											<c:if test="${note.getOwner() eq owner}">
-											<a href="/MathNotes/Edit?id=<c:out value="${note.getId()}" />">
-											<img src="/MathNotes/img/icon/lapiz.png"  title="Editar" alt="Editar"></a>
-											
+												<a
+													href="/MathNotes/Edit?id=<c:out value="${note.getId()}" />">
+													<img src="/MathNotes/img/icon/lapiz.png" title="Editar"
+													alt="Editar">
+												</a>
+
 											</c:if>
-											
+
 										</div>
 
 									</c:if>
@@ -216,11 +221,13 @@ page import="org.jmarquezs.DAO.*"%>
 
 									</div>
 									<c:if test="${note.getOwner() eq owner}">
-											<a href="/MathNotes/Edit?id=<c:out value="${note.getId()}" />">
-											<img src="/MathNotes/img/icon/lapiz.png"  title="Editar" alt="Editar"></a>
-											
-											</c:if>
-											
+										<a href="/MathNotes/Edit?id=<c:out value="${note.getId()}" />">
+											<img src="/MathNotes/img/icon/lapiz.png" title="Editar"
+											alt="Editar">
+										</a>
+
+									</c:if>
+
 								</div>
 							</c:if>
 						</c:forEach>

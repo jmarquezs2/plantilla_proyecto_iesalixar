@@ -56,6 +56,29 @@ public class UsuarioDAOimpl implements UsuarioDAO {
 		}
 		return rol;
 	}
+	public static void changeRol(String rol, String email) {
+		Session session = null;
+		Transaction transaction = null;
+		User user = bringBackUser(email);
+		try {
+			session = HibernateUtil.getSessionFactory().openSession();
+			transaction = session.beginTransaction();
+			user.setRol(rol);
+			session.saveOrUpdate(user);
+			transaction.commit();
+
+		} catch (ConstraintViolationException e) {
+			if (transaction != null) {
+				transaction.rollback();
+			}
+			e.printStackTrace();
+		} finally {
+			if (session != null) {
+				session.close();
+			}
+		}
+		
+	}
 
 	public static void register(String email, String password, String name) {
 

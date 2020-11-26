@@ -45,7 +45,7 @@ public class Create extends HttpServlet {
 		
 		String vis = request.getParameter("visibility");
 		if (vis == "y") {
-			visibility = 2;
+			visibility = 1;
 		}
 
 		String title = request.getParameter("title");

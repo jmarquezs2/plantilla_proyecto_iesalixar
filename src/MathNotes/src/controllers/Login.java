@@ -28,8 +28,12 @@ public class Login extends HttpServlet{
 			session.setAttribute("Rol", UsuarioDAOimpl.readRol(email));
 			session.setAttribute("Email", email);
 			System.out.println(UsuarioDAOimpl.readRol(email));
-
-			response.sendRedirect("/MathNotes/Notes");
+				if ( UsuarioDAOimpl.readRol(email).equals("user")) {
+					response.sendRedirect("/MathNotes/Notes");
+				}else {
+					response.sendRedirect("/MathNotes/Moderacion");
+				}
+			
 			// RequestDispatcher rd=request.getRequestDispatcher("templates/start.jsp");
 			// rd.forward(request,response);
 		} else {

@@ -88,7 +88,7 @@ page import="org.jmarquezs.DAO.*"%>
 
 
 						<label class="mr-5"> <c:choose>
-								<c:when test="${note.getVisibility() eq 2}">
+								<c:when test="${note.getVisibility() eq 1}">
 									Esta fórmula es pública.
 								</c:when>
 								<c:otherwise>
@@ -147,7 +147,7 @@ page import="org.jmarquezs.DAO.*"%>
 									<hr>
 									<div class="form-group  mt-3 mb-5">
 										<div class="row">
-											<label class="col-12" for="description">Imagenes:</label> <img
+											<label class="col-12" for="description">Imagen:</label> <img
 												width="400px" height="240px" class="ml-5 mt-3"
 												src=/MathNotes/img/notesImage/${content.getEssence()} alt="">
 										</div>

@@ -42,7 +42,7 @@
 							</div>
 						</div>
 						<hr>
-						<div class="row py-4" onclick="location=''" id="botonNav">
+						<div class="row py-4" onclick="location='/MathNotes/AllNotes'" id="botonNav">
 							<img id="icon" src="/MathNotes/img/icon/todos.png" class="ml-4"></img>
 							<div class="ml-4 mt-2">
 								<b>Apuntes Públicos</b>

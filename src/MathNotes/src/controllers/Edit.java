@@ -37,10 +37,14 @@ public class Edit extends HttpServlet {
 		Content cont = null;
 		Content contentLink = null;
 		Content contentImage = null;
-
+		String vis = request.getParameter("visibility");
 		String vis2 = request.getParameter("visibility2");
-		if (vis2 == null) {
+		if (vis != null) {
 			visibility = 2;
+		}else {
+			if(vis2 != null) {
+				visibility = 1;
+			}
 		}
 
 		String title = request.getParameter("title");
@@ -56,13 +60,13 @@ public class Edit extends HttpServlet {
 		if (link != null && !(link.equals(""))) {
 			contentLink = ContentDAOimpl.createContent(link, "link");
 		}
-
-//		final PrintWriter writer = response.getWriter();
-//		Part file = request.getPart("archivossubidos");
-//		if(file != null) {
-//			contentImage = ContentDAOimpl.writeImage(file, writer);
+//		Part archivo = request.getPart("archivossubidos");
+//		if(archivo != null) {
+//			String context = request.getServletContext().getRealPath("img/notesImage");
+//			
+//			contentImage = ContentDAOimpl.writeImage(context,archivo);
 //		}
-		
+
 
 		NoteDAOimpl.updateNote(visibility, title, subject, temary, description, cont, contentLink, contentImage, noteOld);
 

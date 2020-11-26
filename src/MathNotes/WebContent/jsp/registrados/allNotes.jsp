@@ -100,22 +100,25 @@ page import="org.jmarquezs.DAO.*"%>
 						<hr class="mb-3">
 
 						<c:forEach var="subject" items="${allSubjects}">
-							<div id="asignatura" class="mt-5">
-								<p class="my-auto">
-									<c:out value="${subject}" />
-								</p>
+							<c:forEach var="note" items="${allNotes}">
+
+								<c:set var="note" value="${note}" />
+								<c:set var="subject" value="${subject}" />
+
+								<c:if test="${note.getSubject() eq subject}">
 
 
-							</div>
+									<div id="asignatura" class="mt-5">
+										<p class="my-auto">
+											<c:out value="${subject}" />
+										</p>
 
-							<div class="row ml-5">
-								<c:set var="userList" value="${userList}" />
-								<c:forEach var="note" items="${allNotes}">
-									
-									<c:set var="note" value="${note}" />
-									<c:set var="subject" value="${subject}" />
 
-									<c:if test="${note.getSubject() eq subject}">
+									</div>
+									<div class="row ml-5">
+										<c:set var="userList" value="${userList}" />
+
+
 
 										<div
 											class="col-md-5 col-lg-3  col-sm-10 col-12 mx-md-3 mt-5 mr-5 mr-sm-0 mx-0"
@@ -126,33 +129,36 @@ page import="org.jmarquezs.DAO.*"%>
 												<label><c:out value="${note.getTitle()}" /></label>
 
 											</div>
-											
+
 
 											<c:choose>
 												<c:when test="${userList.contains(note)}">
 													<a
 														href="/MathNotes/AllNotes?id=<c:out value="${note.getId()}" />">
-														<img src="/MathNotes/img/icon/guardar.png" onmouseover="change(this)" onmouseout="change2(this)" title="Guardar"
-														alt="Guardar">
+														<img src="/MathNotes/img/icon/guardar.png"
+														onmouseover="change(this)" onmouseout="change2(this)"
+														title="Guardar" alt="Guardar">
 													</a>
 												</c:when>
-												
+
 												<c:otherwise>
-												
+
 													<a
 														href="/MathNotes/AllNotes?id=<c:out value="${note.getId()}" />">
-														<img src="/MathNotes/img/icon/guardar2.png"  onmouseover="change2(this)" onmouseout="change(this)" title="Guardar"
-														alt="Guardar">
+														<img src="/MathNotes/img/icon/guardar2.png"
+														onmouseover="change2(this)" onmouseout="change(this)"
+														title="Guardar" alt="Guardar">
 													</a>
 												</c:otherwise>
 											</c:choose>
 										</div>
 
-									</c:if>
-								</c:forEach>
-							</div>
 
 
+									</div>
+
+								</c:if>
+							</c:forEach>
 						</c:forEach>
 
 
@@ -209,14 +215,6 @@ page import="org.jmarquezs.DAO.*"%>
 				<hr>
 
 				<c:forEach var="subject" items="${allSubjects}">
-					<div id="asignaturaMovil" class="mt-5">
-						<p class="my-auto">
-							<c:out value="${subject}" />
-						</p>
-
-
-					</div>
-
 					<div class="row ml-5">
 
 						<c:forEach var="note" items="${allNotes}">
@@ -225,6 +223,15 @@ page import="org.jmarquezs.DAO.*"%>
 							<c:set var="subject" value="${subject}" />
 
 							<c:if test="${note.getSubject() eq subject}">
+								<div id="asignaturaMovil" class="mt-5">
+									<p class="my-auto">
+										<c:out value="${subject}" />
+									</p>
+
+
+								</div>
+
+
 								<div class="col-4 mx-md-3 mt-5 mr-5 " id="note"
 									onclick="saveId(${note.getId()}); location='/MathNotes/View'">
 									<div id="tituloNote">

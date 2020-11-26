@@ -32,7 +32,9 @@ public class NoteDAOimpl implements NoteDAO {
 			session = HibernateUtil.getSessionFactory().openSession();
 			transaction = session.beginTransaction();
 			// Create
-			note = new Note(title, visibility,user.getId() , 2, description, subject, temary);
+			//validate 2 --> No puede estar público
+			
+			note = new Note(title, visibility,user.getId() , 0, description, subject, temary);
 			if (cont != null) {
 				contents.add(cont);
 			}
@@ -93,27 +95,81 @@ public class NoteDAOimpl implements NoteDAO {
 		
 	}
 	
+	public static void voteNote(Note note, String vote) {
+		Session session = null;
+		Transaction transaction = null;
+		try {
+			session = HibernateUtil.getSessionFactory().openSession();
+			transaction = session.beginTransaction();
+			if (vote.equals("yes")) {
+				note.setValidate(2);
+			}else {
+				note.setValidate(1);
+			}
+			session.saveOrUpdate(note);
+			transaction.commit();
+			System.out.println("validado");
+
+		} catch (ConstraintViolationException e) {
+			if (transaction != null) {
+				transaction.rollback();
+			}
+			e.printStackTrace();
+		} finally {
+			if (session != null) {
+				session.close();
+			}
+		}
+		
+	}
+	
 	public static void updateNote(int visibility, String title, String subject, String temary, String description,
 			Content cont, Content link, Content img, Note noteOld) {
 		Session session = null;
 		Transaction transaction = null;
 		Note note = null;
+		List<Content> list = new ArrayList<Content>();
 		Set<Content> contents = new HashSet<Content>();
 		try {
 			session = HibernateUtil.getSessionFactory().openSession();
 			transaction = session.beginTransaction();
 			// Create
-			note = new Note(title, visibility, 1, 0, description, subject, temary);
-				
+			note = new Note(title, visibility, 0, 0, description, subject, temary);
+			list = ContentDAOimpl.contentsToId(noteOld.getId());
+		
 			if (cont != null) {
 				contents.add(cont);
+			}else {
+				for(int i=0;list.size() > i;i++) {
+					if(list.get(i).getType().equals("formula")) {
+						contents.add((list.get(i)));
+					}
+				}
 			}
+			
 			if (link != null) {
 				contents.add(link);
+			}else {
+				for(int i=0;list.size() > i;i++) {
+					if(list.get(i).getType().equals("link")) {
+						contents.add((list.get(i)));
+					}
+				}
 			}
+			
 			if (img != null) {
 				contents.add(img);
+			}else {
+				for(int i=1;list.size() > i;i++) {
+					if(list.get(i).getType().equals("img")) {
+						contents.add((list.get(i)));
+					}
+				}
 			}
+			
+			
+			
+			
 			noteOld.setContents(contents);
 			noteOld.setDescription(note.getDescription());
 			noteOld.setTitle(note.getTitle());
@@ -179,7 +235,7 @@ public class NoteDAOimpl implements NoteDAO {
 			transaction = session.beginTransaction();
 			// "SELECT p FROM Note p where User_ID="+id+""
 
-			list.addAll(session.createQuery("SELECT p FROM Note p where p.validate = 1", Note.class).list());
+			list.addAll(session.createQuery("SELECT p FROM Note p where p.validate = 2", Note.class).list());
 
 		} catch (ConstraintViolationException e) {
 			if (transaction != null) {
@@ -195,6 +251,37 @@ public class NoteDAOimpl implements NoteDAO {
 
 		return list;
 	}
+	
+public static List<Note> notesModer() {
+
+		
+		List<Note> list = new ArrayList<Note>();
+
+		Session session = null;
+		Transaction transaction = null;
+		try {
+			session = HibernateUtil.getSessionFactory().openSession();
+			transaction = session.beginTransaction();
+			// "SELECT p FROM Note p where User_ID="+id+""
+
+			list.addAll(session.createQuery("SELECT p FROM Note p where p.validate = 0 and p.visibility = 1", Note.class).list());
+
+		} catch (ConstraintViolationException e) {
+			if (transaction != null) {
+				transaction.rollback();
+			}
+			e.printStackTrace();
+		} finally {
+			if (session != null) {
+				session.close();
+			}
+		}
+		
+		System.out.println(list.toString());
+
+		return list;
+	}
+	
 
 	public static Set<String> subjectOfUser(String email) {
 
@@ -222,6 +309,36 @@ public class NoteDAOimpl implements NoteDAO {
 			// "SELECT p FROM Note p where User_ID="+id+""
 
 			list.addAll(session.createQuery("SELECT p.subject FROM Note p").list());
+
+		} catch (ConstraintViolationException e) {
+			if (transaction != null) {
+				transaction.rollback();
+			}
+			e.printStackTrace();
+		} finally {
+			if (session != null) {
+				session.close();
+			}
+		}
+		System.out.println(list.toString());
+
+		return list;
+	}
+	
+public static Set<String> subjectAllModer() {
+
+		
+
+	Set<String> list = new TreeSet<String>();
+
+		Session session = null;
+		Transaction transaction = null;
+		try {
+			session = HibernateUtil.getSessionFactory().openSession();
+			transaction = session.beginTransaction();
+			// "SELECT p FROM Note p where User_ID="+id+""
+
+			list.addAll(session.createQuery("SELECT p.subject FROM Note p where p.visibility = 1").list());
 
 		} catch (ConstraintViolationException e) {
 			if (transaction != null) {

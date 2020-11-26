@@ -319,3 +319,12 @@ width: 150px !important;
 #textNote{
     font-weight: normal;
 }
+
+
+#iconModer{
+	background-color:#ACABD2 !important;
+	border: 0px !important;
+	margin-left: 0px !important;
+	 border-bottom-right-radius: 20px;
+	margin-top: 30% !important;
+}

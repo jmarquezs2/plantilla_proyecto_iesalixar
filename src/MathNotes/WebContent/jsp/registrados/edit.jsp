@@ -56,7 +56,7 @@ page import="org.jmarquezs.DAO.*"%>
 							</div>
 						</div>
 						<hr>
-						<div class="row py-4" onclick="location=''" id="botonNav">
+						<div class="row py-4" onclick="location='/MathNotes/AllNotes'" id="botonNav">
 							<img id="icon" src="/MathNotes/img/icon/todos.png" class="ml-4"></img>
 							<div class="ml-4 mt-2">
 								<b>Apuntes Públicos</b>
@@ -89,7 +89,7 @@ page import="org.jmarquezs.DAO.*"%>
 
 							<div id="groupPublic">
 								<c:choose>
-									<c:when test="${note.getVisibility() eq 2}">
+									<c:when test="${note.getVisibility() eq 1}">
 										<label class="mr-5">¿Hacer privada?</label>
 										<input type="radio" id="yes" name="visibility" value="y">
 										<label for="">Si</label>
@@ -99,7 +99,7 @@ page import="org.jmarquezs.DAO.*"%>
 									</c:when>
 									<c:otherwise>
 										<label class="mr-5">¿Hacer público?</label>
-										<input type="radio" id="yes" name="visibility" value="n">
+										<input type="radio" id="yes" name="visibility2" value="n">
 										<label for="">Si</label>
 										<br>
 										<label id="info">Actualmente, esta fórmula es privada.</label>
@@ -198,6 +198,9 @@ page import="org.jmarquezs.DAO.*"%>
 										imagen:</label> <input id="fileInput" type="file" class="col-12"
 										accept="image/png, .jpeg, .jpg, image/gif"
 										name="archivossubidos" multiple>
+										
+									 <img width="400px" height="240px" class="ml-5 mt-3"
+												src=/MathNotes/img/notesImage/${content.getEssence()} alt="">
 								</div>
 							</div>
 									</c:when>
