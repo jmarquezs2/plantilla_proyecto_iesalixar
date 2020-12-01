@@ -189,10 +189,10 @@ page import="org.jmarquezs.DAO.*"%>
 								<button type="button" onclick="location='/MathNotes/Notes'"
 									class="col-5 btn btn-outline-dark ml-4  mb-3 mr-2">Apuntes
 									Guardados</button>
-								<button type="button" onclick="location=''"
+								<button type="button" onclick="location='/MathNotes/AllNotes'"
 									class="col-5 btn btn-outline-dark ml-2 mb-3 ">Apuntes
 									Públicos</button>
-								<button type="button" onclick="location='/MathNotes/Create''"
+								<button type="button" onclick="location='/MathNotes/Create'"
 									class="col-5 btn btn-outline-dark ml-4 mr-2">Nuevo
 									Apunte</button>
 								<button type="button"
@@ -215,6 +215,13 @@ page import="org.jmarquezs.DAO.*"%>
 				<hr>
 
 				<c:forEach var="subject" items="${allSubjects}">
+				<div id="asignaturaMovil" class="mt-5">
+									<p class="my-auto">
+										<c:out value="${subject}" />
+									</p>
+
+
+								</div>
 					<div class="row ml-5">
 
 						<c:forEach var="note" items="${allNotes}">
@@ -223,13 +230,7 @@ page import="org.jmarquezs.DAO.*"%>
 							<c:set var="subject" value="${subject}" />
 
 							<c:if test="${note.getSubject() eq subject}">
-								<div id="asignaturaMovil" class="mt-5">
-									<p class="my-auto">
-										<c:out value="${subject}" />
-									</p>
-
-
-								</div>
+								
 
 
 								<div class="col-4 mx-md-3 mt-5 mr-5 " id="note"

@@ -140,7 +140,7 @@ page import="org.jmarquezs.DAO.*"%>
 									<hr class="mb-5">
 									<div class="row  mb-5">
 										<label class=" col-4"><u>Enlace de interes</u></label> <label
-											class="col-5" id="textNote"><a href="">${content.getEssence()}</a></label>
+											class="col-5" id="textNote"><a href="${content.getEssence()}">${content.getEssence()}</a></label>
 									</div>
 								</c:when>
 								<c:when test="${content.getType() eq 'img'}">
@@ -149,7 +149,7 @@ page import="org.jmarquezs.DAO.*"%>
 										<div class="row">
 											<label class="col-12" for="description">Imagen:</label> <img
 												width="400px" height="240px" class="ml-5 mt-3"
-												src=/MathNotes/img/notesImage/${content.getEssence()} alt="">
+												src=/MathNotes/img/notesImage/${content.getEssence()} alt="imagenNota">
 										</div>
 									</div>
 								</c:when>
@@ -173,7 +173,7 @@ page import="org.jmarquezs.DAO.*"%>
 
 				<div class="row">
 					<h3 id="h3notes" class="mx-5 mb-0">
-						Titulo
+						<c:out value="${note.getTitle()}" />
 						<button type="button" class="  btn btn-outline-dark   "
 							data-toggle="collapse" href="#multiCollapseExample1"
 							role="button" aria-expanded="false"
@@ -187,15 +187,15 @@ page import="org.jmarquezs.DAO.*"%>
 						<div class="card card-body">
 							<div class="row">
 								<button type="button"
-									class="col-5 btn btn-outline-dark ml-4  mb-3 mr-2">Apuntes
+									class="col-5 btn btn-outline-dark ml-4  mb-3 mr-2" onclick="location='/MathNotes/Notes'"> Apuntes
 									Guardados</button>
 								<button type="button"
-									class="col-5 btn btn-outline-dark ml-2 mb-3 ">Apuntes
+									class="col-5 btn btn-outline-dark ml-2 mb-3 " onclick="location='/MathNotes/AllNotes'">Apuntes
 									Públicos</button>
 								<button type="button"
-									class="col-5 btn btn-outline-dark ml-4 mr-2">Nuevo
+									class="col-5 btn btn-outline-dark ml-4 mr-2" onclick="location='/MathNotes/Create'">Nuevo
 									Apunte</button>
-								<button type="button" class="col-5 btn btn-outline-dark ml-2">Cambiar
+								<button type="button" class="col-5 btn btn-outline-dark ml-2" onclick="location='/MathNotes/NewPassword'">Cambiar
 									Contraseña</button>
 
 							</div>
@@ -209,7 +209,20 @@ page import="org.jmarquezs.DAO.*"%>
 
 				<div id="groupPublic">
 
-					<label id="" class="mx-5"><b>S/N</b></label>
+					<label class="mr-5"> <c:choose>
+								<c:when test="${note.getVisibility() eq 1}">
+									Esta fórmula es pública.
+								</c:when>
+								<c:otherwise>
+								Esta fórmula es privada.
+								</c:otherwise>
+
+						</c:choose>
+
+
+						</label> <label>Este apunte ha sido guardado por <c:out value="${num}" /> usuarios.</label>
+
+
 				</div>
 
 				<hr class="mb-5">
@@ -222,36 +235,49 @@ page import="org.jmarquezs.DAO.*"%>
 
 				<div class="row mb-5">
 					<label class=" col-5" for="subject"><b><u>Asignatura</u></b></label>
-					<label type="text" class="col-7" id="inputWrite">Asignatura</label>
+					<label type="text" class="col-7" id="inputWrite"><c:out
+									value="${note.getSubject()}" /></label>
 				</div>
 
 				<div class="row mb-5">
 					<label class=" col-5" for="subject"><b><u>Tema</u></b></label> <label
-						type="text" class="col-7" id="inputWrite">Tema</label>
+						type="text" class="col-7" id="inputWrite"><c:out value="${note.getTemary()}" /></label>
 				</div>
 
 				<div class="row mb-5">
 					<label class=" col-5" for="subject"><b><u>Descripción</u></b></label>
-					<label type="text" class="col-7" id="inputWrite">Descripción</label>
+					<label type="text" class="col-7" id="inputWrite"><c:out
+									value="${note.getDescription()}" /></label>
 				</div>
-				<hr class="mb-5">
+				
+				
+				<c:forEach var="content" items="${listContent}">
+							<c:choose>
+								<c:when test="${content.getType() eq 'formula'}">
+								<hr class="mb-5">
 				<div class="row mb-5">
 					<label class=" col-5" for="subject"><b><u>Contenido</u></b></label>
-					<label type="text" class="col-7" id="inputWrite">Conenido</label>
+					<label type="text" class="col-7" id="inputWrite">${content.getEssence()}</label>
 				</div>
-				<hr class="mb-5">
+				</c:when>
+								<c:when test="${content.getType() eq 'link'}">
+									<hr class="mb-5">
 				<div class="row mb-5">
 					<label class=" col-5" for="subject"><b><u>Enlace de
 								interes</u></b></label> <label type="text" class="col-7" id="inputWrite"><a
-						href="">enlace</a></label>
+						href="${content.getEssence()}">${content.getEssence()}</a></label>
 				</div>
-				<hr>
+				</c:when>
+								<c:when test="${content.getType() eq 'img'}">
+									<hr>
 				<div class="row mb-5">
 					<label class=" col-5" for="subject"><b><u>Imagenes:</u></b></label>
-					<img src="" alt="">
+					<img src=/MathNotes/img/notesImage/${content.getEssence()} alt="">
 				</div>
 
-
+</c:when>
+							</c:choose>
+						</c:forEach>
 
 
 				<br> <br>

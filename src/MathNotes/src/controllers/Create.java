@@ -70,8 +70,6 @@ public class Create extends HttpServlet {
 			contentImage = ContentDAOimpl.writeImage(context,archivo);
 		}
 	
-//		final PrintWriter writer = response.getWriter();
-//		contentImage = ContentDAOimpl.writeImage(request.getPart("archivossubidos"), writer);
 
 		NoteDAOimpl.createNote(visibility, title, subject, temary, description, cont, contentLink, contentImage, owner);
 

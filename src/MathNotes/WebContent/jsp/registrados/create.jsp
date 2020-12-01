@@ -192,16 +192,17 @@
 						<div class="card card-body">
 							<div class="row">
 								<button type="button"
-									class="col-5 btn btn-outline-dark ml-4  mb-3 mr-2">Apuntes
+									class="col-5 btn btn-outline-dark ml-4  mb-3 mr-2"  onclick="location='/MathNotes/Notes'">Apuntes
 									Guardados</button>
 								<button type="button"
-									class="col-5 btn btn-outline-dark ml-2 mb-3 ">Apuntes
+									class="col-5 btn btn-outline-dark ml-2 mb-3 "  onclick="location='/MathNotes/AllNotes'">Apuntes
 									Públicos</button>
 								<button type="button"
-									class="col-5 btn btn-outline-dark ml-4 mr-2">Nuevo
+									class="col-5 btn btn-outline-dark ml-4 mr-2"  onclick="location='/MathNotes/Create'">Nuevo
 									Apunte</button>
-								<button type="button" class="col-5 btn btn-outline-dark ml-2">Cambiar
+								<button type="button" class="col-5 btn btn-outline-dark ml-2"  onclick="location='/MathNotes/NewPassword'">Cambiar
 									Contraseña</button>
+									
 
 							</div>
 						</div>
@@ -215,11 +216,12 @@
 
 					<div id="groupPublic">
 
-						<label class="mx-5">¿Hacer público?</label> <input type="radio"
-							id="yes" name="visibility" value="y"> <label for="">Si</label>
-						<input type="radio" id="no" name="visibility" value="n"> <label
-							for="">No</label> <label id="info" class="mx-5"><b>Con
-								esto los demas podran ver y guardar tu apunte.</b></label>
+						<label class="mr-5">¿Hacer público?</label>
+								<input type="radio" id="yes" name="visibility" value="y">
+								<label for="">Si</label>
+								<input type="radio" id="no" name="visibility" value="n">
+								<label for="">No</label> <label id="info">Con esto los
+									demas podran ver y guardar tu apunte.</label>
 					</div>
 
 					<hr class="mb-5">
@@ -238,9 +240,15 @@
 					</div>
 					<div class="form-group mb-5">
 						<div class="row">
-							<label class=" col-5" for="subject">Asignatura</label> <input
-								type="text" class="col-7" id="inputWrite" name="subject"
-								placeholder="Matemáticas, Física, Tecnología...">
+							<label class=" col-5" for="subject">Asignatura</label> <select
+										class="col-7" id="inputWrite" name="subject">
+										<option value="Matemáticas">Matemáticas</option>
+										<option value="Física" selected>Física</option>
+										<option value="Química">Química</option>
+										<option value="Tecnología">Tecnología</option>
+										<option value="Economía">Economía</option>
+										<option value="Otra">Otra</option>
+									</select>
 						</div>
 					</div>
 					<div class="form-group mb-5">
@@ -288,7 +296,7 @@
 							<label class="col-12" for="description">Sube una imagen:</label>
 							<input id="fileInput" type="file" class="col-12"
 								accept="image/png, .jpeg, .jpg, image/gif"
-								name="archivossubidos[]" multiple>
+								name="archivossubidos" multiple>
 						</div>
 					</div>
 

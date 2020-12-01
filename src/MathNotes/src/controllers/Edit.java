@@ -27,10 +27,7 @@ public class Edit extends HttpServlet {
 		
 		FileItemFactory factory = new DiskFileItemFactory();
 		ServletFileUpload upload = new ServletFileUpload(factory);
-		int id = Integer.parseInt(request.getParameter("id"));
-		Note noteOld = NoteDAOimpl.bringBackNote(id);
 		
-		String owner = (String) session.getAttribute("Email");
 		
 		
 		int visibility = 1;
@@ -46,9 +43,11 @@ public class Edit extends HttpServlet {
 				visibility = 1;
 			}
 		}
-
+		
 		String title = request.getParameter("title");
 		String subject = request.getParameter("subject");
+		
+		Note noteOld = (Note) session.getAttribute("note");
 		String temary = request.getParameter("temary");
 		String description = request.getParameter("description");
 		String content = request.getParameter("content");
@@ -60,12 +59,14 @@ public class Edit extends HttpServlet {
 		if (link != null && !(link.equals(""))) {
 			contentLink = ContentDAOimpl.createContent(link, "link");
 		}
+		
 //		Part archivo = request.getPart("archivossubidos");
 //		if(archivo != null) {
 //			String context = request.getServletContext().getRealPath("img/notesImage");
 //			
 //			contentImage = ContentDAOimpl.writeImage(context,archivo);
 //		}
+	
 
 
 		NoteDAOimpl.updateNote(visibility, title, subject, temary, description, cont, contentLink, contentImage, noteOld);

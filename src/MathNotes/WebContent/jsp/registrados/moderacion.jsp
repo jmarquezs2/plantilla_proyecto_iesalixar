@@ -57,7 +57,7 @@ page import="org.jmarquezs.DAO.*"%>
 							id="botonNav">
 							<img id="icon" src="/MathNotes/img/icon/todos.png" class="ml-4"></img>
 							<div class="ml-4 mt-2">
-								<b>Moderación</b>
+								<b>Apuntes Públicos</b>
 							</div>
 						</div>
 						<hr>
@@ -69,12 +69,12 @@ page import="org.jmarquezs.DAO.*"%>
 							</div>
 						</div>
 						<hr>
-						<div class="row py-4" onclick="location='/MathNotes/NewPassword'"
+						<div class="row py-4" onclick="location='/MathNotes/Moderacion'"
 							id="botonNav">
-							<img id="icon" src="/MathNotes/img/icon/contraseña.png"
+							<img id="icon" src="/MathNotes/img/icon/guarda.svg"
 								class="ml-4"></img>
 							<div class="ml-4 mt-2">
-								<b>Cambiar Contraseña</b>
+								<b>Moderación</b>
 							</div>
 						</div>
 						<hr>
@@ -183,14 +183,14 @@ page import="org.jmarquezs.DAO.*"%>
 								<button type="button" onclick="location='/MathNotes/Notes'"
 									class="col-5 btn btn-outline-dark ml-4  mb-3 mr-2">Apuntes
 									Guardados</button>
-								<button type="button" onclick="location=''"
+								<button type="button" onclick="location='/MathNotes/AllNotes'"
 									class="col-5 btn btn-outline-dark ml-2 mb-3 ">Apuntes
 									Públicos</button>
-								<button type="button" onclick="location='/MathNotes/Create''"
+								<button type="button" onclick="location='/MathNotes/Create'"
 									class="col-5 btn btn-outline-dark ml-4 mr-2">Nuevo
 									Apunte</button>
 								<button type="button"
-									onclick="location='/MathNotes/NewPassword'"
+									onclick="location='/MathNotes/Moderacion'"
 									class="col-5 btn btn-outline-dark ml-2">Cambiar
 									Contraseña</button>
 
@@ -209,6 +209,13 @@ page import="org.jmarquezs.DAO.*"%>
 				<hr>
 
 				<c:forEach var="subject" items="${allSubjects}">
+				<div id="asignaturaMovil" class="mt-5">
+									<p class="my-auto">
+										<c:out value="${subject}" />
+									</p>
+
+
+								</div>
 					<div class="row ml-5">
 
 						<c:forEach var="note" items="${allNotes}">
@@ -217,13 +224,7 @@ page import="org.jmarquezs.DAO.*"%>
 							<c:set var="subject" value="${subject}" />
 
 							<c:if test="${note.getSubject() eq subject}">
-								<div id="asignaturaMovil" class="mt-5">
-									<p class="my-auto">
-										<c:out value="${subject}" />
-									</p>
-
-
-								</div>
+								
 
 
 								<div class="col-4 mx-md-3 mt-5 mr-5 " id="note"
@@ -232,7 +233,16 @@ page import="org.jmarquezs.DAO.*"%>
 										<label><c:out value="${note.getTitle()}" /></label>
 
 									</div>
-									<img src="/MathNotes/img/icon/engranaje.png" alt="">
+									<div class="row" id="iconModer">
+												<a class="col-3 "
+												href="/MathNotes/Moderacion?id=<c:out value="${note.getId()}" />&vote=yes">
+												<img src="/MathNotes/img/icon/tick.png" title="Aceptar" alt="Aceptar">
+											</a>
+											<a class="col-3 offset-3"
+												href="/MathNotes/Moderacion?id=<c:out value="${note.getId()}" />&vote=no">
+												<img src="/MathNotes/img/icon/rechazar.png" title="Rechazar" alt="Rechazar">
+											</a>
+												</div>
 								</div>
 							</c:if>
 						</c:forEach>

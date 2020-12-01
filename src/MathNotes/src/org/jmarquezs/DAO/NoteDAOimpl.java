@@ -160,7 +160,7 @@ public class NoteDAOimpl implements NoteDAO {
 			if (img != null) {
 				contents.add(img);
 			}else {
-				for(int i=1;list.size() > i;i++) {
+				for(int i=0;list.size() > i;i++) {
 					if(list.get(i).getType().equals("img")) {
 						contents.add((list.get(i)));
 					}

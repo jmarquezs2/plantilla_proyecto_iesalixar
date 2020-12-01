@@ -39,6 +39,9 @@ public class Main {
 		Content cont7 = ContentDAOimpl.createContent("v=e/t", "formula");
 		Content cont8 = ContentDAOimpl.createContent("madera.jpg", "img");
 		NoteDAOimpl.createNote(1, "Imagen", "Química", "hola", "La velocidad 3", cont7, null,cont8, "juan@gmail.com");
+		Content cont9 = ContentDAOimpl.createContent("tablaPeriodica.png", "img");
+		NoteDAOimpl.createNote(1, "Img", "Química", "hola", "La velocidad 4", cont7, null,cont9, "pepito@gmail.com");
+		
 		//System.out.println(NoteDAOimpl.subjectOfUser("pepito@gmail.com").toString());
 		
 	}

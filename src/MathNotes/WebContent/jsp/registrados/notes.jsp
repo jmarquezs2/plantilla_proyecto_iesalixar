@@ -172,10 +172,10 @@ page import="org.jmarquezs.DAO.*"%>
 								<button type="button" onclick="location='/MathNotes/Notes'"
 									class="col-5 btn btn-outline-dark ml-4  mb-3 mr-2">Apuntes
 									Guardados</button>
-								<button type="button" onclick="location=''"
+								<button type="button" onclick="location='/MathNotes/AllNotes'"
 									class="col-5 btn btn-outline-dark ml-2 mb-3 ">Apuntes
 									Públicos</button>
-								<button type="button" onclick="location='/MathNotes/Create''"
+								<button type="button" onclick="location='/MathNotes/Create'"
 									class="col-5 btn btn-outline-dark ml-4 mr-2">Nuevo
 									Apunte</button>
 								<button type="button"

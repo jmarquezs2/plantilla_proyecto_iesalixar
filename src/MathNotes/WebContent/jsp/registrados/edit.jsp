@@ -84,8 +84,8 @@ page import="org.jmarquezs.DAO.*"%>
 
 					</nav>
 					<section class="col-7">
-						<form action="/MathNotes/Edit" id="formCreate"  method="post"
-							>
+						<form action="/MathNotes/Edit" id="formCreate" method="post">
+
 
 							<div id="groupPublic">
 								<c:choose>
@@ -197,7 +197,7 @@ page import="org.jmarquezs.DAO.*"%>
 									<label class="col-12" for="description">Sube una
 										imagen:</label> <input id="fileInput" type="file" class="col-12"
 										accept="image/png, .jpeg, .jpg, image/gif"
-										name="archivossubidos" multiple>
+										name="archivossubidos">
 										
 									 <img width="400px" height="240px" class="ml-5 mt-3"
 												src=/MathNotes/img/notesImage/${content.getEssence()} alt="">
@@ -208,13 +208,6 @@ page import="org.jmarquezs.DAO.*"%>
 
 								</c:choose>
 							</c:forEach>
-
-
-
-							
-
-
-
 
 							<br> <br>
 
@@ -246,15 +239,15 @@ page import="org.jmarquezs.DAO.*"%>
 						<div class="card card-body">
 							<div class="row">
 								<button type="button"
-									class="col-5 btn btn-outline-dark ml-4  mb-3 mr-2">Apuntes
+									class="col-5 btn btn-outline-dark ml-4  mb-3 mr-2" onclick="location='/MathNotes/Notes'">Apuntes
 									Guardados</button>
 								<button type="button"
-									class="col-5 btn btn-outline-dark ml-2 mb-3 ">Apuntes
+									class="col-5 btn btn-outline-dark ml-2 mb-3 " onclick="location='/MathNotes/AllNotes'">Apuntes
 									Públicos</button>
 								<button type="button"
-									class="col-5 btn btn-outline-dark ml-4 mr-2">Nuevo
+									class="col-5 btn btn-outline-dark ml-4 mr-2" onclick="location='/MathNotes/Create'">Nuevo
 									Apunte</button>
-								<button type="button" class="col-5 btn btn-outline-dark ml-2">Cambiar
+								<button type="button" class="col-5 btn btn-outline-dark ml-2" onclick="location='/MathNotes/NewPassword'">Cambiar
 									Contraseña</button>
 
 							</div>
@@ -268,14 +261,26 @@ page import="org.jmarquezs.DAO.*"%>
 					enctype="multipart/form-data">
 
 					<div id="groupPublic">
+<div class="mx-5">
+					<c:choose>
+									<c:when test="${note.getVisibility() eq 1}">
+										<label class="mr-5">¿Hacer privada?</label>
+										<input type="radio" id="yes" name="visibility" value="y">
+										<label for="">Si</label>
+										
+										<br>
+										<label id="info">Actualmente, esta fórmula es pública.</label>
+									</c:when>
+									<c:otherwise>
+										<label class="mr-5">¿Hacer público?</label>
+										<input type="radio" id="yes" name="visibility2" value="n">
+										<label for="">Si</label>
+										<br>
+										<label id="info">Actualmente, esta fórmula es privada.</label>
+									</c:otherwise>
 
-						<label class="mx-5">¿Hacer público?</label> <input type="radio"
-							id="yes" name="visibility" value="y"> <label for="">Si</label>
-						<input type="radio" id="no" name="visibility" value="n"> <label
-							for="">No</label> <label id="info" class="mx-5"><b>Con
-								esto los demas podran ver y guardar tu apunte.</b></label>
-					</div>
-
+								</c:choose>
+</div>
 					<hr class="mb-5">
 
 					<!--<div class="form-group">
@@ -287,17 +292,24 @@ page import="org.jmarquezs.DAO.*"%>
 
 							<label class="col-5" for="title">Título</label> <input
 								class="col-7" type="text" id="inputWrite" name="title"
-								placeholder="Velocidad de escape, ley de Newton...">
-								<input
+								 value="<c:out value="${note.getTitle()}" />">
+										<input
 										class="col-7"  type="hidden" id="inputWrite" name="id"
 										value="<c:out value="${note.getId()}" />">
+						
 						</div>
 					</div>
 					<div class="form-group mb-5">
 						<div class="row">
-							<label class=" col-5" for="subject">Asignatura</label> <input
-								type="text" class="col-7" id="inputWrite" name="subject"
-								placeholder="Matemáticas, Física, Tecnología...">
+							<label class=" col-5" for="subject">Asignatura</label> <select
+										class="col-7" id="inputWrite" name="subject">
+										<option value="Matemáticas">Matemáticas</option>
+										<option value="Física" selected>Física</option>
+										<option value="Química">Química</option>
+										<option value="Tecnología">Tecnología</option>
+										<option value="Economía">Economía</option>
+										<option value="Otra">Otra</option>
+									</select>
 						</div>
 					</div>
 					<div class="form-group mb-5">
@@ -306,7 +318,7 @@ page import="org.jmarquezs.DAO.*"%>
 
 							<label class="col-5" for="temary">Tema</label> <input
 								class="col-7" type="text" id="inputWrite" name="temary"
-								placeholder="Trigonometría, Fuerzas...">
+							    value="<c:out value="${note.getTemary()}" />">
 						</div>
 					</div>
 
@@ -315,39 +327,59 @@ page import="org.jmarquezs.DAO.*"%>
 
 
 							<label class="col-5" for="description">Descripción</label>
-							<textarea class="col-7" name="textarea" rows="5" " cols="50"></textarea>
+							<textarea class="col-7" name="textarea" rows="5" " cols="50" value="<c:out value="${note.getDescription()}" />"></textarea>
 						</div>
 					</div>
 
-					<div class="form-group mb-5">
-						<div class="row">
+					<c:forEach var="content" items="${listContent}">
+								<c:choose>
+									<c:when test="${content.getType() eq 'formula'}">
 
 
-							<label class="col-5" for="content">Contenido</label>
-							<textarea class="col-7" name="content" rows="5" " cols="50">Escribe aquí tu formula...</textarea>
-						</div>
-					</div>
-
-					<div class="form-group mb-5">
-						<div class="row">
+										<div class="form-group mb-5">
+											<div class="row">
 
 
-							<label class="col-5" for="temary">Enlace De Interes</label> <input
-								class="col-7" type="url" id="inputWrite" name="link"
-								placeholder="">
-						</div>
-					</div>
-					<hr>
-					<div class="form-group  mt-3 mb-5">
-						<div class="row">
+												<label class="col-5" for="content">Contenido</label>
+												<textarea class="col-7" name="content" rows="5" " cols="50">${content.getEssence()}</textarea>
+											</div>
+										</div>
+
+									</c:when>
+									<c:when test="${content.getType() eq 'link'}">
+
+										<div class="form-group mb-5">
+											<div class="row">
 
 
-							<label class="col-12" for="description">Sube una imagen:</label>
-							<input id="fileInput" type="file" class="col-12"
-								accept="image/png, .jpeg, .jpg, image/gif"
-								name="archivossubidos[]" multiple>
-						</div>
-					</div>
+												<label class="col-5" for="temary">Enlace De Interes</label>
+												<input class="col-7" type="url" id="inputWrite" name="link"
+													value=${content.getEssence()}>
+											</div>
+										</div>
+										<hr>
+
+									</c:when>
+									<c:when test="${content.getType() eq 'img'}">
+									
+									<div class="form-group  mt-3 mb-5">
+								<div class="row">
+
+
+									<label class="col-12" for="description">Sube una
+										imagen:</label> <input id="fileInput" type="file" class="col-12"
+										accept="image/png, .jpeg, .jpg, image/gif"
+										name="archivossubidos">
+										
+									 <img width="400px" height="240px" class="ml-5 mt-3"
+												src=/MathNotes/img/notesImage/${content.getEssence()} alt="">
+								</div>
+							</div>
+									</c:when>
+
+
+								</c:choose>
+							</c:forEach>
 
 
 
