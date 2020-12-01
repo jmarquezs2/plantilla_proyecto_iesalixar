@@ -249,6 +249,12 @@ page import="org.jmarquezs.DAO.*"%>
 	</section>
 	</div>
 
+<script
+src="https://cdn.cai.tools.sap/webchat/webchat.js"
+channelId="8c657416-a85d-4dd3-8a93-d16edfb60274"
+token="911d74323f0e85f55bed13443ce7b677"
+id="cai-webchat">
+</script>
 	<script type="text/javascript">
 function saveId(id) {
 	var noteId;
