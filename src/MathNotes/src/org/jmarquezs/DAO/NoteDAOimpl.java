@@ -76,11 +76,17 @@ public class NoteDAOimpl implements NoteDAO {
 			session = HibernateUtil.getSessionFactory().openSession();
 			transaction = session.beginTransaction();
 			notes = user.getNotes();
-			notes.add(note);
-			user.setNotes(notes);
-			session.saveOrUpdate(user);
-			transaction.commit();
-			System.out.println("Guardado");
+			String title = note.getTitle();
+			if (!(notes.contains(title))) {
+				notes.add(note);
+				user.setNotes(notes);
+				session.saveOrUpdate(user);
+				transaction.commit();
+				System.out.println("Guardado");
+			}
+			
+			
+			
 
 		} catch (ConstraintViolationException e) {
 			if (transaction != null) {

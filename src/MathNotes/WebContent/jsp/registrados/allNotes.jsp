@@ -104,7 +104,7 @@ page import="org.jmarquezs.DAO.*"%>
 
 								<c:set var="note" value="${note}" />
 								<c:set var="subject" value="${subject}" />
-
+								<c:set var="userOwner" value="${userOwner}" />
 								<c:if test="${note.getSubject() eq subject}">
 
 
@@ -132,13 +132,8 @@ page import="org.jmarquezs.DAO.*"%>
 
 
 											<c:choose>
-												<c:when test="${userList.contains(note)}">
-													<a
-														href="/MathNotes/AllNotes?id=<c:out value="${note.getId()}" />">
-														<img src="/MathNotes/img/icon/guardar.png"
-														onmouseover="change(this)" onmouseout="change2(this)"
-														title="Guardar" alt="Guardar">
-													</a>
+												<c:when test="${userOwner eq note.getOwner()}">
+													
 												</c:when>
 
 												<c:otherwise>

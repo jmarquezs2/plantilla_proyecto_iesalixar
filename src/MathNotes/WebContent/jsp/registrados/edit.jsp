@@ -194,10 +194,7 @@ page import="org.jmarquezs.DAO.*"%>
 								<div class="row">
 
 
-									<label class="col-12" for="description">Sube una
-										imagen:</label> <input id="fileInput" type="file" class="col-12"
-										accept="image/png, .jpeg, .jpg, image/gif"
-										name="archivossubidos">
+									
 										
 									 <img width="400px" height="240px" class="ml-5 mt-3"
 												src=/MathNotes/img/notesImage/${content.getEssence()} alt="">
@@ -366,11 +363,7 @@ page import="org.jmarquezs.DAO.*"%>
 								<div class="row">
 
 
-									<label class="col-12" for="description">Sube una
-										imagen:</label> <input id="fileInput" type="file" class="col-12"
-										accept="image/png, .jpeg, .jpg, image/gif"
-										name="archivossubidos">
-										
+									
 									 <img width="400px" height="240px" class="ml-5 mt-3"
 												src=/MathNotes/img/notesImage/${content.getEssence()} alt="">
 								</div>
