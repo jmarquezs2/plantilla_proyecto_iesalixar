@@ -82,22 +82,7 @@ page import="org.jmarquezs.DAO.*"%>
 
 					</nav>
 					<section class="col-7">
-						<div class="row mt-5" id="textSearch">
-							<p class="col-4">¿Demasiados Apuntes? Buscalos</p>
-
-							<!-- Search form -->
-							<form action="" class="col-6 mt-2">
-								<div class="row">
-									<input class=" col-10 form-control" type="text"
-										placeholder="    Título, Tema, Asigntura..."
-										aria-label="Search"> <img class="ml-1"
-										src="/MathNotes/img/icon/u64.svg" alt="">
-								</div>
-							</form>
-
-
-						</div>
-						<hr class="mb-3">
+					
 
 						<c:forEach var="subject" items="${subjects}">
 							<div id="asignatura" class="mt-5">

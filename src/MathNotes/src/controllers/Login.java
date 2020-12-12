@@ -11,6 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.jmarquezs.DAO.UsuarioDAOimpl;
+import org.jmarquezs.logger.TipoLog;
+import org.jmarquezs.logger.UtilesLog;
+
 
 public class Login extends HttpServlet{
 
@@ -27,6 +30,9 @@ public class Login extends HttpServlet{
 
 			session.setAttribute("Rol", UsuarioDAOimpl.readRol(email));
 			session.setAttribute("Email", email);
+			//String context = request.getServletContext().getRealPath("logs");
+			String mensaje = UtilesLog.loginMensaje(UsuarioDAOimpl.bringBackUser(email));
+			UtilesLog.registrarInfo(this.getClass(), TipoLog.INFO, mensaje);
 			System.out.println(UsuarioDAOimpl.readRol(email));
 				if ( UsuarioDAOimpl.readRol(email).equals("user")) {
 					response.sendRedirect("/MathNotes/Notes");

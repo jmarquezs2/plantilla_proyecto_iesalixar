@@ -44,6 +44,9 @@ public class NoteDAOimpl implements NoteDAO {
 			if (img != null) {
 				contents.add(img);
 			}
+			if (user.getName().equals("root")) {
+				note.setValidate(2);
+			}
 			note.setContents(contents);
 			users = note.getUsers();
 			users.add(user);

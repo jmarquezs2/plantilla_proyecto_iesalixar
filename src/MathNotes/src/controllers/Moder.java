@@ -13,6 +13,8 @@ import javax.servlet.http.HttpSession;
 
 import org.jmarquezs.DAO.NoteDAOimpl;
 import org.jmarquezs.DAO.UsuarioDAOimpl;
+import org.jmarquezs.logger.TipoLog;
+import org.jmarquezs.logger.UtilesLog;
 import org.jmarquezs.model.Note;
 import org.jmarquezs.model.User;
 
@@ -29,6 +31,9 @@ public class Moder extends HttpServlet{
 			if(id != null && vote !=null) {
 				Note note= NoteDAOimpl.bringBackNote(Integer.parseInt(id));
 				NoteDAOimpl.voteNote(note, vote);//metodo para validar
+				//String context = request.getServletContext().getRealPath("logs");
+				String mensaje = UtilesLog.logModer(note, vote);
+				UtilesLog.registrarInfo(this.getClass(), TipoLog.INFO, mensaje);
 			}
 		
 			Set<Note> userList = UsuarioDAOimpl.bringBackUser(owner).getNotes();

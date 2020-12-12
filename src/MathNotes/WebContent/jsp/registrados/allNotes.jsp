@@ -82,24 +82,18 @@ page import="org.jmarquezs.DAO.*"%>
 
 					</nav>
 					<section class="col-7">
-						<div class="row mt-5" id="textSearch">
-							<p class="col-4">¿Demasiados Apuntes? Buscalos</p>
-
-							<!-- Search form -->
-							<form action="" class="col-6 mt-2">
-								<div class="row">
-									<input class=" col-10 form-control" type="text"
-										placeholder="    Título, Tema, Asigntura..."
-										aria-label="Search"> <img class="ml-1"
-										src="/MathNotes/img/icon/u64.svg" alt="">
-								</div>
-							</form>
-
-
-						</div>
-						<hr class="mb-3">
+						
+						
 
 						<c:forEach var="subject" items="${allSubjects}">
+							<div id="asignatura" class="mt-5">
+										<p class="my-auto">
+											<c:out value="${subject}" />
+										</p>
+
+
+									</div>
+									<div class="row ml-5">
 							<c:forEach var="note" items="${allNotes}">
 
 								<c:set var="note" value="${note}" />
@@ -108,14 +102,8 @@ page import="org.jmarquezs.DAO.*"%>
 								<c:if test="${note.getSubject() eq subject}">
 
 
-									<div id="asignatura" class="mt-5">
-										<p class="my-auto">
-											<c:out value="${subject}" />
-										</p>
-
-
-									</div>
-									<div class="row ml-5">
+								
+									
 										<c:set var="userList" value="${userList}" />
 
 
@@ -150,10 +138,11 @@ page import="org.jmarquezs.DAO.*"%>
 
 
 
-									</div>
+									
 
 								</c:if>
 							</c:forEach>
+							</div>
 						</c:forEach>
 
 
