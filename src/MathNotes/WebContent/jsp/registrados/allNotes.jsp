@@ -237,13 +237,7 @@ page import="org.jmarquezs.DAO.*"%>
 						</div>
 					</div>
 
-					<form id="formMovil" action="" class="col-12 mt-4 ml-0">
-						<div class="row">
-							<input class=" col-10 form-control" type="text"
-								placeholder="    Título, Tema, Asigntura..." aria-label="Search">
-							<img class="ml-1" src="/MathNotes/img/icon/u64.svg" alt="">
-						</div>
-					</form>
+					
 				</div>
 				<hr>
 
@@ -272,7 +266,21 @@ page import="org.jmarquezs.DAO.*"%>
 										<label><c:out value="${note.getTitle()}" /></label>
 
 									</div>
-									<img src="/MathNotes/img/icon/engranaje.png" alt="">
+									<c:choose>
+												<c:when test="${owner.getId() eq note.getOwner()}">
+
+												</c:when>
+
+												<c:otherwise>
+
+													<a
+														href="/MathNotes/AllNotes?id=<c:out value="${note.getId()}" />">
+														<img src="/MathNotes/img/icon/guardar2.png"
+														onmouseover="change2(this)" onmouseout="change(this)"
+														title="Guardar" alt="Guardar">
+													</a>
+												</c:otherwise>
+											</c:choose>
 								</div>
 							</c:if>
 						</c:forEach>
