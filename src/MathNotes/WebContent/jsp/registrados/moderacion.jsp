@@ -44,12 +44,12 @@ page import="org.jmarquezs.DAO.*"%>
 				<div class="row mt-5">
 
 					<nav class="col-4">
-						<div class="row py-4" onclick="location='/MathNotes/Notes'"
+						<div class="row py-4" onclick="location='/MathNotes/Usuarios'"
 							id="botonNav">
-							<img id="icon" src="/MathNotes/img/icon/misApuntesIcon.png"
+							<img id="icon" src="/MathNotes/img/icon/user.png"
 								class="ml-4"></img>
 							<div class="ml-4 mt-2">
-								<b>Apuntes Guardados</b>
+								<b>Usuarios</b>
 							</div>
 						</div>
 						<hr>
@@ -82,21 +82,7 @@ page import="org.jmarquezs.DAO.*"%>
 
 					</nav>
 					<section class="col-7">
-						<div class="row mt-5" id="textSearch">
-							<p class="col-4">¿Demasiados Apuntes? Buscalos</p>
-
-							<!-- Search form -->
-							<form action="" class="col-6 mt-2">
-								<div class="row">
-									<input class=" col-10 form-control" type="text"
-										placeholder="    Título, Tema, Asigntura..."
-										aria-label="Search"> <img class="ml-1"
-										src="/MathNotes/img/icon/u64.svg" alt="">
-								</div>
-							</form>
-
-
-						</div>
+						
 						<hr class="mb-3">
 
 						<c:forEach var="subject" items="${allSubjects}">
@@ -198,13 +184,7 @@ page import="org.jmarquezs.DAO.*"%>
 						</div>
 					</div>
 
-					<form id="formMovil" action="" class="col-12 mt-4 ml-0">
-						<div class="row">
-							<input class=" col-10 form-control" type="text"
-								placeholder="    Título, Tema, Asigntura..." aria-label="Search">
-							<img class="ml-1" src="/MathNotes/img/icon/u64.svg" alt="">
-						</div>
-					</form>
+				
 				</div>
 				<hr>
 

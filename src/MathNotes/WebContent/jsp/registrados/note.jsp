@@ -157,8 +157,7 @@ page import="org.jmarquezs.DAO.*"%>
 						</c:forEach>
 						<br> <br>
 
-						<button id="submitCreate" onclick="location='/MathNotes/Edit?id=<c:out value="${note.getId()}" />'"
-							class="btn mb-4" type="button">Editar</button>
+						
 
 
 					</section>
@@ -282,7 +281,7 @@ page import="org.jmarquezs.DAO.*"%>
 
 				<br> <br>
 
-				<button id="submitCreate" class="btn mb-4" type="button">Editar</button>
+				
 
 
 			</section>

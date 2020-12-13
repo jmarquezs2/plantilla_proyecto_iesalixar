@@ -27,7 +27,7 @@ page import="org.jmarquezs.DAO.*"%>
 
 </head>
 <body class="container-fluid">
-	<c:set var="owner" value="${userLogin}" />
+	<c:set var="owner" value="${owner}" />
 	<div class="row">
 		<header class="col-12">
 			<div class="row">
@@ -41,78 +41,51 @@ page import="org.jmarquezs.DAO.*"%>
 
 			<section id="pageNotes" class=" d-none d-md-block">
 
-				<h3 id="h3notes" class="mx-5 mb-5">Apuntes Guardados</h3>
+				<h3 id="h3notes" class="mx-5 mb-5">Estas Baneado</h3>
 				<div class="row mt-5">
 
-					<c:choose>
-							<c:when test="${owner.getRol() eq 'user'}">
-									<nav class="col-4">
-						<div class="row py-4" onclick="location='/MathNotes/Notes'"
+					<nav class="col-4">
+						<div class="row py-4" 
 							id="botonNav">
 							<img id="icon" src="/MathNotes/img/icon/misApuntesIcon.png"
 								class="ml-4"></img>
 							<div class="ml-4 mt-2">
-								<b>Apuntes Guardados</b>
+								<b>Desactivado</b>
 							</div>
 						</div>
 						<hr>
-						<div class="row py-4" onclick="location='/MathNotes/AllNotes'"
+						<div class="row py-4" 
 							id="botonNav">
 							<img id="icon" src="/MathNotes/img/icon/todos.png" class="ml-4"></img>
 							<div class="ml-4 mt-2">
-								<b>Apuntes Públicos</b>
+								<b>Desactivado</b>
 							</div>
 						</div>
 						<hr>
-						<div class="row py-4" onclick="location='/MathNotes/Create'"
+						<div class="row py-4" 
 							id="botonNav">
 							<img id="icon" src="/MathNotes/img/icon/crear.png" class="ml-4"></img>
 							<div class="ml-4 mt-2">
-								<b>Nuevo Apunte</b>
+								<b>Desactivado</b>
 							</div>
 						</div>
 						<hr>
-						<div class="row py-4" onclick="location='/MathNotes/NewPassword'"
+
+						<c:choose>
+							<c:when test="${owner.getRol() eq 'user'}">
+								<div class="row py-4" 
 							id="botonNav">
 							<img id="icon" src="/MathNotes/img/icon/contraseña.png"
 								class="ml-4"></img>
 							<div class="ml-4 mt-2">
-								<b>Cambiar Contraseña</b>
+								<b>Desactivado</b>
 							</div>
 						</div>
 						<hr>
-
-
-					</nav>
 							</c:when>
 
 							<c:otherwise>
-	<nav class="col-4">
-						<div class="row py-4" onclick="location='/MathNotes/Usuarios'"
-							id="botonNav">
-							<img id="icon" src="/MathNotes/img/icon/user.png"
-								class="ml-4"></img>
-							<div class="ml-4 mt-2">
-								<b>Usuarios</b>
-							</div>
-						</div>
-						<hr>
-						<div class="row py-4" onclick="location='/MathNotes/AllNotes'"
-							id="botonNav">
-							<img id="icon" src="/MathNotes/img/icon/todos.png" class="ml-4"></img>
-							<div class="ml-4 mt-2">
-								<b>Apuntes Públicos</b>
-							</div>
-						</div>
-						<hr>
-						<div class="row py-4" onclick="location='/MathNotes/Create'"
-							id="botonNav">
-							<img id="icon" src="/MathNotes/img/icon/crear.png" class="ml-4"></img>
-							<div class="ml-4 mt-2">
-								<b>Nuevo Apunte</b>
-							</div>
-						</div>
-						<hr>
+
 						<div class="row py-4" onclick="location='/MathNotes/Moderacion'"
 							id="botonNav">
 							<img id="icon" src="/MathNotes/img/icon/guarda.svg"
@@ -122,66 +95,24 @@ page import="org.jmarquezs.DAO.*"%>
 							</div>
 						</div>
 						<hr>
+							</c:otherwise>
+						</c:choose>
+						
 
 
 					</nav>
-						
-							</c:otherwise>
-						</c:choose>
-
-					
 					<section class="col-7">
 
 
-						<c:forEach var="subject" items="${subjects}">
-							<div id="asignatura" class="mt-5">
-								<p class="my-auto">
-									<c:out value="${subject}" />
-								</p>
+						<h3 class="mx-5 my-5">Lo siento, has sido baneado.
+						</h3>
+						
+						
+						
+						<button id="botonUp" onclick="location='/MathNotes/Logout'"
+					class="col-12 bg-white  my-auto">Volver</button>
 
-
-							</div>
-
-							<div class="row ml-5">
-
-								<c:forEach var="note" items="${list}">
-
-									<c:set var="note" value="${note}" />
-									<c:set var="subject" value="${subject}" />
-
-									<c:if test="${note.getSubject() eq subject}">
-
-										<div
-											class="col-md-5 col-lg-3  col-sm-10 col-12 mx-md-3 mt-5 mr-5 mr-sm-0 mx-0"
-											id="note"
-											onclick="location='/MathNotes/View?id=<c:out value="${note.getId()}" />'">
-
-											<div id="tituloNote">
-												<label><c:out value="${note.getTitle()}" /></label>
-
-											</div>
-											<c:if test="${note.getOwner() eq owner.getId()}">
-												<a
-													href="/MathNotes/Edit?id=<c:out value="${note.getId()}" />">
-													<img src="/MathNotes/img/icon/lapiz.png" title="Editar"
-													alt="Editar">
-												</a>
-
-											</c:if>
-
-										</div>
-
-									</c:if>
-								</c:forEach>
-							</div>
-
-
-						</c:forEach>
-
-
-					</section>
-
-				</div>
+				
 
 
 
@@ -203,74 +134,31 @@ page import="org.jmarquezs.DAO.*"%>
 					<div class="collapse multi-collapse" id="multiCollapseExample1">
 						<div class="card card-body">
 							<div class="row">
-								<button type="button" onclick="location='/MathNotes/Notes'"
+								<button type="button" 
 									class="col-5 btn btn-outline-dark ml-4  mb-3 mr-2">Apuntes
 									Guardados</button>
-								<button type="button" onclick="location='/MathNotes/AllNotes'"
+								<button type="button" 
 									class="col-5 btn btn-outline-dark ml-2 mb-3 ">Apuntes
 									Públicos</button>
-								<button type="button" onclick="location='/MathNotes/Create'"
+								<button type="button" 
 									class="col-5 btn btn-outline-dark ml-4 mr-2">Nuevo
 									Apunte</button>
 								<button type="button"
-									onclick="location='/MathNotes/NewPassword'"
+									
 									class="col-5 btn btn-outline-dark ml-2">Cambiar
 									Contraseña</button>
 
 							</div>
-							
 						</div>
 					</div>
 
-					<form id="formMovil" action="" class="col-12 mt-4 ml-0">
-						<div class="row">
-							<input class=" col-10 form-control" type="text"
-								placeholder="    Título, Tema, Asigntura..." aria-label="Search">
-							<img class="ml-1" src="/MathNotes/img/icon/u64.svg" alt="">
-						</div>
-					</form>
-				</div>
-				<hr>
-
-				<c:forEach var="subject" items="${subjects}">
-					<div id="asignaturaMovil" class="mt-5">
-						<p class="my-auto">
-							<c:out value="${subject}" />
-						</p>
-
-
-					</div>
-
-					<div class="row ml-5">
-
-						<c:forEach var="note" items="${list}">
-
-							<c:set var="note" value="${note}" />
-							<c:set var="subject" value="${subject}" />
-
-							<c:if test="${note.getSubject() eq subject}">
-								<div class="col-4 mx-md-3 mt-5 mr-5 " id="note"
-									onclick="saveId(${note.getId()}); location='/MathNotes/View'">
-									<div id="tituloNote">
-										<label><c:out value="${note.getTitle()}" /></label>
-
-									</div>
-									<c:if test="${note.getOwner() eq owner.getId()}">
-										<a href="/MathNotes/Edit?id=<c:out value="${note.getId()}" />">
-											<img src="/MathNotes/img/icon/lapiz.png" title="Editar"
-											alt="Editar">
-										</a>
-
-									</c:if>
-
-								</div>
-							</c:if>
-						</c:forEach>
-					</div>
-
-
-				</c:forEach>
-
+					<h3 class="mx-5 my-5">Lo siento, has sido baneado.
+						</h3>
+						
+						
+						
+						<button id="botonUp" onclick="location='/MathNotes/Logout'"
+					class="col-12 bg-white  my-auto">Volver</button>
 
 			</section>
 	</div>

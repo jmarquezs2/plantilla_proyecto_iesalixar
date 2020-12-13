@@ -13,6 +13,7 @@ public class Main {
 
 
 		UsuarioDAOimpl.register("pepito@gmail.com", "pepito", "Pepe");
+		UsuarioDAOimpl.register("javi@gmail.com", "javi", "Javi");
 		UsuarioDAOimpl.register("root@gmail.com", "root", "root");
 		UsuarioDAOimpl.changeRol("root", "root@gmail.com");
 		UsuarioDAOimpl.register("juan@gmail.com", "juan12", "Juan");
@@ -35,7 +36,7 @@ public class Main {
 		
 		Content cont6 = ContentDAOimpl.createContent("v=e/t", "formula");
 		Content cont8 = ContentDAOimpl.createContent("madera.jpg", "img");
-		NoteDAOimpl.createNote(1, "prueba2", "Física", "hola", "La velocidad 3", cont6, null,cont8, "root@gmail.com");
+		NoteDAOimpl.createNote(1, "Escape", "Física", "hola", "La velocidad 3", cont6, null,cont8, "root@gmail.com");
 		
 		Content cont7 = ContentDAOimpl.createContent("v=e/t", "formula");
 		

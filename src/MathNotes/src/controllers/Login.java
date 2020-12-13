@@ -30,6 +30,7 @@ public class Login extends HttpServlet{
 
 			session.setAttribute("Rol", UsuarioDAOimpl.readRol(email));
 			session.setAttribute("Email", email);
+			session.setAttribute("userLogin", UsuarioDAOimpl.bringBackUser(email));
 			//String context = request.getServletContext().getRealPath("logs");
 			String mensaje = UtilesLog.loginMensaje(UsuarioDAOimpl.bringBackUser(email));
 			UtilesLog.registrarInfo(this.getClass(), TipoLog.INFO, mensaje);

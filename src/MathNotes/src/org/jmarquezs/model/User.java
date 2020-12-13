@@ -39,6 +39,9 @@ public class User implements Serializable {
 
 	@Column(name = "rol")
 	private String rol;
+	
+	@Column(name = "banned")
+	private String banned;
 
 	/*
 	 * @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
@@ -55,12 +58,13 @@ public class User implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	public User(String name, String email, String password, String rol) {
+	public User(String name, String email, String password, String rol, String banned) {
 		super();
 		this.name = name;
 		this.email = email;
 		this.password = password;
 		this.rol = rol;
+		this.banned = banned;
 	}
 
 	public int getId() {
@@ -109,6 +113,14 @@ public class User implements Serializable {
 
 	public void setNotes(Set<Note> notes) {
 		this.notes = notes;
+	}
+
+	public String getBanned() {
+		return banned;
+	}
+
+	public void setBanned(String banned) {
+		this.banned = banned;
 	}
 
 	/*

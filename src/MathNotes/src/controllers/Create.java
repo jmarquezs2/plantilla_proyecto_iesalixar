@@ -21,8 +21,9 @@ import org.apache.tomcat.util.http.fileupload.disk.DiskFileItemFactory;
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 import org.jmarquezs.DAO.ContentDAOimpl;
 import org.jmarquezs.DAO.NoteDAOimpl;
-
+import org.jmarquezs.DAO.UsuarioDAOimpl;
 import org.jmarquezs.model.Content;
+import org.jmarquezs.model.User;
 
 @WebServlet("/MathNotes/Create")
 @MultipartConfig
@@ -78,7 +79,10 @@ public class Create extends HttpServlet {
 	}
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		HttpServletRequest req = (HttpServletRequest) request;
+		HttpSession session = req.getSession(false);
+//		String owner = (String) session.getAttribute("Email");
+//		User user = UsuarioDAOimpl.bringBackUser(owner);
 		RequestDispatcher rd = request.getRequestDispatcher("jsp/registrados/create.jsp");
 		rd.forward(request, response);
 

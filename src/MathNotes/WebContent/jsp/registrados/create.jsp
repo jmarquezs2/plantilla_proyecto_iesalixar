@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+	<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,13 +28,15 @@
 
 		</header>
 		<section class="col-12 " id="fondoNotes">
-
+	<c:set var="owner" value="${userOwner}" />
 			<section id="pageNotes" class="mb-5 d-none d-md-block">
 
 				<h3 id="h3notes" class="mx-5 mb-5">Nuevo Apunte</h3>
 				<div class="row mt-5">
 
-					<nav class="col-4">
+					<c:choose>
+							<c:when test="${owner.getRol() eq 'user'}">
+									<nav class="col-4">
 						<div class="row py-4" onclick="location='/MathNotes/Notes'"
 							id="botonNav">
 							<img id="icon" src="/MathNotes/img/icon/misApuntesIcon.png"
@@ -42,7 +46,8 @@
 							</div>
 						</div>
 						<hr>
-						<div class="row py-4" onclick="location='/MathNotes/AllNotes'" id="botonNav">
+						<div class="row py-4" onclick="location='/MathNotes/AllNotes'"
+							id="botonNav">
 							<img id="icon" src="/MathNotes/img/icon/todos.png" class="ml-4"></img>
 							<div class="ml-4 mt-2">
 								<b>Apuntes Públicos</b>
@@ -69,6 +74,50 @@
 
 
 					</nav>
+							</c:when>
+
+							<c:otherwise>
+	<nav class="col-4">
+						<div class="row py-4" onclick="location='/MathNotes/Usuarios'"
+							id="botonNav">
+							<img id="icon" src="/MathNotes/img/icon/user.png"
+								class="ml-4"></img>
+							<div class="ml-4 mt-2">
+								<b>Usuarios</b>
+							</div>
+						</div>
+						<hr>
+						<div class="row py-4" onclick="location='/MathNotes/AllNotes'"
+							id="botonNav">
+							<img id="icon" src="/MathNotes/img/icon/todos.png" class="ml-4"></img>
+							<div class="ml-4 mt-2">
+								<b>Apuntes Públicos</b>
+							</div>
+						</div>
+						<hr>
+						<div class="row py-4" onclick="location='/MathNotes/Create'"
+							id="botonNav">
+							<img id="icon" src="/MathNotes/img/icon/crear.png" class="ml-4"></img>
+							<div class="ml-4 mt-2">
+								<b>Nuevo Apunte</b>
+							</div>
+						</div>
+						<hr>
+						<div class="row py-4" onclick="location='/MathNotes/Moderacion'"
+							id="botonNav">
+							<img id="icon" src="/MathNotes/img/icon/guarda.svg"
+								class="ml-4"></img>
+							<div class="ml-4 mt-2">
+								<b>Moderación</b>
+							</div>
+						</div>
+						<hr>
+
+
+					</nav>
+						
+							</c:otherwise>
+						</c:choose>
 					<section class="col-7">
 						<form action="/MathNotes/Create" id="formCreate" method="post"
 							enctype="multipart/form-data">
@@ -205,6 +254,8 @@
 									
 
 							</div>
+							
+							
 						</div>
 					</div>
 

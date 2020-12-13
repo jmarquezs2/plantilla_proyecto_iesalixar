@@ -106,6 +106,16 @@
     <servlet-name>Moder</servlet-name>
     <url-pattern>/Moderacion</url-pattern>
   </servlet-mapping>
+    <servlet>
+    <description></description>
+    <display-name>Usuarios</display-name>
+    <servlet-name>Usuarios</servlet-name>
+    <servlet-class>controllers.ModerUser</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Usuarios</servlet-name>
+    <url-pattern>/Usuarios</url-pattern>
+  </servlet-mapping>
   <filter>
     <filter-name>AuthenticationFilter</filter-name>
     <filter-class>org.jmarquezs.filters.AuthenticationFilter</filter-class>

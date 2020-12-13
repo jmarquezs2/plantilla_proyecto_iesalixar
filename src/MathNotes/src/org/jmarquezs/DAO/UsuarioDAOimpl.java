@@ -1,7 +1,12 @@
 package org.jmarquezs.DAO;
 
 import org.jmarquezs.helper.HibernateUtil;
+import org.jmarquezs.model.Note;
 import org.jmarquezs.model.User;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.exception.ConstraintViolationException;
@@ -79,6 +84,33 @@ public class UsuarioDAOimpl implements UsuarioDAO {
 		}
 		
 	}
+	public static void changeBanned(String email) {
+		Session session = null;
+		Transaction transaction = null;
+		User user = bringBackUser(email);
+		try {
+			session = HibernateUtil.getSessionFactory().openSession();
+			transaction = session.beginTransaction();
+			if(user.getBanned().equals("yes")) {
+				user.setBanned("no");
+			}else {
+				user.setBanned("yes");
+			}
+			session.saveOrUpdate(user);
+			transaction.commit();
+
+		} catch (ConstraintViolationException e) {
+			if (transaction != null) {
+				transaction.rollback();
+			}
+			e.printStackTrace();
+		} finally {
+			if (session != null) {
+				session.close();
+			}
+		}
+		
+	}
 
 	public static void register(String email, String password, String name) {
 
@@ -88,7 +120,7 @@ public class UsuarioDAOimpl implements UsuarioDAO {
 			session = HibernateUtil.getSessionFactory().openSession();
 			transaction = session.beginTransaction();
 			// Create
-			User us = new User(name, email, password, "user");
+			User us = new User(name, email, password, "user", "no");
 			session.save(us);
 			transaction.commit();
 
@@ -187,5 +219,34 @@ public class UsuarioDAOimpl implements UsuarioDAO {
 			}
 		}
 		return found;
+	}
+	
+public static List<User> userAll() {
+
+		
+		List<User> list = new ArrayList<User>();
+
+		Session session = null;
+		Transaction transaction = null;
+		try {
+			session = HibernateUtil.getSessionFactory().openSession();
+			transaction = session.beginTransaction();
+			
+
+			list.addAll(session.createQuery("SELECT p FROM User p", User.class).list());
+
+		} catch (ConstraintViolationException e) {
+			if (transaction != null) {
+				transaction.rollback();
+			}
+			e.printStackTrace();
+		} finally {
+			if (session != null) {
+				session.close();
+			}
+		}
+		System.out.println(list.toString());
+
+		return list;
 	}
 }

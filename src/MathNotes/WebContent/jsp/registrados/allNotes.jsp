@@ -36,6 +36,7 @@ page import="org.jmarquezs.DAO.*"%>
 			</div>
 
 		</header>
+		<c:set var="owner" value="${userLogin}" />
 		<section class="col-12" id="fondoNotes">
 
 			<section id="pageNotes" class=" d-none d-md-block">
@@ -43,67 +44,113 @@ page import="org.jmarquezs.DAO.*"%>
 				<h3 id="h3notes" class="mx-5 mb-5">Apuntes Públicos</h3>
 				<div class="row mt-5">
 
-					<nav class="col-4">
-						<div class="row py-4" onclick="location='/MathNotes/Notes'"
-							id="botonNav">
-							<img id="icon" src="/MathNotes/img/icon/misApuntesIcon.png"
-								class="ml-4"></img>
-							<div class="ml-4 mt-2">
-								<b>Apuntes Guardados</b>
-							</div>
-						</div>
-						<hr>
-						<div class="row py-4" onclick="location='/MathNotes/AllNotes'"
-							id="botonNav">
-							<img id="icon" src="/MathNotes/img/icon/todos.png" class="ml-4"></img>
-							<div class="ml-4 mt-2">
-								<b>Apuntes Públicos</b>
-							</div>
-						</div>
-						<hr>
-						<div class="row py-4" onclick="location='/MathNotes/Create'"
-							id="botonNav">
-							<img id="icon" src="/MathNotes/img/icon/crear.png" class="ml-4"></img>
-							<div class="ml-4 mt-2">
-								<b>Nuevo Apunte</b>
-							</div>
-						</div>
-						<hr>
-						<div class="row py-4" onclick="location='/MathNotes/NewPassword'"
-							id="botonNav">
-							<img id="icon" src="/MathNotes/img/icon/contraseña.png"
-								class="ml-4"></img>
-							<div class="ml-4 mt-2">
-								<b>Cambiar Contraseña</b>
-							</div>
-						</div>
-						<hr>
+					<c:choose>
+						<c:when test="${owner.getRol() eq 'user'}">
+							<nav class="col-4">
+								<div class="row py-4" onclick="location='/MathNotes/Notes'"
+									id="botonNav">
+									<img id="icon" src="/MathNotes/img/icon/misApuntesIcon.png"
+										class="ml-4"></img>
+									<div class="ml-4 mt-2">
+										<b>Apuntes Guardados</b>
+									</div>
+								</div>
+								<hr>
+								<div class="row py-4" onclick="location='/MathNotes/AllNotes'"
+									id="botonNav">
+									<img id="icon" src="/MathNotes/img/icon/todos.png" class="ml-4"></img>
+									<div class="ml-4 mt-2">
+										<b>Apuntes Públicos</b>
+									</div>
+								</div>
+								<hr>
+								<div class="row py-4" onclick="location='/MathNotes/Create'"
+									id="botonNav">
+									<img id="icon" src="/MathNotes/img/icon/crear.png" class="ml-4"></img>
+									<div class="ml-4 mt-2">
+										<b>Nuevo Apunte</b>
+									</div>
+								</div>
+								<hr>
+								<div class="row py-4"
+									onclick="location='/MathNotes/NewPassword'" id="botonNav">
+									<img id="icon" src="/MathNotes/img/icon/contraseña.png"
+										class="ml-4"></img>
+									<div class="ml-4 mt-2">
+										<b>Cambiar Contraseña</b>
+									</div>
+								</div>
+								<hr>
 
 
-					</nav>
+							</nav>
+						</c:when>
+
+						<c:otherwise>
+							<nav class="col-4">
+								<div class="row py-4" onclick="location='/MathNotes/Usuarios'"
+									id="botonNav">
+									<img id="icon" src="/MathNotes/img/icon/user.png" class="ml-4"></img>
+									<div class="ml-4 mt-2">
+										<b>Usuarios</b>
+									</div>
+								</div>
+								<hr>
+								<div class="row py-4" onclick="location='/MathNotes/AllNotes'"
+									id="botonNav">
+									<img id="icon" src="/MathNotes/img/icon/todos.png" class="ml-4"></img>
+									<div class="ml-4 mt-2">
+										<b>Apuntes Públicos</b>
+									</div>
+								</div>
+								<hr>
+								<div class="row py-4" onclick="location='/MathNotes/Create'"
+									id="botonNav">
+									<img id="icon" src="/MathNotes/img/icon/crear.png" class="ml-4"></img>
+									<div class="ml-4 mt-2">
+										<b>Nuevo Apunte</b>
+									</div>
+								</div>
+								<hr>
+								<div class="row py-4" onclick="location='/MathNotes/Moderacion'"
+									id="botonNav">
+									<img id="icon" src="/MathNotes/img/icon/guarda.svg"
+										class="ml-4"></img>
+									<div class="ml-4 mt-2">
+										<b>Moderación</b>
+									</div>
+								</div>
+								<hr>
+
+
+							</nav>
+
+						</c:otherwise>
+					</c:choose>
+
 					<section class="col-7">
-						
-						
+
+
 
 						<c:forEach var="subject" items="${allSubjects}">
 							<div id="asignatura" class="mt-5">
-										<p class="my-auto">
-											<c:out value="${subject}" />
-										</p>
+								<p class="my-auto">
+									<c:out value="${subject}" />
+								</p>
 
 
-									</div>
-									<div class="row ml-5">
-							<c:forEach var="note" items="${allNotes}">
+							</div>
+							<div class="row ml-5">
+								<c:forEach var="note" items="${allNotes}">
 
-								<c:set var="note" value="${note}" />
-								<c:set var="subject" value="${subject}" />
-								<c:set var="userOwner" value="${userOwner}" />
-								<c:if test="${note.getSubject() eq subject}">
+									<c:set var="note" value="${note}" />
+									<c:set var="subject" value="${subject}" />
+
+									<c:if test="${note.getSubject() eq subject}">
 
 
-								
-									
+
+
 										<c:set var="userList" value="${userList}" />
 
 
@@ -120,8 +167,8 @@ page import="org.jmarquezs.DAO.*"%>
 
 
 											<c:choose>
-												<c:when test="${userOwner eq note.getOwner()}">
-													
+												<c:when test="${owner.getId() eq note.getOwner()}">
+
 												</c:when>
 
 												<c:otherwise>
@@ -138,10 +185,10 @@ page import="org.jmarquezs.DAO.*"%>
 
 
 
-									
 
-								</c:if>
-							</c:forEach>
+
+									</c:if>
+								</c:forEach>
 							</div>
 						</c:forEach>
 
@@ -154,6 +201,7 @@ page import="org.jmarquezs.DAO.*"%>
 
 
 			</section>
+
 			<section class="d-block d-md-none">
 
 				<div class="row">
@@ -185,6 +233,7 @@ page import="org.jmarquezs.DAO.*"%>
 									Contraseña</button>
 
 							</div>
+
 						</div>
 					</div>
 
@@ -199,13 +248,13 @@ page import="org.jmarquezs.DAO.*"%>
 				<hr>
 
 				<c:forEach var="subject" items="${allSubjects}">
-				<div id="asignaturaMovil" class="mt-5">
-									<p class="my-auto">
-										<c:out value="${subject}" />
-									</p>
+					<div id="asignaturaMovil" class="mt-5">
+						<p class="my-auto">
+							<c:out value="${subject}" />
+						</p>
 
 
-								</div>
+					</div>
 					<div class="row ml-5">
 
 						<c:forEach var="note" items="${allNotes}">
@@ -214,7 +263,7 @@ page import="org.jmarquezs.DAO.*"%>
 							<c:set var="subject" value="${subject}" />
 
 							<c:if test="${note.getSubject() eq subject}">
-								
+
 
 
 								<div class="col-4 mx-md-3 mt-5 mr-5 " id="note"
@@ -245,11 +294,9 @@ page import="org.jmarquezs.DAO.*"%>
 	</section>
 	</div>
 
-<script
-src="https://cdn.cai.tools.sap/webchat/webchat.js"
-channelId="8c657416-a85d-4dd3-8a93-d16edfb60274"
-token="911d74323f0e85f55bed13443ce7b677"
-id="cai-webchat">
+	<script src="https://cdn.cai.tools.sap/webchat/webchat.js"
+		channelId="8c657416-a85d-4dd3-8a93-d16edfb60274"
+		token="911d74323f0e85f55bed13443ce7b677" id="cai-webchat">
 </script>
 	<script type="text/javascript">
 function saveId(id) {

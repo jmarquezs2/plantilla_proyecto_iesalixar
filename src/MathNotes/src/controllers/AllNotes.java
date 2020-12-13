@@ -50,11 +50,11 @@ public class AllNotes extends HttpServlet {
 		}
 	
 		Set<Note> userList = UsuarioDAOimpl.bringBackUser(owner).getNotes();
-		int idOwner = UsuarioDAOimpl.bringBackUser(owner).getId();
+		User user = UsuarioDAOimpl.bringBackUser(owner);
 		List<Note> list = NoteDAOimpl.notesAll();
 		Set<String> subjects = NoteDAOimpl.subjectAll();
 		System.out.println(userList.toString());
-		session.setAttribute("userOwner", idOwner);
+//		session.setAttribute("userOwner", user);
 		session.setAttribute("userList", userList);
 		 session.setAttribute("allNotes", list);
 		 session.setAttribute("allSubjects", subjects);

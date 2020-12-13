@@ -24,7 +24,7 @@
 				<h1 class="col-md-3 col-sm-7  col-6">Math Notes</h1>
 				<button id="botonUp"
 					class="col-md-2 offset-md-6 col-sm-4 col-4  bg-white  my-auto"
-					onclick="location='/Mat_Notes/Register'">Registrarse</button>
+					onclick="location='/MathNotes/Register'">Registrarse</button>
 			</div>
 
 		</header>
