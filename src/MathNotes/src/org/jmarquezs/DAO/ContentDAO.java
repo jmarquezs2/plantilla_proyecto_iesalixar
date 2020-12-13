@@ -2,6 +2,7 @@ package org.jmarquezs.DAO;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.http.Part;
 
@@ -12,14 +13,12 @@ public interface ContentDAO {
 	return null;
 	}
 	
-	public static String getFileName(final Part part) {
+	
+	public static Content writeImage(String context, Part archivo) throws IOException {
 		return null;
 		
 	}
-	
-	public static Content writeImage(Part file, PrintWriter wr) throws IOException {
+	public static List<Content> contentsToId(int id) {
 		return null;
-		
 	}
-	
 }
